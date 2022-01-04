@@ -5,14 +5,15 @@ import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.input.KeyStroke;
 
 import java.io.IOException;
 
 public class Game {
     private Screen screen;
     private Arena arena = new Arena(60, 60);
-    private int x=10;
-    private int y=10;
+    private int x = 10;
+    private int y = 10;
 
     public Game() {
         try {
@@ -38,7 +39,7 @@ public class Game {
         try {
             while(true) {
                 draw();
-                com.googlecode.lanterna.input.KeyStroke key = screen.readInput();
+                KeyStroke key = screen.readInput();
                 processKey(key);
                 if (key.getKeyType() == KeyType.Character && key.getCharacter() == ('q'))
                     screen.close();
@@ -51,7 +52,7 @@ public class Game {
 
     }
 
-    private void processKey(com.googlecode.lanterna.input.KeyStroke key){
+    private void processKey(KeyStroke key){
         System.out.println(key);
         switch (key.getKeyType()) {
             case ArrowUp    -> y--;
