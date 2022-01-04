@@ -9,7 +9,8 @@ import com.googlecode.lanterna.terminal.Terminal;
 import java.io.IOException;
 
 public class Game {
-    Screen screen;
+    private Screen screen;
+    private Arena arena = new Arena(60, 60);
     private int x=10;
     private int y=10;
 
@@ -29,6 +30,7 @@ public class Game {
     }
     private void draw() throws IOException{
         screen.clear();
+        arena.draw(screen.newTextGraphics());
         screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
         screen.refresh();
     }
