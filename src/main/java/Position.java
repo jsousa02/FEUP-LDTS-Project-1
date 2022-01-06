@@ -16,4 +16,19 @@ public class Position {
      * @return y coordinate
      */
     public int getY() { return y; }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    void setPosition(){
+        this.setX(getX());
+        this.setY(getY());
+    }
 }
+
+
