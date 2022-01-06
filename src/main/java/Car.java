@@ -25,7 +25,4 @@ public class Car extends Position{
         return new Position(getX() -1, getY());
     }
 
-    public int getPosition(){
-        return getPosition();
-    }
 }

@@ -29,7 +29,6 @@ public class Game {
     private void draw() throws IOException{
         screen.clear();
         arena.draw(screen.newTextGraphics());
-        screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
         screen.refresh();
     }
     public void run() {

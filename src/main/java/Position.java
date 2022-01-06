@@ -25,9 +25,23 @@ public class Position {
         this.y = y;
     }
 
-    void setPosition(){
-        this.setX(getX());
-        this.setY(getY());
+    void setPosition(Position position){
+        this.setX(position.getX());
+        this.setY(position.getY());
+    }
+
+    public Position getPosition(){
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o){
+        if (this == o) return true;
+        if (o == null) return false;
+        if(getClass() != o.getClass()) return false;
+
+        Position p = (Position) o;
+        return x == p.getX() && y == p.getY();
     }
 }
 

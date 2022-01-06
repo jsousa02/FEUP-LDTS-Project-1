@@ -6,12 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Arena {
-    TextGraphics graphics;
+
     private int width;
     private int height;
 
+    Car car = new Car(10,10);
     private List<Wall> walls = new ArrayList<>();
-    private Car car;
 
     public Arena(int x, int y) {
         this.width = x;
@@ -42,7 +42,7 @@ public class Arena {
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
         car.draw(graphics, "→");
         for (Wall wall : walls)
-            wall.draw(graphics);
+            wall.draw(graphics, "⧫");
     }
 
     private void createWalls() {
@@ -58,24 +58,24 @@ public class Arena {
         System.out.println(key);
         switch (key.getKeyType()) {
             case ArrowUp:
-                moveCar(car.moveUp(), graphics);
+                moveCar(car.moveUp());
                 break;
             case ArrowDown:
-                moveCar(car.moveDown(), graphics);
+                moveCar(car.moveDown());
                 break;
             case ArrowLeft:
-                moveCar(car.moveLeft(), graphics);
+                moveCar(car.moveLeft());
                 break;
             case ArrowRight:
-                moveCar(car.moveRight(), graphics);
+                moveCar(car.moveRight());
                 break;
         }
     }
 
-    public void moveCar(Position position, TextGraphics graphics) {
+    public void moveCar(Position position) {
         if (canPlayerMove(position)) {
-            car.setPosition();
-            if (car.moveUp().equals(position)) {
+            car.setPosition(position);
+            /*if (car.moveUp().equals(position)) {
                 car.draw(graphics, "↑");
             } else if (car.moveDown().equals(position)) {
                 car.draw(graphics, "↓");
@@ -83,13 +83,13 @@ public class Arena {
                 car.draw(graphics, "←");
             } else if (car.moveRight().equals(position)) {
                 car.draw(graphics, "→");
-            }
+            }*/
         }
     }
 
     boolean canPlayerMove(Position position) {
         for (Wall wall : walls) {
-            if (wall.getPosition() ==  car.getPosition()) {
+            if (wall.getPosition().equals(position)) {
                 return false;
             }
         }

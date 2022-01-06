@@ -7,12 +7,13 @@ public class Wall extends Position {
         super(x, y);
     }
 
-    public void draw(TextGraphics graphics) {
+    public void draw(TextGraphics graphics, String str) {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
-        graphics.putString(new TerminalPosition(x, y), "*");
+        graphics.putString(new TerminalPosition(x, y), str);
     }
 
-    public int getPosition(){
+    /*public int getPosition(){
         return getPosition();
-    }
+    }*/
+
 }
