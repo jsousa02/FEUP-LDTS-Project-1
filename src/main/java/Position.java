@@ -10,12 +10,16 @@ public class Position {
     /**
      * @return x coordinate
      */
-    public int getX() { return x; }
+    public int getX() {
+        return x;
+    }
 
     /**
      * @return y coordinate
      */
-    public int getY() { return y; }
+    public int getY() {
+        return y;
+    }
 
     public void setX(int x) {
         this.x = x;
@@ -25,24 +29,33 @@ public class Position {
         this.y = y;
     }
 
-    void setPosition(Position position){
+    void setPosition(Position position) {
         this.setX(position.getX());
         this.setY(position.getY());
     }
 
-    public Position getPosition(){
+    public Position getPosition() {
         return this;
     }
 
-    @Override
-    public boolean equals(Object o){
+
+/*    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null) return false;
-        if(getClass() != o.getClass()) return false;
+        if (getClass() != o.getClass()) return false;
 
         Position p = (Position) o;
         return x == p.getX() && y == p.getY();
     }
+    */
+    @Override
+    public boolean equals(Object o) {
+        if(o == null || o.getClass() != this.getClass()) return false;
+
+        return (this == o) ||
+                (this.x == ((Position) o).x && this.y == ((Position) o).y);
+    }
 }
+
 
 

@@ -3,10 +3,13 @@ import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.*;
 import com.googlecode.lanterna.terminal.*;
 import com.googlecode.lanterna.input.KeyStroke;
+//import model.Arena;
 
 import java.io.IOException;
 
 public class Game {
+    private Position position;
+
     private Screen screen;
     private Arena arena = new Arena(60, 60);
     private int x = 10;
@@ -36,8 +39,12 @@ public class Game {
             while(true) {
                 draw();
                 KeyStroke key = screen.readInput();
-                processKey(key);
-                if (key.getKeyType() == KeyType.Character && key.getCharacter() == ('q'))
+                arena.processKey(key);
+                if(arena.Wall_Collision()){
+                    screen.close();
+                    break;
+                }
+               if (key.getKeyType() == KeyType.Character && key.getCharacter() == ('q'))
                     screen.close();
                 if (key.getKeyType() == KeyType.EOF)
                     break;
@@ -48,13 +55,12 @@ public class Game {
 
     }
 
-    private void processKey(KeyStroke key){
-        System.out.println(key);
-        switch (key.getKeyType()) {
-            case ArrowUp    -> y--;
-            case ArrowDown  -> y++;
-            case ArrowLeft  -> x--;
-            case ArrowRight -> x++;
-        }
-    }
+//    private void processKey(KeyStroke key){
+//        System.out.println(key);
+//        switch (key.getKeyType()) {
+//            case ArrowUp    -> y--;
+//            case ArrowDown  -> y++;
+//            case ArrowLeft  -> x--;
+//            case ArrowRight -> x++;
+//        }
 }

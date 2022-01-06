@@ -1,6 +1,11 @@
+//package model;
+
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
+//import model.Car;
+//import model.Position;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +15,7 @@ public class Arena {
     private int width;
     private int height;
 
-    Car car = new Car(10,10);
+    Car car = new Car(2,1);
     private List<Wall> walls = new ArrayList<>();
 
     public Arena(int x, int y) {
@@ -86,7 +91,12 @@ public class Arena {
             }*/
         }
     }
-
+    private boolean canPlayerMove(Position pos){
+        return (pos.getX() >= 0 && pos.getX() < width) &&
+                (pos.getY() >= 0 && pos.getY() < height);//&&
+                //!walls.contains(new Wall(pos.getX(), pos.getY()));
+    }
+    /*
     boolean canPlayerMove(Position position) {
         for (Wall wall : walls) {
             if (wall.getPosition().equals(position)) {
@@ -99,5 +109,25 @@ public class Arena {
             return false;
         }
         else return true;
+    }
+
+    public boolean Wall_Collision(){
+        for(Wall wall : walls){
+            if(wall.getX()==car.getX() && wall.getY() == car.getY()){
+                System.out.println("Death.");
+                return true;
+            }
+        }
+        return false;
+    }*/
+
+    public boolean Wall_Collision() {
+        for (Wall wall : walls) {
+            if (wall.getPosition().equals(car.getPosition())) {
+                System.out.println("Death.");
+                return true;
+            }
+        }
+        return false;
     }
 }

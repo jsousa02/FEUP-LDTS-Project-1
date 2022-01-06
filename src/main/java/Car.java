@@ -16,12 +16,15 @@ public class Car extends Position{
         return new Position(getX(), getY() - 1);
     }
     public Position moveDown() {
+
         return new Position(getX(), getY() + 1);
     }
     public Position moveRight() {
+
         return new Position(getX() +1, getY());
     }
     public Position moveLeft() {
+
         return new Position(getX() -1, getY());
     }
 

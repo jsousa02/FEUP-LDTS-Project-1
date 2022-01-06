@@ -11,9 +11,4 @@ public class Wall extends Position {
         graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
         graphics.putString(new TerminalPosition(x, y), str);
     }
-
-    /*public int getPosition(){
-        return getPosition();
-    }*/
-
 }
