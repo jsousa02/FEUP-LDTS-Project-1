@@ -1,23 +1,23 @@
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
+import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
+import com.googlecode.lanterna.screen.*;
+import com.googlecode.lanterna.terminal.*;
 import com.googlecode.lanterna.input.KeyStroke;
+//import model.Arena;
 
 import java.io.IOException;
 
+import static com.googlecode.lanterna.input.KeyType.Escape;
+
+
 public class Game {
+
     private Screen screen;
-    private Arena arena = new Arena(60, 60);
-    private int x = 10;
-    private int y = 10;
+    private Arena arena = new Arena(120, 60);
 
     public Game() {
         try {
-            TerminalSize terminalSize = new TerminalSize(60, 60);
+            TerminalSize terminalSize = new TerminalSize(120, 60);
             DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
             Terminal terminal = terminalFactory.createTerminal();
             screen = new TerminalScreen(terminal);
@@ -29,36 +29,40 @@ public class Game {
             e.printStackTrace();
         }
     }
+
+    /**
+     * @brief Draws all the components of the game
+     */
     private void draw() throws IOException{
         screen.clear();
         arena.draw(screen.newTextGraphics());
-        screen.setCharacter(x, y, TextCharacter.fromCharacter('X')[0]);
         screen.refresh();
     }
+
+    /**
+     * @brief Runs the game
+     */
     public void run() {
         try {
             while(true) {
                 draw();
-                KeyStroke key = screen.readInput();
-                processKey(key);
-                if (key.getKeyType() == KeyType.Character && key.getCharacter() == ('q'))
-                    screen.close();
-                if (key.getKeyType() == KeyType.EOF)
-                    break;
-            }
-        } catch (IOException e){
-            e.printStackTrace();
+                    KeyStroke key = screen.readInput();
+                    arena.processKey(key);
+                    if(arena.wall_Collision() || arena.trail_Collision()) {
+                        screen.close();
+                        break;
+                    }
+                    if (key.getKeyType() == KeyType.Character &&
+                            (key.getCharacter() == ('q') || key.getCharacter() == ('Q'))
+                            || key.getKeyType() == Escape)
+                        screen.close();
+                    if (key.getKeyType() == KeyType.EOF)
+                        break;
+                }
+
+            } catch (IOException ex) {
+            ex.printStackTrace();
         }
 
-    }
-
-    private void processKey(KeyStroke key){
-        System.out.println(key);
-        switch (key.getKeyType()) {
-            case ArrowUp    -> y--;
-            case ArrowDown  -> y++;
-            case ArrowLeft  -> x--;
-            case ArrowRight -> x++;
-        }
     }
 }
