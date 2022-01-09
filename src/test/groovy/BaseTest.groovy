@@ -4,7 +4,7 @@ class BaseTest extends Specification {
 
     def "Testing equals"() {
         given: "a car in a position"
-            Car car = new Car(1, 1, " ")        
+            Car car = new Car(1, 1, " ", '#FFFFFF')
 
         when: "a wall in the same position and a wall in a different position"
             Wall wallInSamePosition = new Wall(1, 1, "-")

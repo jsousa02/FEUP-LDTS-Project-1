@@ -47,19 +47,6 @@ public class Position {
         this.setX(position.getX());
         this.setY(position.getY());
     }
-    /*
-    public enum Direction{
-        RIGHT(new Position(getX() + 1, getY()),
-                LEFT(new Position(getX() - 1, getY()),
-                        UP(new Position(getX(), getY() + 1),
-                                DOWN(new Position(getX(), getY() - 1);
-
-        final Position position;
-
-        Direction(Position position){
-            this.position = position;
-        }
-    }*/
 
     /**
      * @return The current position
