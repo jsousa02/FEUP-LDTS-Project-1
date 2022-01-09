@@ -3,13 +3,12 @@ import com.googlecode.lanterna.graphics.TextGraphics;
 
 public class Car extends Position {
     public String str;
-    public final static int  LEFT = 0, RIGHT = 1, UP = 2, DOWN = 3;
+    public String color;
 
-    private int direction = RIGHT;
-
-    public Car(int x, int y, String str) {
+    public Car(int x, int y, String str, String color) {
         super(x, y);
         this.str = str;
+        this.color = color;
     }
 
     /**
@@ -17,7 +16,7 @@ public class Car extends Position {
      * @param graphics
      */
     public void draw(TextGraphics graphics) {
-        graphics.setForegroundColor(TextColor.Factory.fromString("#3AFF33"));
+        graphics.setForegroundColor(TextColor.Factory.fromString(color));
         graphics.enableModifiers(SGR.BOLD);
         graphics.putString(new TerminalPosition(getX(), getY()),str);
     }
@@ -50,16 +49,9 @@ public class Car extends Position {
         return new Position(getX() -1, getY());
     }
 
-    public void setDirection(int direction){
-        this.direction = direction;
-    }
-
-    public int getDirection() {return direction;}
-
     /**
-     *
-     * @param str
-     * @return
+     * Sets the car character representation
+     * @param str The new character
      */
     public void setString(String str){
         this.str = str;

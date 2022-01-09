@@ -3,8 +3,6 @@ import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.screen.*;
 import com.googlecode.lanterna.terminal.*;
 import com.googlecode.lanterna.input.KeyStroke;
-//import model.Arena;
-
 import java.io.IOException;
 
 import static com.googlecode.lanterna.input.KeyType.Escape;
@@ -42,22 +40,30 @@ public class Game {
     /**
      * @brief Runs the game
      */
-    public void run() {
+    public void run() throws InterruptedException {
         try {
             while(true) {
                 draw();
-                    KeyStroke key = screen.readInput();
+                KeyStroke key = new KeyStroke(KeyType.ArrowRight);
+                Thread.sleep(75);
+                KeyStroke temp = screen.pollInput();
+                if (temp == null)
+                        arena.processKey(new KeyStroke(KeyType.Backspace));
+                else {
+                    key = temp;
                     arena.processKey(key);
-                    if(arena.wall_Collision() || arena.trail_Collision()) {
-                        screen.close();
-                        break;
-                    }
-                    if (key.getKeyType() == KeyType.Character &&
-                            (key.getCharacter() == ('q') || key.getCharacter() == ('Q'))
-                            || key.getKeyType() == Escape)
-                        screen.close();
-                    if (key.getKeyType() == KeyType.EOF)
-                        break;
+                }
+                if(arena.wallCollision() || arena.trailCollision()
+                        || arena.botTrailCollision() || arena.botWallCollision()) {
+                    screen.close();
+                    break;
+                }
+                if (key.getKeyType() == KeyType.Character &&
+                        (key.getCharacter() == ('q') || key.getCharacter() == ('Q'))
+                        || key.getKeyType() == Escape)
+                    screen.close();
+                if (key.getKeyType() == KeyType.EOF)
+                    break;
                 }
 
             } catch (IOException ex) {
