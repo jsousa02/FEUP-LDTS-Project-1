@@ -1,3 +1,5 @@
+package com.g0301.model;
+
 import java.util.Objects;
 
 public class Position {
@@ -74,5 +76,21 @@ public class Position {
 
         Position p = (Position) o;
         return x == p.getX() && y == p.getY();
+    }
+
+    public Position moveUp() {
+        return new Position(this.x, this.y - 1);
+    }
+
+    public Position moveDown() {
+        return new Position(this.x, this.y + 1);
+    }
+
+    public Position moveLeft() {
+        return new Position(this.x - 1, this.y);
+    }
+
+    public Position moveRight() {
+        return new Position(this.x + 1, this.y);
     }
 }

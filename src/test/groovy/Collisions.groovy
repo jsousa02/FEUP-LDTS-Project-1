@@ -1,10 +1,13 @@
+import model.Arena
+import model.Position
+import model.Trail
 import spock.lang.Specification
 
 class Collisions extends  Specification{
-    def "Testing Wall Collision"(){
+    def "Testing com.g0301.model.Wall Collision"(){
         given: "an arena and a position where we know there's a wall"
-            Arena arena_test = new Arena(5,5)
-            Position position_test= new Position(4,0)
+        Arena arena_test = new Arena(5,5)
+        Position position_test= new Position(4,0)
 
         when: "the car moves to the wall position"
             arena_test.moveCar(position_test)
@@ -13,7 +16,7 @@ class Collisions extends  Specification{
             arena_test.wallCollision()
     }
 
-    def "Testing Car Collision with its own trails"(){
+    def "Testing com.g0301.model.Car Collision with its own trails"(){
         given: "an arena"
             Arena arena_test = new Arena(5,5)
             Position initialPosition = arena_test.getCarPosition()

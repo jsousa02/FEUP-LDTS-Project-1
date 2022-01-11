@@ -1,13 +1,16 @@
+import model.Arena
+import model.Car
+import model.Wall
 import spock.lang.Specification
 
 class BaseTest extends Specification {
 
     def "Testing equals"() {
         given: "a car in a position"
-            Car car = new Car(1, 1, " ", '#FFFFFF')
+        Car car = new Car(1, 1, " ", '#FFFFFF')
 
         when: "a wall in the same position and a wall in a different position"
-            Wall wallInSamePosition = new Wall(1, 1, "-")
+        Wall wallInSamePosition = new Wall(1, 1, "-")
             Wall wallInDifferentPosition = new Wall(1, 2, "-")
 
         then: "equals must return true if their positions are the same, false otherwise"
@@ -23,7 +26,7 @@ class BaseTest extends Specification {
             Wall wall_4 = new Wall(0, 0, "-")
 
         when: "the arena is created"
-            Arena arena = new Arena(3, 3)
+        Arena arena = new Arena(3, 3)
 
         then: "the walls should be created in the arena"
             arena.getWalls().contains(wall_1)
