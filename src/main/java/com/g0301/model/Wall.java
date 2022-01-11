@@ -5,6 +5,9 @@ public class Wall extends Element {
         super(position, color);
     }
 
+    /**
+     * @return The wall's color
+     */
     public String getColor() {
         return color;
     }

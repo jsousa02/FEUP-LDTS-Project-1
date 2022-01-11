@@ -27,6 +27,9 @@ public class Arena {
         previousBotMovement.push(0);
     }
 
+    /**
+     * @return The car of the arena
+     */
     public Car getCar() {
         return car;
     }
@@ -107,14 +110,5 @@ public class Arena {
                 }
         }
         return false;
-    }
-
-    public void makeCarMove(Position position) {
-        if(!wallCollision()) {
-            System.out.println("MOVES");
-            car.setPosition(position);
-            System.out.println(car.getPosition().getX());
-            System.out.println(car.getPosition().getY());
-        }
     }
 }

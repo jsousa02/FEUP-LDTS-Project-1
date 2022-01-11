@@ -1,17 +1,31 @@
 package com.g0301.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Car extends Element {
-
-    private List<Trail> trailList = new ArrayList<>();
+    private final Set<Trail> trailList = new HashSet<>();
 
     public Car(Position position, String color) {
         super(position, color);
     }
 
-    public List<Trail> getTrailList() {
+    /**
+     * @return The car's trail list
+     */
+    public Set<Trail> getTrailList() {
         return trailList;
+    }
+
+    /**
+     * @brief Checks if the car collides with its own trail
+     * @return True if there is a collision, false otherwise
+     */
+    public boolean collisionWithOwnTrail() {
+        for (Trail trail: trailList) {
+            if (getPosition().equals(trail.getPosition()))
+                return true;
+        }
+        return false;
     }
 }

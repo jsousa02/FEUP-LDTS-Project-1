@@ -10,6 +10,10 @@ public class KeyboardObserver extends KeyAdapter {
 
     public KeyboardObserver() {}
 
+    /**
+     * @brief KeyListener to handle player input
+     * @param event Pressed key by the player
+     */
     public void keyPressed(KeyEvent event) {
         switch(event.getKeyCode()) {
             case KeyEvent.VK_W:
@@ -27,6 +31,10 @@ public class KeyboardObserver extends KeyAdapter {
         }
     }
 
+    /**
+     * @brief Set a listener
+     * @param listener The new listener to be set
+     */
     public void setListener(KeyboardListener listener) {
         this.listener = listener;
     }

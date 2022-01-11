@@ -5,7 +5,7 @@ import com.g0301.model.Arena;
 import com.g0301.model.Element;
 
 import java.io.IOException;
-import java.util.List;
+import java.util.Collection;
 
 public class ArenaViewer {
     private final Gui gui;
@@ -16,6 +16,9 @@ public class ArenaViewer {
         this.arena = arena;
     }
 
+    /**
+     * @breif Draws all the elements in the arena
+     */
     public void draw() throws IOException {
         gui.clear();
         gui.drawBackground(gui.createTextGraphics(), "#000000");
@@ -27,12 +30,22 @@ public class ArenaViewer {
         gui.refresh();
     }
 
-    private <T extends Element> void drawElements(List<T> elements, ElementViewer<T> viewer) {
+    /**
+     * @brief Handles multiple element drawing
+     * @param elements The element to be drawn
+     * @param viewer The viewer responsible for drawing the elements
+     */
+    private <T extends Element> void drawElements(Collection<T> elements, ElementViewer<T> viewer) {
         for (T element : elements) {
             drawElement(element, viewer);
         }
     }
 
+    /**
+     * @breif Handles single element drawing
+     * @param element The element to be drawn
+     * @param viewer The viewer responsible for drawing the element
+     */
     private <T extends Element> void drawElement(T element, ElementViewer<T> viewer) {
         viewer.drawElement(element, gui);
     }

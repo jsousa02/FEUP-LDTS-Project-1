@@ -5,10 +5,13 @@ import com.g0301.model.Car;
 
 public class CarViewer implements ElementViewer<Car> {
 
+    /**
+     * @breif Handles car drawingg
+     * @param element The car to be drawn
+     * @param gui The GUI in which the car is drawn
+     */
     @Override
     public void drawElement(Car element, Gui gui) {
         gui.drawCar(element.getPosition(), element.getColor());
-        System.out.println(element.getPosition().getX());
-        System.out.println(element.getPosition().getY());
     }
 }

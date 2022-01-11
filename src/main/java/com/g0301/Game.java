@@ -31,6 +31,9 @@ public class Game {
         this.keyboardObserver = new KeyboardObserver();
     }
 
+    /**
+     * @return The single game instance
+     */
     public static Game getInstance() throws IOException, FontFormatException {
         if(singleton == null)
             singleton = new Game(60, 60, 30);
@@ -63,14 +66,9 @@ public class Game {
         gui.close();
     }
 
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
+    /**
+     * @return The game's keyboard observer
+     */
     public KeyboardObserver getKeyboardObserver() {
         return keyboardObserver;
     }
