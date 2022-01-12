@@ -34,6 +34,10 @@ public class Arena {
         return car;
     }
 
+    public Car getBot() {
+        return bot;
+    }
+
     /**
      * @return The walls from the arena
      */
