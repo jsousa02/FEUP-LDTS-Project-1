@@ -53,6 +53,7 @@ public class Game {
             long startTime = System.currentTimeMillis();
 
             arenaViewer.draw();
+            System.out.println("Draw");
 
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;

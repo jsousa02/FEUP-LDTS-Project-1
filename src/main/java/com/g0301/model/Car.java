@@ -1,13 +1,18 @@
 package com.g0301.model;
 
+import com.g0301.Gui.Gui;
+
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Stack;
 
 public class Car extends Element {
     private final Set<Trail> trailList = new HashSet<>();
+    private Stack<Gui.ACTION> previousMovement = new Stack<>();
 
     public Car(Position position, String color) {
         super(position, color);
+        previousMovement.push(Gui.ACTION.RIGHT);
     }
 
     /**
@@ -27,5 +32,9 @@ public class Car extends Element {
                 return true;
         }
         return false;
+    }
+
+    public Stack<Gui.ACTION> getPreviousMovement() {
+        return previousMovement;
     }
 }

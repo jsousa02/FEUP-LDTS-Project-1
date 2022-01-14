@@ -19,6 +19,7 @@ public class CarController {
      * @return The position above the current one
      */
     public Position moveUp() {
+        car.getPreviousMovement().push(Gui.ACTION.UP);
         return car.getPosition().moveUp();
     }
 
@@ -40,6 +41,7 @@ public class CarController {
      * @return The position to the right of the current one
      */
     public Position moveRight() {
+        car.getPreviousMovement().push(Gui.ACTION.RIGHT);
         return car.getPosition().moveRight();
     }
 
@@ -62,5 +64,6 @@ public class CarController {
      */
     public void moveCar(Position position) {
         car.setPosition(position);
+        System.out.println("Moved car");
     }
 }

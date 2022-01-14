@@ -14,19 +14,19 @@ public class KeyboardObserver extends KeyAdapter {
      * @brief KeyListener to handle player input
      * @param event Pressed key by the player
      */
-    public void keyPressed(KeyEvent event) {
-        switch(event.getKeyCode()) {
+    public void keyReleased(KeyEvent event) {
+        switch (event.getKeyCode()) {
             case KeyEvent.VK_W:
-                listener.keyPressed(Gui.ACTION.UP);
+                listener.keyReleased(Gui.ACTION.UP);
                 break;
             case KeyEvent.VK_A:
-                listener.keyPressed(Gui.ACTION.LEFT);
+                listener.keyReleased(Gui.ACTION.LEFT);
                 break;
             case KeyEvent.VK_S:
-                listener.keyPressed(Gui.ACTION.DOWN);
+                listener.keyReleased(Gui.ACTION.DOWN);
                 break;
             case KeyEvent.VK_D:
-                listener.keyPressed(Gui.ACTION.RIGHT);
+                listener.keyReleased(Gui.ACTION.RIGHT);
                 break;
         }
     }

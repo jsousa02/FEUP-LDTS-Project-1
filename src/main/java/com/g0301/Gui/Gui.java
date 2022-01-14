@@ -12,7 +12,7 @@ public interface Gui {
         DOWN,
         LEFT,
         RIGHT,
-        QUIT
+        QUIT,
     }
 
     TextGraphics createTextGraphics();
