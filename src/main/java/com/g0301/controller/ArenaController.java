@@ -20,14 +20,12 @@ public class ArenaController extends GameController implements KeyboardListener 
      * @param action The movement made by the player
      */
     public void makeMovement(Gui.ACTION action) {
-        while (carController.getCar().getPreviousMovement().peek() == action) {
-            Position currentPosition = carController.getCar().getPosition();
-            Position nextPosition = carController.makeMovement(action);
+        Position currentPosition = carController.getCar().getPosition();
+        Position nextPosition = carController.makeMovement(action);
 
-            if (!carController.getCar().collisionWithOwnTrail()) {
-                carController.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
-                carController.moveCar(nextPosition);
-            }
+        if (!carController.getCar().collisionWithOwnTrail()) {
+            carController.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
+            carController.moveCar(nextPosition);
         }
     }
 
