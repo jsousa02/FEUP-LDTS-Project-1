@@ -13,6 +13,7 @@ public class ArenaController extends GameController implements KeyboardListener 
         this.carController = new CarController(arena.getCar());
     }
 
+
     public void step(Gui.ACTION action) {
         Position currentPosition = carController.getCar().getPosition();
         Position nextPosition = carController.makeMovement(action);
