@@ -1,9 +1,7 @@
 package com.g0301.controller;
 
 import com.g0301.Gui.Gui;
-import com.g0301.model.Arena;
-import com.g0301.model.Position;
-import com.g0301.model.Trail;
+import com.g0301.model.*;
 import com.g0301.state.KeyboardListener;
 
 public class ArenaController extends GameController implements KeyboardListener {
@@ -15,11 +13,8 @@ public class ArenaController extends GameController implements KeyboardListener 
         this.carController = new CarController(arena.getCar());
     }
 
-    /**
-     * @brief Checks if the player movement is valid
-     * @param action The movement made by the player
-     */
-    public void makeMovement(Gui.ACTION action) {
+
+    public void step(Gui.ACTION action) {
         Position currentPosition = carController.getCar().getPosition();
         Position nextPosition = carController.makeMovement(action);
 
@@ -29,16 +24,12 @@ public class ArenaController extends GameController implements KeyboardListener 
         }
     }
 
-    public void makeContinuousMovement(Gui.ACTION action) {
-        Gui.ACTION previousMovement = carController.getCar().getPreviousMovement().peek();
-
-        if (previousMovement == action) {
-            makeMovement(action);
-        }
+@Override
+public void keyReleased(Gui.ACTION action) {
+        step(action);
     }
 
-    @Override
-    public void keyReleased(Gui.ACTION action) {
-        makeMovement(action);
+    public CarController getCarController() {
+        return carController;
     }
 }

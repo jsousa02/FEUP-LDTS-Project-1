@@ -6,7 +6,7 @@ import com.g0301.model.Car;
 public class CarViewer implements ElementViewer<Car> {
 
     /**
-     * @breif Handles car drawingg
+     * @breif Handles car drawing
      * @param element The car to be drawn
      * @param gui The GUI in which the car is drawn
      */
