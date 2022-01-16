@@ -9,7 +9,7 @@ class Collisions extends  Specification{
         given: "an arena and a position where we know there's a wall"
         Arena arena_test = new Arena(60,60)
         CarController carController = new CarController(arena_test.getCar());
-        Position position_test= new Position(0,0)
+        Position position_test = new Position(0,0)
 
         when: "the car moves to the wall position"
             carController.moveCar(position_test)
@@ -37,10 +37,10 @@ class Collisions extends  Specification{
     def "Testing Bot Collision with its own trails"() {
         given: "an arena and four positions that make a square"
             Arena arena = new Arena(60, 60)
-            Position initialPosition = new Position(60, 30)
-            Position secondPosition = new Position(61, 30)
-            Position thirdPosition = new Position(61, 31)
-            Position lastPosition = new Position(60, 31)
+            Position initialPosition = new Position(20, 30)
+            Position secondPosition = new Position(21, 30)
+            Position thirdPosition = new Position(21, 31)
+            Position lastPosition = new Position(20, 31)
             CarController carController = new CarController(arena.getCar());
             arena.getCar().getTrailList().add(new Trail(new Position(1, 1), '#FFFFFF'));
 
@@ -56,5 +56,17 @@ class Collisions extends  Specification{
 
         then: "the bot will collide with its trails"
             arena.getCar().collisionWithOwnTrail()
+    }
+
+    def "collision with portals"() {
+        given: "an arena and a portal"
+            Arena arena = new Arena(60, 60)
+            CarController carController = new CarController(arena.getCar())
+            Portal portal = new Portal(new Position(61, 30), new Position())
+        when: "the player crosses a portal"
+            carController.moveCar(new Position(61, 30))
+        then: "the player's position should be equals to the exit position of the portal and the trail list must be cleared"
+            carController.getCar().getPosition().equals(portal.getExitPosition())
+            carController.getCar().getTrailList().size() == 0
     }
 }

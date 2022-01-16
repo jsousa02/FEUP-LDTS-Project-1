@@ -55,7 +55,6 @@ public class Game {
             Gui.ACTION nextMovement = arenaController.getCarController().getCar().getPreviousMovement();
             arenaController.step(nextMovement);
             arenaViewer.draw();
-            //System.out.println("Draw");
 
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
