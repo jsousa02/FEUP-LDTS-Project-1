@@ -38,4 +38,6 @@ public interface Gui {
     void drawWall(Position position, String color);
 
     void drawTrail(Position position, String color);
+
+    void drawPortal(Position startPosition, Position endPosition, String color);
 }

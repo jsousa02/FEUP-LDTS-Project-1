@@ -1,5 +1,6 @@
 import com.g0301.controller.CarController
 import com.g0301.model.Arena
+import com.g0301.model.Portal
 import com.g0301.model.Position
 import com.g0301.model.Trail
 import spock.lang.Specification
@@ -58,15 +59,29 @@ class Collisions extends  Specification{
             arena.getCar().collisionWithOwnTrail()
     }
 
-    def "collision with portals"() {
+    def "enter a portal"() {
         given: "an arena and a portal"
             Arena arena = new Arena(60, 60)
             CarController carController = new CarController(arena.getCar())
-            Portal portal = new Portal(new Position(61, 30), new Position())
+            Portal portal = new Portal(new Position(55, 30), new Position(20, 30), "#FF03FF")
+            arena.getPortals().add(portal)
         when: "the player crosses a portal"
-            carController.moveCar(new Position(61, 30))
-        then: "the player's position should be equals to the exit position of the portal and the trail list must be cleared"
-            carController.getCar().getPosition().equals(portal.getExitPosition())
-            carController.getCar().getTrailList().size() == 0
+            carController.moveCar(new Position(55, 30))
+            arena.enterPortalThroughStart()
+        then: "the player's position should be equals to the exit position of the portal"
+            carController.getCar().getPosition().equals(portal.getSecondPosition())
+    }
+
+    def "enter a portal by its exit"() {
+        given: "an arena and a portal"
+            Arena arena = new Arena(60, 60)
+            CarController carController = new CarController(arena.getCar())
+            Portal portal = new Portal(new Position(55, 30), new Position(20, 30), "#FF03FF")
+            arena.getPortals().add(portal)
+        when: "the player crosses the portal"
+            carController.moveCar(new Position(20, 30))
+            arena.enterPortalThroughExit()
+        then: "the player's position should be equals to the start position of the portal"
+            carController.getCar().getPosition().equals(portal.getPosition())
     }
 }

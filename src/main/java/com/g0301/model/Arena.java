@@ -9,6 +9,7 @@ public class Arena {
     private Car car = new Car(new Position(20, 30), "#FF0000");
     private Car bot = new Car(new Position(100, 30), "#3AFF33");
     private final List<Wall> walls = new ArrayList<>();
+    private final List<Portal> portals = new ArrayList<>();
     private ArrayList<Trail> trailList = new ArrayList<>();
     private ArrayList<Trail> botTrailList = new ArrayList<>();
     private Stack<String> previousMovement = new Stack<>();
@@ -23,6 +24,7 @@ public class Arena {
         this.width = width;
         this.height = height;
         createWalls();
+        createPortals();
         previousMovement.push("Right");
         previousBotMovement.push(0);
     }
@@ -75,7 +77,7 @@ public class Arena {
     public boolean wallCollision(){
         for(Wall wall : walls){
             if(wall.getPosition().equals(car.getPosition())){
-                System.out.println("You lost");
+                //System.out.println("You lost");
                 return true;
             }
             if (wall.getPosition().equals(bot.getPosition())) {
@@ -86,32 +88,34 @@ public class Arena {
         return false;
     }
 
-    /**
-     * @return Inspects if the player crash (true) into a trail and if he does so dies
-     */
-    public boolean trailCollision(){
-        for(Trail trail : trailList){
-            for(Trail botTrail : botTrailList)
-                if(trail.getPosition().equals(car.getPosition())
-                        || botTrail.getPosition().equals(car.getPosition())){
-                System.out.println("Death.");
+    public void createPortals() {
+        for(int i = 0; i < 1; i++) {
+            portals.add(new Portal(new Position(50, 30), new Position(10, 30), "#FF00FE"));
+        }
+    }
+
+    public List<Portal> getPortals() {
+        return portals;
+    }
+
+    public boolean enterPortalThroughStart() {
+        for (Portal portal : portals) {
+            if (car.getPosition().equals(portal.getPosition())) {
+                car.setPosition(portal.getSecondPosition());
+                System.out.println("entered through start");
                 return true;
-                }
+            }
         }
         return false;
     }
 
-    /**
-     * @return Inspects if the bot crash (true) into a trail and if he does so dies
-     */
-    public boolean botTrailCollision(){
-        for(Trail trail : trailList)
-        for (Trail botTrail : botTrailList){
-                if(botTrail.getPosition().equals(bot.getPosition())
-                        || trail.getPosition().equals(bot.getPosition())) {
-                    System.out.println("WIN.");
-                    return true;
-                }
+    public boolean enterPortalThroughExit() {
+        for (Portal portal : portals) {
+            if (car.getPosition().equals(portal.getSecondPosition())) {
+                car.setPosition(portal.getPosition());
+                System.out.println("entered through exit");
+                return true;
+            }
         }
         return false;
     }

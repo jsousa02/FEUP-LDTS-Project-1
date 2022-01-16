@@ -221,4 +221,12 @@ public class LanternaGUI implements Gui {
     public void addKeyboardListener(KeyboardObserver observer) {
         ((AWTTerminalFrame) screen.getTerminal()).getComponent(0).addKeyListener(observer);
     }
+
+    @Override
+    public void drawPortal(Position startPosition, Position endPosition, String color) {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        drawElement(graphics, startPosition, color, "S");
+        drawElement(graphics, endPosition, color, "E");
+    }
 }
