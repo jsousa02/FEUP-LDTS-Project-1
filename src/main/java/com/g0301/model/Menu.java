@@ -19,9 +19,15 @@ public abstract class Menu {
         buttons.add(button);
 }
     public void NextButton(){
+        if (SelectedIndex==(buttons.size()-1)){
+            SelectedIndex= 0;
+        }
+        else SelectedIndex++;
     }
     public void PreviousButton(){
-
+        if (SelectedIndex==0){
+            SelectedIndex= (buttons.size()-1);
+        }
+        else SelectedIndex--;
     }
-
 }
