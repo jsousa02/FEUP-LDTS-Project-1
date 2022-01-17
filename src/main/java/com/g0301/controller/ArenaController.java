@@ -20,7 +20,7 @@ public class ArenaController extends GameController implements KeyboardListener 
 
         if (!carController.getCar().collisionWithOwnTrail() && !getModel().wallCollision()) {
             carController.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
-            if(!getModel().enterPortalThroughExit() && !getModel().enterPortalThroughExit())
+            if(!getModel().enterPortalThroughExit(action) && !getModel().enterPortalThroughStart(action))
                 carController.moveCar(nextPosition);
         }
     }

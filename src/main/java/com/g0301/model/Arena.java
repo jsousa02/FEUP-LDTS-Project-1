@@ -1,5 +1,8 @@
 package com.g0301.model;
 
+import com.g0301.Gui.Gui;
+import com.g0301.controller.CarController;
+
 import java.util.*;
 
 public class Arena {
@@ -10,10 +13,7 @@ public class Arena {
     private Car bot = new Car(new Position(100, 30), "#3AFF33");
     private final List<Wall> walls = new ArrayList<>();
     private final List<Portal> portals = new ArrayList<>();
-    private ArrayList<Trail> trailList = new ArrayList<>();
-    private ArrayList<Trail> botTrailList = new ArrayList<>();
-    private Stack<String> previousMovement = new Stack<>();
-    private Stack<Integer> previousBotMovement = new Stack<>();
+    private CarController carController = new CarController(car);
 
     /**
      * @brief Initializes the arena and the walls that delimit it
@@ -25,8 +25,6 @@ public class Arena {
         this.height = height;
         createWalls();
         createPortals();
-        previousMovement.push("Right");
-        previousBotMovement.push(0);
     }
 
     /**
@@ -89,31 +87,31 @@ public class Arena {
     }
 
     public void createPortals() {
-        for(int i = 0; i < 1; i++) {
-            portals.add(new Portal(new Position(50, 30), new Position(10, 30), "#FF00FE"));
-        }
+        //portals.add(new Portal(new Position(50, 30), new Position(10, 30), "#FF00FF"));
+        portals.add(new Portal(new Position(35, 55), new Position(40, 10), "#FF0000"));
+        //portals.add(new Portal(new Position(10, 55), new Position(50, 50), "#FF0033"));
     }
 
     public List<Portal> getPortals() {
         return portals;
     }
 
-    public boolean enterPortalThroughStart() {
+    public boolean enterPortalThroughStart(Gui.ACTION action) {
         for (Portal portal : portals) {
             if (car.getPosition().equals(portal.getPosition())) {
                 car.setPosition(portal.getSecondPosition());
-                System.out.println("entered through start");
+                car.setPosition(carController.makeMovement(action));
                 return true;
             }
         }
         return false;
     }
 
-    public boolean enterPortalThroughExit() {
+    public boolean enterPortalThroughExit(Gui.ACTION action) {
         for (Portal portal : portals) {
             if (car.getPosition().equals(portal.getSecondPosition())) {
                 car.setPosition(portal.getPosition());
-                System.out.println("entered through exit");
+                car.setPosition(carController.makeMovement(action));
                 return true;
             }
         }
