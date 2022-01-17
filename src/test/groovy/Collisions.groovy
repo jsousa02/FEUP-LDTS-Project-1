@@ -1,3 +1,4 @@
+import com.g0301.Gui.Gui
 import com.g0301.controller.CarController
 import com.g0301.model.Arena
 import com.g0301.model.Portal
@@ -67,9 +68,9 @@ class Collisions extends  Specification{
             arena.getPortals().add(portal)
         when: "the player crosses a portal"
             carController.moveCar(new Position(55, 30))
-            arena.enterPortalThroughStart()
+            arena.enterPortalThroughStart(Gui.ACTION.RIGHT)
         then: "the player's position should be equals to the exit position of the portal"
-            carController.getCar().getPosition().equals(portal.getSecondPosition())
+            carController.getCar().getPosition().equals(new Position(portal.getSecondPosition().getX() + 1, portal.getPosition().getY()))
     }
 
     def "enter a portal by its exit"() {
@@ -80,8 +81,8 @@ class Collisions extends  Specification{
             arena.getPortals().add(portal)
         when: "the player crosses the portal"
             carController.moveCar(new Position(20, 30))
-            arena.enterPortalThroughExit()
+            arena.enterPortalThroughExit(Gui.ACTION.RIGHT)
         then: "the player's position should be equals to the start position of the portal"
-            carController.getCar().getPosition().equals(portal.getPosition())
+            carController.getCar().getPosition().equals(new Position(portal.getPosition().getX() + 1, portal.getPosition().getY()))
     }
 }
