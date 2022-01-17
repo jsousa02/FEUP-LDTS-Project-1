@@ -36,7 +36,7 @@ public class Game {
      */
     public static Game getInstance() throws IOException, FontFormatException {
         if(singleton == null)
-            singleton = new Game(60, 60, 30);
+            singleton = new Game(60, 60, 20);
         return singleton;
     }
 
@@ -55,7 +55,6 @@ public class Game {
             Gui.ACTION nextMovement = arenaController.getCarController().getCar().getPreviousMovement();
             arenaController.step(nextMovement);
             arenaViewer.draw();
-            //System.out.println("Draw");
 
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;

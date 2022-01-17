@@ -18,16 +18,17 @@ public class ArenaController extends GameController implements KeyboardListener 
         Position currentPosition = carController.getCar().getPosition();
         Position nextPosition = carController.makeMovement(action);
 
-        if (!carController.getCar().collisionWithOwnTrail()) {
+        if (!carController.getCar().collisionWithOwnTrail() && !getModel().wallCollision()) {
             carController.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
-            carController.moveCar(nextPosition);
+            if(!getModel().enterPortalThroughExit(action) && !getModel().enterPortalThroughStart(action))
+                carController.moveCar(nextPosition);
         }
     }
 
-@Override
-public void keyReleased(Gui.ACTION action) {
-        step(action);
-    }
+    @Override
+    public void keyReleased(Gui.ACTION action) {
+            step(action);
+        }
 
     public CarController getCarController() {
         return carController;

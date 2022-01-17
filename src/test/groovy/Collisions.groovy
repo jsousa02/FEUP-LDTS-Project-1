@@ -1,5 +1,7 @@
+import com.g0301.Gui.Gui
 import com.g0301.controller.CarController
 import com.g0301.model.Arena
+import com.g0301.model.Portal
 import com.g0301.model.Position
 import com.g0301.model.Trail
 import spock.lang.Specification
@@ -9,7 +11,7 @@ class Collisions extends  Specification{
         given: "an arena and a position where we know there's a wall"
         Arena arena_test = new Arena(60,60)
         CarController carController = new CarController(arena_test.getCar());
-        Position position_test= new Position(0,0)
+        Position position_test = new Position(0,0)
 
         when: "the car moves to the wall position"
             carController.moveCar(position_test)
@@ -37,10 +39,10 @@ class Collisions extends  Specification{
     def "Testing Bot Collision with its own trails"() {
         given: "an arena and four positions that make a square"
             Arena arena = new Arena(60, 60)
-            Position initialPosition = new Position(60, 30)
-            Position secondPosition = new Position(61, 30)
-            Position thirdPosition = new Position(61, 31)
-            Position lastPosition = new Position(60, 31)
+            Position initialPosition = new Position(20, 30)
+            Position secondPosition = new Position(21, 30)
+            Position thirdPosition = new Position(21, 31)
+            Position lastPosition = new Position(20, 31)
             CarController carController = new CarController(arena.getCar());
             arena.getCar().getTrailList().add(new Trail(new Position(1, 1), '#FFFFFF'));
 
@@ -56,5 +58,31 @@ class Collisions extends  Specification{
 
         then: "the bot will collide with its trails"
             arena.getCar().collisionWithOwnTrail()
+    }
+
+    def "enter a portal"() {
+        given: "an arena and a portal"
+            Arena arena = new Arena(60, 60)
+            CarController carController = new CarController(arena.getCar())
+            Portal portal = new Portal(new Position(55, 30), new Position(20, 30), "#FF03FF")
+            arena.getPortals().add(portal)
+        when: "the player crosses a portal"
+            carController.moveCar(new Position(55, 30))
+            arena.enterPortalThroughStart(Gui.ACTION.RIGHT)
+        then: "the player's position should be equals to the exit position of the portal"
+            carController.getCar().getPosition().equals(new Position(portal.getSecondPosition().getX() + 1, portal.getPosition().getY()))
+    }
+
+    def "enter a portal by its exit"() {
+        given: "an arena and a portal"
+            Arena arena = new Arena(60, 60)
+            CarController carController = new CarController(arena.getCar())
+            Portal portal = new Portal(new Position(55, 30), new Position(20, 30), "#FF03FF")
+            arena.getPortals().add(portal)
+        when: "the player crosses the portal"
+            carController.moveCar(new Position(20, 30))
+            arena.enterPortalThroughExit(Gui.ACTION.RIGHT)
+        then: "the player's position should be equals to the start position of the portal"
+            carController.getCar().getPosition().equals(new Position(portal.getPosition().getX() + 1, portal.getPosition().getY()))
     }
 }
