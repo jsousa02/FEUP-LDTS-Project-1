@@ -11,8 +11,6 @@ public class Arena {
     private final List<Wall> walls = new ArrayList<>();
     private ArrayList<Trail> trailList = new ArrayList<>();
     private ArrayList<Trail> botTrailList = new ArrayList<>();
-    private Stack<String> previousMovement = new Stack<>();
-    private Stack<Integer> previousBotMovement = new Stack<>();
 
     /**
      * @brief Initializes the arena and the walls that delimit it
@@ -23,8 +21,6 @@ public class Arena {
         this.width = width;
         this.height = height;
         createWalls();
-        previousMovement.push("Right");
-        previousBotMovement.push(0);
     }
 
     /**

@@ -1,38 +1,26 @@
+import com.g0301.Game
+import com.g0301.gui.LanternaGUI
 import com.g0301.model.Button
-import com.g0301.model.Menu
-import com.g0301.model.StartingMenu
+import com.g0301.model.Position
+import com.g0301.state.MenuState
 import spock.lang.Specification
 
-class MenuTest extends Specification{
+class MenuTest extends Specification {
 
-    def "Testing Menu Next Button"(){
-        given: "a menu with 3 buttons"
-        Button TestButton1= new Button();
-        Button TestButton2= new Button();
-        Button TestButton3= new Button();
-        StartingMenu TestMenu= new StartingMenu();
-        TestMenu.AddButton(TestButton1)
-        TestMenu.AddButton(TestButton2)
-        TestMenu.AddButton(TestButton3)
+    MenuState menuState = new MenuState(new Game(60, 60, 30), new LanternaGUI(60, 60))
+
+    def "Testing Menu Next Button"() {
         when: "we are in the third button and we press next button"
-        TestMenu.NextButton() //goes to second button
-        TestMenu.NextButton() // goes to third button
-        TestMenu.NextButton()
+            menuState.nextButton() //goes to second button
+            menuState.nextButton() // goes to third button
+            menuState.nextButton()
         then: "should be in the first button again"
-        TestMenu.GetSelectedIndex() == 0;
+            menuState.getSelectedIndex() == 0
     }
     def "Testing Menu Previous Button"(){
-        given: "a menu with 3 buttons"
-        Button TestButton1= new Button();
-        Button TestButton2= new Button();
-        Button TestButton3= new Button();
-        StartingMenu TestMenu= new StartingMenu();
-        TestMenu.AddButton(TestButton1)
-        TestMenu.AddButton(TestButton2)
-        TestMenu.AddButton(TestButton3)
         when: "we are in the third button and we press next button"
-        TestMenu.PreviousButton();
+            menuState.previousButton()
         then: "should go to the last button"
-        TestMenu.GetSelectedIndex() == 2;
+            menuState.getSelectedIndex() == 2
     }
 }

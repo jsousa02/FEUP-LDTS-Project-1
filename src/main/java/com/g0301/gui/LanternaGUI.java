@@ -1,4 +1,4 @@
-package com.g0301.Gui;
+package com.g0301.gui;
 
 import com.googlecode.lanterna.SGR;
 import com.googlecode.lanterna.TerminalPosition;
@@ -138,13 +138,13 @@ public class LanternaGUI implements Gui {
 
     /**
      * @brief Draws the screen's background
-     * @param textGraphics
+     * @param graphics
      * @param color
      */
     @Override
-    public void drawBackground(TextGraphics textGraphics, String color) {
-        textGraphics.setBackgroundColor(TextColor.Factory.fromString(color));
-        textGraphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
+    public void drawBackground(TextGraphics graphics, String color) {
+        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
     }
 
     /**
@@ -223,5 +223,27 @@ public class LanternaGUI implements Gui {
      */
     public void addKeyboardListener(KeyboardObserver observer) {
         ((AWTTerminalFrame) screen.getTerminal()).getComponent(0).addKeyListener(observer);
+    }
+
+    @Override
+    public void drawButton(Position buttonPosition, String bColor, String fColor, String text, int width, int height) {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString(bColor));
+        graphics.fillRectangle(new TerminalPosition(buttonPosition.getX(), buttonPosition.getY()), new TerminalSize(width, height), ' ');
+        drawText(graphics, new Position(buttonPosition.getX() + width / 2 - text.length() / 2, buttonPosition.getY() + height / 2), fColor, text);
+    }
+
+    @Override
+    public void drawText(TextGraphics graphics, Position position, String color, String text) {
+        graphics.setForegroundColor(TextColor.Factory.fromString(color));
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), text);
+    }
+
+    @Override
+    public void drawTitle(Position position, String color, String textColor, String text) {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        drawText(graphics, position, textColor, text);
     }
 }

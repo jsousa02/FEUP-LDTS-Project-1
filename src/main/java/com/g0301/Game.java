@@ -1,9 +1,8 @@
 package com.g0301;
 
-import com.g0301.Gui.*;
-import com.g0301.controller.ArenaController;
-import com.g0301.model.Arena;
-import com.g0301.viewer.ArenaViewer;
+import com.g0301.gui.*;
+import com.g0301.state.GameState;
+import com.g0301.state.MenuState;
 
 import java.awt.*;
 import java.io.IOException;
@@ -13,22 +12,18 @@ public class Game {
     private final int height;
     private final int fps;
     private final LanternaGUI gui;
-    private final ArenaViewer arenaViewer;
-    private final ArenaController arenaController;
     private final KeyboardObserver keyboardObserver;
-    private Arena arena;
+    private GameState gameState;
 
     private static Game singleton = null;
 
     private Game(int width, int height, int fps) throws IOException, FontFormatException {
-        this.arena = new Arena(width, height);
         this.width = width;
         this.height = height;
         this.fps = fps;
         this.gui = new LanternaGUI(width, height);
-        this.arenaViewer = new ArenaViewer(gui, arena);
-        this.arenaController = new ArenaController(arena);
         this.keyboardObserver = new KeyboardObserver();
+        this.gameState = new MenuState(this, gui);
     }
 
     /**
@@ -46,16 +41,13 @@ public class Game {
     public void run() throws IOException {
         int frameTime = 1000 / fps;
 
-        keyboardObserver.setListener(arenaController);
         gui.addKeyboardListener(keyboardObserver);
+        gameState.start();
 
-        while(gui.isActive()) {
+        while(gui.isActive() && gameState != null) {
             long startTime = System.currentTimeMillis();
 
-            Gui.ACTION nextMovement = arenaController.getCarController().getCar().getPreviousMovement();
-            arenaController.step(nextMovement);
-            arenaViewer.draw();
-            //System.out.println("Draw");
+            gameState.step();
 
             long elapsedTime = System.currentTimeMillis() - startTime;
             long sleepTime = frameTime - elapsedTime;
@@ -74,5 +66,17 @@ public class Game {
      */
     public KeyboardObserver getKeyboardObserver() {
         return keyboardObserver;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
     }
 }

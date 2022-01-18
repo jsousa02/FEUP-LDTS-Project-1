@@ -1,10 +1,9 @@
 package com.g0301.model;
 
-import com.g0301.Gui.Gui;
+import com.g0301.gui.Gui;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Stack;
 
 public class Car extends Element {
     private final Set<Trail> trailList = new HashSet<>();

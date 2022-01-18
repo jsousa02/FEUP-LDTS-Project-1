@@ -1,4 +1,4 @@
-package com.g0301.Gui;
+package com.g0301.gui;
 
 import com.g0301.state.KeyboardListener;
 
@@ -14,19 +14,25 @@ public class KeyboardObserver extends KeyAdapter {
      * @brief KeyListener to handle player input
      * @param event Pressed key by the player
      */
-    public void keyReleased(KeyEvent event) {
+    public void keyPressed(KeyEvent event) {
         switch (event.getKeyCode()) {
             case KeyEvent.VK_W:
-                listener.keyReleased(Gui.ACTION.UP);
+                listener.keyPressed(Gui.ACTION.UP);
                 break;
             case KeyEvent.VK_A:
-                listener.keyReleased(Gui.ACTION.LEFT);
+                listener.keyPressed(Gui.ACTION.LEFT);
                 break;
             case KeyEvent.VK_S:
-                listener.keyReleased(Gui.ACTION.DOWN);
+                listener.keyPressed(Gui.ACTION.DOWN);
                 break;
             case KeyEvent.VK_D:
-                listener.keyReleased(Gui.ACTION.RIGHT);
+                listener.keyPressed(Gui.ACTION.RIGHT);
+                break;
+            case KeyEvent.VK_ESCAPE:
+                listener.keyPressed(Gui.ACTION.QUIT);
+                break;
+            case KeyEvent.VK_ENTER:
+                listener.keyPressed(Gui.ACTION.ENTER);
                 break;
         }
     }

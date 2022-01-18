@@ -2,7 +2,9 @@ package com.g0301.model;
 
 public abstract class Element {
     protected Position position;
+    protected String foregroundColor;
     protected String color;
+    protected String text;
 
     public Element(Position position, String color) {
         this.position = position;
