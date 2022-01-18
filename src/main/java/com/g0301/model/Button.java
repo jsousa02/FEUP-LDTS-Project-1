@@ -6,6 +6,7 @@ public class Button extends Element {
     private String text;
     private int width;
     private int height;
+    private boolean isHighlighted = false;
 
     public Button(Position position, String color, String textColor, String text, int width, int height) {
         super(position, color);
@@ -30,4 +31,17 @@ public class Button extends Element {
     public int getHeight() {
         return height;
     }
+
+    public void highlight(String color) {
+        this.color = color;
+    }
+
+    public boolean isHighlighted() {
+        return isHighlighted;
+    }
+
+    public void lowlight(String color) {
+        this.color = color;
+    }
+
 }

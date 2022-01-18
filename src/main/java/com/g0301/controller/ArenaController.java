@@ -12,6 +12,7 @@ public class ArenaController extends GameController implements KeyboardListener 
     private final CarController carController;
     private final ArenaViewer arenaViewer;
     private final Gui gui;
+    private Gui.ACTION movement = Gui.ACTION.RIGHT;
 
     public ArenaController(Gui gui, Arena arena) {
         super(arena);
@@ -23,11 +24,12 @@ public class ArenaController extends GameController implements KeyboardListener 
 
     public void step() throws IOException {
         arenaViewer.draw();
+        action(movement);
     }
 
     public void action(Gui.ACTION action) {
         Position currentPosition = carController.getCar().getPosition();
-        Position nextPosition = carController.makeMovement(action);
+        Position nextPosition = carController.makeMovement(movement);
 
         if (!carController.getCar().collisionWithOwnTrail() && !getModel().wallCollision()) {
             carController.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
@@ -38,7 +40,7 @@ public class ArenaController extends GameController implements KeyboardListener 
 
     @Override
     public void keyPressed(Gui.ACTION action) {
-        action(action);
+        movement = action;
     }
 
     public CarController getCarController() {

@@ -13,7 +13,8 @@ public interface Gui {
         LEFT,
         RIGHT,
         QUIT,
-        ENTER
+        ENTER,
+        PAUSE
     }
 
     TextGraphics createTextGraphics();

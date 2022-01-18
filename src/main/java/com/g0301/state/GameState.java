@@ -9,6 +9,7 @@ import java.util.List;
 public abstract class GameState {
     protected final Game game;
     protected List<Button> buttons;
+    private int selectedIndex;
 
     public GameState(Game game, List<Button> buttons) {
         this.game = game;
@@ -29,5 +30,34 @@ public abstract class GameState {
 
     public List<Button> getButtons() {
         return buttons;
+    }
+
+    public int getSelectedIndex(){
+        return selectedIndex;
+    }
+
+    public void nextButton() {
+        if (selectedIndex == (buttons.size() - 1)) {
+            selectedIndex = 0;
+        }
+        else selectedIndex++;
+    }
+
+    public void previousButton()  {
+        if (selectedIndex == 0) {
+            selectedIndex = (buttons.size()-1);
+        }
+        else selectedIndex--;
+    }
+
+    public void lowlightButtons() {
+        for (Button button : buttons) {
+            if(button != getActiveButton())
+                button.lowlight("#000000");
+        }
+    }
+
+    public Button getActiveButton() {
+        return buttons.get(getSelectedIndex());
     }
 }

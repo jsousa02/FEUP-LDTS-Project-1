@@ -25,9 +25,15 @@ public class MenuController implements KeyboardListener {
             gameState.changeState(null);
         if(action == Gui.ACTION.ENTER)
             gameState.changeState(new PlayingState(gameState.getGame(), gui));
+        if(action == Gui.ACTION.UP)
+            gameState.previousButton();
+        if(action == Gui.ACTION.DOWN)
+            gameState.nextButton();
     }
 
     public void step() throws IOException {
+        gameState.getActiveButton().highlight("#FF0000");
+        gameState.lowlightButtons();
         menuViewer.draw();
     }
 }

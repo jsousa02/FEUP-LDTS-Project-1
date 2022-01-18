@@ -70,6 +70,8 @@ public class Game {
 
     public void setGameState(GameState gameState) {
         this.gameState = gameState;
+        if(gameState != null)
+            this.gameState.start();
     }
 
     public int getWidth() {

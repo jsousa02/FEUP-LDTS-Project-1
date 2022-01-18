@@ -14,9 +14,9 @@ public class MenuState extends GameState {
     private int SelectedIndex = 0;
 
     public MenuState(Game game, Gui gui){
-        super(game, Arrays.asList(new Button(new Position(25, 10), "#FFFF00", "#000000", "Play!", 15, 3),
-                new Button(new Position(25, 20), "#FFFF00", "#000000", "Instructions", 15, 3),
-                new Button(new Position(25, 30), "#FFFF00", "#000000", "Exit", 15, 3)));
+        super(game, Arrays.asList(new Button(new Position(25, 10), "#000000", "#FFFFFF", "Play!", 15, 3),
+                new Button(new Position(25, 20), "#000000", "#FFFFFF", "Instructions", 15, 3),
+                new Button(new Position(25, 30), "#000000", "#FFFFFF", "Exit", 15, 3)));
         this.menuController = new MenuController(this, gui);
     }
 
@@ -34,25 +34,4 @@ public class MenuState extends GameState {
         return buttons;
     }
 
-    public int getSelectedIndex(){
-        return SelectedIndex;
-    }
-
-    public void addButton(Button button) {
-        getButtons().add(button);
-    }
-
-    public void nextButton() {
-        if (SelectedIndex == (buttons.size() - 1)) {
-            SelectedIndex = 0;
-        }
-        else SelectedIndex++;
-    }
-
-    public void previousButton()  {
-        if (SelectedIndex == 0) {
-            SelectedIndex = (buttons.size()-1);
-        }
-        else SelectedIndex--;
-    }
 }

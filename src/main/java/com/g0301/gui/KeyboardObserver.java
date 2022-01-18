@@ -34,6 +34,9 @@ public class KeyboardObserver extends KeyAdapter {
             case KeyEvent.VK_ENTER:
                 listener.keyPressed(Gui.ACTION.ENTER);
                 break;
+            case KeyEvent.VK_P:
+                listener.keyPressed(Gui.ACTION.PAUSE);
+                break;
         }
     }
 
