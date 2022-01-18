@@ -45,7 +45,7 @@ public interface Gui {
 
     void drawText(TextGraphics graphics, Position position, String color, String text);
 
-    void drawTitle(String color, String textColor, String text);
+    void drawLogo(String color, String textColor);
 
     void drawPortal(Position startPosition, Position endPosition, String color);
 

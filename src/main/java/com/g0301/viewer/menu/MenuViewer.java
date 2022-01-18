@@ -17,7 +17,7 @@ public class MenuViewer extends StateViewer {
     public void draw() throws IOException {
         gui.clear();
         drawBackground("#000000");
-        drawTitle("#000000", "#FF0000", "TRON++");
+        drawTitle("#000000", "#FF0000");
         drawButtons(buttons, new ButtonViewer());
         gui.refresh();
     }

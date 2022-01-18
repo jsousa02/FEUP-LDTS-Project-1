@@ -238,10 +238,15 @@ public class LanternaGUI implements Gui {
     }
 
     @Override
-    public void drawTitle(String color, String textColor, String text) {
+    public void drawLogo(String color, String textColor) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString(color));
-        drawText(graphics, new Position((width / 2) - text.length() / 2, 5), textColor, text);
+        drawText(graphics, new Position((width / 2) - 15, 3), textColor, "  ______                           ");
+        drawText(graphics, new Position((width / 2) - 15, 4), textColor, " /_  __/________  ____    __    __ ");
+        drawText(graphics, new Position((width / 2) - 15, 5), textColor, "  / / / ___/ __ \\/ __ \\__/ /___/ /_");
+        drawText(graphics, new Position((width / 2) - 15, 6), textColor, " / / / /  / /_/ / / / /_  __/_  __/");
+        drawText(graphics, new Position((width / 2) - 15, 7), textColor, "/_/ /_/   \\____/_/ /_/ /_/   /_/   ");
+        drawText(graphics, new Position((width / 2) - 15, 8), textColor, "                                   ");
     }
 
     @Override
@@ -255,14 +260,14 @@ public class LanternaGUI implements Gui {
     @Override
     public void drawInstructions() {
         TextGraphics graphics = screen.newTextGraphics();
-        drawTitle("#000000", "#FF0000", "INSTRUCTIONS");
-        drawText(graphics, new Position(10, 10), "#FFFFFF", "You can play 3 different game modes:");
-        drawText(graphics, new Position(12, 13), "#FFFFFF", "Single player classic");
-        drawText(graphics, new Position(12, 15), "#FFFFFF", "1v1 with 2 players");
-        drawText(graphics, new Position(12, 17), "#FFFFFF", "Survival mode");
-        drawText(graphics, new Position(10, 20), "#FFFFFF", "Move with WASD");
+        drawLogo("#000000", "#FF0000");
+        drawText(graphics, new Position(10, 12), "#FFFFFF", "You can play 3 different game modes:");
+        drawText(graphics, new Position(12, 15), "#FFFFFF", "Single player classic");
+        drawText(graphics, new Position(12, 17), "#FFFFFF", "1v1 with 2 players");
+        drawText(graphics, new Position(12, 19), "#FFFFFF", "Survival mode");
+        drawText(graphics, new Position(10, 22), "#FFFFFF", "Move with WASD");
         drawText(graphics, new Position(10, 25), "#FFFFFF", "You can't crash against the walls or against the other player's trails");
-        drawText(graphics, new Position(10, 30), "#FFFFFF", "You can use the portals to teleport");
-        drawText(graphics, new Position(10, 35), "#FFFFFF", "You can't enter the same portal twice");
+        drawText(graphics, new Position(10, 28), "#FFFFFF", "You can use the portals to teleport");
+        drawText(graphics, new Position(10, 31), "#FFFFFF", "You can't enter the same portal twice");
     }
 }

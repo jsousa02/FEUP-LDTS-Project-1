@@ -31,7 +31,7 @@ public abstract class StateViewer {
         gui.drawBackground(graphics, color);
     }
 
-    protected void drawTitle(String color, String textColor, String text) {
-        gui.drawTitle(color, textColor, text);
+    protected void drawTitle(String color, String textColor) {
+        gui.drawLogo(color, textColor);
     }
 }
