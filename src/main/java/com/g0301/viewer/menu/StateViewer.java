@@ -2,7 +2,6 @@ package com.g0301.viewer.menu;
 
 import com.g0301.gui.Gui;
 import com.g0301.model.Button;
-import com.g0301.model.Position;
 import com.g0301.viewer.ElementViewer;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
@@ -33,6 +32,6 @@ public abstract class StateViewer {
     }
 
     protected void drawTitle(String color, String textColor, String text) {
-        gui.drawTitle(new Position(30, 5), color, textColor, text);
+        gui.drawTitle(color, textColor, text);
     }
 }

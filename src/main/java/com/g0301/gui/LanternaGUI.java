@@ -226,8 +226,8 @@ public class LanternaGUI implements Gui {
     public void drawButton(Position buttonPosition, String bColor, String fColor, String text, int width, int height) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString(bColor));
-        graphics.fillRectangle(new TerminalPosition(buttonPosition.getX(), buttonPosition.getY()), new TerminalSize(width, height), ' ');
-        drawText(graphics, new Position(buttonPosition.getX() + width / 2 - text.length() / 2, buttonPosition.getY() + height / 2), fColor, text);
+        graphics.fillRectangle(new TerminalPosition(buttonPosition.getX() - width / 2, buttonPosition.getY() - height / 2), new TerminalSize(width, height), ' ');
+        drawText(graphics, new Position(buttonPosition.getX() - text.length() / 2, buttonPosition.getY()), fColor, text);
     }
 
     @Override
@@ -238,10 +238,10 @@ public class LanternaGUI implements Gui {
     }
 
     @Override
-    public void drawTitle(Position position, String color, String textColor, String text) {
+    public void drawTitle(String color, String textColor, String text) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString(color));
-        drawText(graphics, position, textColor, text);
+        drawText(graphics, new Position((width / 2) - text.length() / 2, 5), textColor, text);
     }
 
     @Override
@@ -255,8 +255,14 @@ public class LanternaGUI implements Gui {
     @Override
     public void drawInstructions() {
         TextGraphics graphics = screen.newTextGraphics();
-        drawTitle(new Position(30, 5), "#000000", "#FF0000", "INSTRUCTIONS");
-        drawText(graphics, new Position(10, 10), "#FFFFFF", "Move with WASD");
-        drawText(graphics, new Position(10, 15), "#FFFFFF", "You can't crash against the walls or against the other player's trails");
+        drawTitle("#000000", "#FF0000", "INSTRUCTIONS");
+        drawText(graphics, new Position(10, 10), "#FFFFFF", "You can play 3 different game modes:");
+        drawText(graphics, new Position(12, 13), "#FFFFFF", "Single player classic");
+        drawText(graphics, new Position(12, 15), "#FFFFFF", "1v1 with 2 players");
+        drawText(graphics, new Position(12, 17), "#FFFFFF", "Survival mode");
+        drawText(graphics, new Position(10, 20), "#FFFFFF", "Move with WASD");
+        drawText(graphics, new Position(10, 25), "#FFFFFF", "You can't crash against the walls or against the other player's trails");
+        drawText(graphics, new Position(10, 30), "#FFFFFF", "You can use the portals to teleport");
+        drawText(graphics, new Position(10, 35), "#FFFFFF", "You can't enter the same portal twice");
     }
 }

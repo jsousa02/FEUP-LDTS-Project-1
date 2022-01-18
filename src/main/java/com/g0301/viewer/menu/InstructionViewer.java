@@ -7,9 +7,9 @@ import com.g0301.viewer.ButtonViewer;
 import java.io.IOException;
 import java.util.List;
 
-public class RulesViewer extends StateViewer {
+public class InstructionViewer extends StateViewer {
 
-    public RulesViewer(Gui gui, List<Button> buttons) {
+    public InstructionViewer(Gui gui, List<Button> buttons) {
         super(gui, buttons);
     }
 

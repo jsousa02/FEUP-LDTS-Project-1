@@ -13,7 +13,7 @@ public class InstructionState extends GameState {
     private InstructionController instructionController;
 
     public InstructionState(Game game, Gui gui) {
-        super(game, Arrays.asList(new Button(new Position(30, 50), "#000000", "#FF0000", "Exit", 15, 3)));
+        super(game, Arrays.asList(new Button(new Position(gui.getWidth() / 2, 50), "#000000", "#FFFFFF", "Exit", 15, 3)));
         instructionController = new InstructionController(this, gui);
     }
 

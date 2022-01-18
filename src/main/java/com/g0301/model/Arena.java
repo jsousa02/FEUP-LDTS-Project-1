@@ -74,12 +74,10 @@ public class Arena {
      */
     public boolean wallCollision(){
         for(Wall wall : walls){
-            if(wall.getPosition().equals(car.getPosition())){
-                //System.out.println("You lost");
+            if(wall.getPosition().equals(car.getPosition())) {
                 return true;
             }
             if (wall.getPosition().equals(bot.getPosition())) {
-                System.out.println("You won");
                 return true;
             }
         }
@@ -89,7 +87,7 @@ public class Arena {
     public void createPortals() {
         portals.add(new Portal(new Position(50, 30), new Position(10, 30), "#FF00FF"));
         portals.add(new Portal(new Position(35, 55), new Position(40, 10), "#FF0000"));
-        portals.add(new Portal(new Position(10, 55), new Position(50, 50), "#FF0033"));
+        portals.add(new Portal(new Position(10, 55), new Position(50, 50), "#00FFFF"));
     }
 
     public List<Portal> getPortals() {
