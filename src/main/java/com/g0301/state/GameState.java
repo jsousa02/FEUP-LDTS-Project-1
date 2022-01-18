@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class GameState {
     protected final Game game;
     protected List<Button> buttons;
-    private int selectedIndex;
+    private int selectedIndex = 0;
 
     public GameState(Game game, List<Button> buttons) {
         this.game = game;

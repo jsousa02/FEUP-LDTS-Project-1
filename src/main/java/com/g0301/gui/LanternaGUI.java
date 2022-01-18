@@ -251,4 +251,12 @@ public class LanternaGUI implements Gui {
         drawElement(graphics, startPosition, color, "S");
         drawElement(graphics, endPosition, color, "E");
     }
+
+    @Override
+    public void drawInstructions() {
+        TextGraphics graphics = screen.newTextGraphics();
+        drawTitle(new Position(30, 5), "#000000", "#FF0000", "INSTRUCTIONS");
+        drawText(graphics, new Position(10, 10), "#FFFFFF", "Move with WASD");
+        drawText(graphics, new Position(10, 15), "#FFFFFF", "You can't crash against the walls or against the other player's trails");
+    }
 }

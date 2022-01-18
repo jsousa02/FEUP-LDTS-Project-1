@@ -36,10 +36,6 @@ public class Button extends Element {
         this.color = color;
     }
 
-    public boolean isHighlighted() {
-        return isHighlighted;
-    }
-
     public void lowlight(String color) {
         this.color = color;
     }

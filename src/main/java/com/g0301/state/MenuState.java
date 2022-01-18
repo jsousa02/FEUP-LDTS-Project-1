@@ -7,11 +7,9 @@ import com.g0301.model.Position;
 
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.List;
 
 public class MenuState extends GameState {
     private MenuController menuController;
-    private int SelectedIndex = 0;
 
     public MenuState(Game game, Gui gui){
         super(game, Arrays.asList(new Button(new Position(25, 10), "#000000", "#FFFFFF", "Play!", 15, 3),
@@ -29,9 +27,4 @@ public class MenuState extends GameState {
     public void step() throws IOException {
         menuController.step();
     }
-
-    public List<Button> getButtons(){
-        return buttons;
-    }
-
 }

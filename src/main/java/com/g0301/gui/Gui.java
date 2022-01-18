@@ -49,4 +49,5 @@ public interface Gui {
 
     void drawPortal(Position startPosition, Position endPosition, String color);
 
+    void drawInstructions();
 }
