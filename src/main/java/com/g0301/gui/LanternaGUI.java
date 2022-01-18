@@ -1,4 +1,4 @@
-package com.g0301.Gui;
+package com.g0301.gui;
 
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -135,13 +135,13 @@ public class LanternaGUI implements Gui {
 
     /**
      * @brief Draws the screen's background
-     * @param textGraphics
+     * @param graphics
      * @param color
      */
     @Override
-    public void drawBackground(TextGraphics textGraphics, String color) {
-        textGraphics.setBackgroundColor(TextColor.Factory.fromString(color));
-        textGraphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
+    public void drawBackground(TextGraphics graphics, String color) {
+        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
     }
 
     /**
@@ -223,10 +223,51 @@ public class LanternaGUI implements Gui {
     }
 
     @Override
+    public void drawButton(Position buttonPosition, String bColor, String fColor, String text, int width, int height) {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString(bColor));
+        graphics.fillRectangle(new TerminalPosition(buttonPosition.getX() - width / 2, buttonPosition.getY() - height / 2), new TerminalSize(width, height), ' ');
+        drawText(graphics, new Position(buttonPosition.getX() - text.length() / 2, buttonPosition.getY()), fColor, text);
+    }
+
+    @Override
+    public void drawText(TextGraphics graphics, Position position, String color, String text) {
+        graphics.setForegroundColor(TextColor.Factory.fromString(color));
+        graphics.enableModifiers(SGR.BOLD);
+        graphics.putString(new TerminalPosition(position.getX(), position.getY()), text);
+    }
+
+    @Override
+    public void drawLogo(String color, String textColor) {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        drawText(graphics, new Position((width / 2) - 15, 3), textColor, "  ______                           ");
+        drawText(graphics, new Position((width / 2) - 15, 4), textColor, " /_  __/________  ____    __    __ ");
+        drawText(graphics, new Position((width / 2) - 15, 5), textColor, "  / / / ___/ __ \\/ __ \\__/ /___/ /_");
+        drawText(graphics, new Position((width / 2) - 15, 6), textColor, " / / / /  / /_/ / / / /_  __/_  __/");
+        drawText(graphics, new Position((width / 2) - 15, 7), textColor, "/_/ /_/   \\____/_/ /_/ /_/   /_/   ");
+        drawText(graphics, new Position((width / 2) - 15, 8), textColor, "                                   ");
+    }
+
+    @Override
     public void drawPortal(Position startPosition, Position endPosition, String color) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString(color));
         drawElement(graphics, startPosition, color, "S");
         drawElement(graphics, endPosition, color, "E");
+    }
+
+    @Override
+    public void drawInstructions() {
+        TextGraphics graphics = screen.newTextGraphics();
+        drawLogo("#000000", "#FF0000");
+        drawText(graphics, new Position(10, 12), "#FFFFFF", "You can play 3 different game modes:");
+        drawText(graphics, new Position(12, 15), "#FFFFFF", "Single player classic");
+        drawText(graphics, new Position(12, 17), "#FFFFFF", "1v1 with 2 players");
+        drawText(graphics, new Position(12, 19), "#FFFFFF", "Survival mode");
+        drawText(graphics, new Position(10, 22), "#FFFFFF", "Move with WASD");
+        drawText(graphics, new Position(10, 25), "#FFFFFF", "You can't crash against the walls or against the other player's trails");
+        drawText(graphics, new Position(10, 28), "#FFFFFF", "You can use the portals to teleport");
+        drawText(graphics, new Position(10, 31), "#FFFFFF", "You can't enter the same portal twice");
     }
 }

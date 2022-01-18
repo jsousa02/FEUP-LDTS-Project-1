@@ -1,4 +1,4 @@
-package com.g0301.Gui;
+package com.g0301.gui;
 
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.g0301.model.Position;
@@ -13,6 +13,8 @@ public interface Gui {
         LEFT,
         RIGHT,
         QUIT,
+        ENTER,
+        PAUSE
     }
 
     TextGraphics createTextGraphics();
@@ -21,7 +23,7 @@ public interface Gui {
 
     int getHeight();
 
-    void drawBackground(TextGraphics textGraphics, String color);
+    void drawBackground(TextGraphics graphics, String color);
 
     void clear();
 
@@ -39,5 +41,13 @@ public interface Gui {
 
     void drawTrail(Position position, String color);
 
+    void drawButton(Position buttonPosition, String bColor, String fColor, String text, int width, int height);
+
+    void drawText(TextGraphics graphics, Position position, String color, String text);
+
+    void drawLogo(String color, String textColor);
+
     void drawPortal(Position startPosition, Position endPosition, String color);
+
+    void drawInstructions();
 }

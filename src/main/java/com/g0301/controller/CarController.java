@@ -1,6 +1,6 @@
 package com.g0301.controller;
 
-import com.g0301.Gui.Gui;
+import com.g0301.gui.Gui;
 import com.g0301.model.Car;
 import com.g0301.model.Position;
 
