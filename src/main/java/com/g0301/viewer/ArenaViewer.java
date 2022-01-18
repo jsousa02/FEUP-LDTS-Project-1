@@ -25,7 +25,9 @@ public class ArenaViewer {
 
         drawElements(arena.getWalls(), new WallViewer());
         drawElement(arena.getCar(), new CarViewer());
+        drawElement(arena.getBot(), new CarViewer());
         drawElements(arena.getCar().getTrailList(), new TrailViewer());
+        drawElements(arena.getBot().getTrailList(), new TrailViewer());
         drawElements(arena.getPortals(), new PortalViewer());
 
         gui.refresh();

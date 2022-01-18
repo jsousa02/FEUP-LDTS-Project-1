@@ -5,7 +5,7 @@ import com.g0301.Gui.Gui;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Car extends Element {
+public abstract class Car extends Element {
     private final Set<Trail> trailList = new HashSet<>();
     private Gui.ACTION previousMovement;
 

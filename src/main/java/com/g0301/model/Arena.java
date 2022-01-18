@@ -9,11 +9,12 @@ public class Arena {
 
     private int width;
     private int height;
-    private Car car = new Car(new Position(20, 30), "#FF0000");
-    private Car bot = new Car(new Position(100, 30), "#3AFF33");
+    private Player car = new Player(new Position(20, 30), "#FF0000");
+    private Bot bot = new Bot(new Position(40, 30), "#FFFFFF");
     private final List<Wall> walls = new ArrayList<>();
     private final List<Portal> portals = new ArrayList<>();
     private CarController carController = new CarController(car);
+    private CarController botController = new CarController(bot);
 
     /**
      * @brief Initializes the arena and the walls that delimit it
@@ -30,18 +31,20 @@ public class Arena {
     /**
      * @return The car of the arena
      */
-    public Car getCar() {
+    public Player getCar() {
         return car;
     }
 
-    public Car getBot() {
+    public Bot getBot() {
         return bot;
     }
 
     /**
      * @return The walls from the arena
      */
-    public List<Wall> getWalls() { return walls; }
+    public List<Wall> getWalls() {
+        return walls;
+    }
 
     /**
      * @return The arena's width
