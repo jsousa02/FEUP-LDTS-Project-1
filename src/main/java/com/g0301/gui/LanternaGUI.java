@@ -1,9 +1,6 @@
 package com.g0301.gui;
 
-import com.googlecode.lanterna.SGR;
-import com.googlecode.lanterna.TerminalPosition;
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -245,5 +242,13 @@ public class LanternaGUI implements Gui {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString(color));
         drawText(graphics, position, textColor, text);
+    }
+
+    @Override
+    public void drawPortal(Position startPosition, Position endPosition, String color) {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        drawElement(graphics, startPosition, color, "S");
+        drawElement(graphics, endPosition, color, "E");
     }
 }

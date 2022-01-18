@@ -1,3 +1,4 @@
+import com.g0301.Gui.Gui
 import com.g0301.controller.ArenaController
 import com.g0301.controller.CarController
 import com.g0301.model.Arena
@@ -8,12 +9,13 @@ import spock.lang.Specification
 class Movement extends Specification {
     def "car is moving when no key is being pressed in the beginning of the game"() {
         given: "an arena and the initial position of the car"
-        Arena arena = new Arena(10, 10)
+        Arena arena = new Arena(60, 60)
         ArenaController arenaController = new ArenaController(arena)
         Position initialPosition = arena.getCar().getPosition()
+        Gui.ACTION previousMovement = arena.getCar().getPreviousMovement()
 
         when: "no key is being pressed"
-            arenaController.keyPressed()
+            arenaController.step(previousMovement)
 
         then: "the car should be always moving to the right"
             arena.getCar().getPosition().getY() == initialPosition.getY()

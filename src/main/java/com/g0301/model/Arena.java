@@ -1,5 +1,8 @@
 package com.g0301.model;
 
+import com.g0301.gui.Gui;
+import com.g0301.controller.CarController;
+
 import java.util.*;
 
 public class Arena {
@@ -9,8 +12,8 @@ public class Arena {
     private Car car = new Car(new Position(20, 30), "#FF0000");
     private Car bot = new Car(new Position(100, 30), "#3AFF33");
     private final List<Wall> walls = new ArrayList<>();
-    private ArrayList<Trail> trailList = new ArrayList<>();
-    private ArrayList<Trail> botTrailList = new ArrayList<>();
+    private final List<Portal> portals = new ArrayList<>();
+    private CarController carController = new CarController(car);
 
     /**
      * @brief Initializes the arena and the walls that delimit it
@@ -21,6 +24,7 @@ public class Arena {
         this.width = width;
         this.height = height;
         createWalls();
+        createPortals();
     }
 
     /**
@@ -71,7 +75,7 @@ public class Arena {
     public boolean wallCollision(){
         for(Wall wall : walls){
             if(wall.getPosition().equals(car.getPosition())){
-                System.out.println("You lost");
+                //System.out.println("You lost");
                 return true;
             }
             if (wall.getPosition().equals(bot.getPosition())) {
@@ -82,32 +86,34 @@ public class Arena {
         return false;
     }
 
-    /**
-     * @return Inspects if the player crash (true) into a trail and if he does so dies
-     */
-    public boolean trailCollision(){
-        for(Trail trail : trailList){
-            for(Trail botTrail : botTrailList)
-                if(trail.getPosition().equals(car.getPosition())
-                        || botTrail.getPosition().equals(car.getPosition())){
-                System.out.println("Death.");
+    public void createPortals() {
+        portals.add(new Portal(new Position(50, 30), new Position(10, 30), "#FF00FF"));
+        portals.add(new Portal(new Position(35, 55), new Position(40, 10), "#FF0000"));
+        portals.add(new Portal(new Position(10, 55), new Position(50, 50), "#FF0033"));
+    }
+
+    public List<Portal> getPortals() {
+        return portals;
+    }
+
+    public boolean enterPortalThroughStart(Gui.ACTION action) {
+        for (Portal portal : portals) {
+            if (car.getPosition().equals(portal.getPosition())) {
+                car.setPosition(portal.getSecondPosition());
+                car.setPosition(carController.makeMovement(action));
                 return true;
-                }
+            }
         }
         return false;
     }
 
-    /**
-     * @return Inspects if the bot crash (true) into a trail and if he does so dies
-     */
-    public boolean botTrailCollision(){
-        for(Trail trail : trailList)
-        for (Trail botTrail : botTrailList){
-                if(botTrail.getPosition().equals(bot.getPosition())
-                        || trail.getPosition().equals(bot.getPosition())) {
-                    System.out.println("WIN.");
-                    return true;
-                }
+    public boolean enterPortalThroughExit(Gui.ACTION action) {
+        for (Portal portal : portals) {
+            if (car.getPosition().equals(portal.getSecondPosition())) {
+                car.setPosition(portal.getPosition());
+                car.setPosition(carController.makeMovement(action));
+                return true;
+            }
         }
         return false;
     }

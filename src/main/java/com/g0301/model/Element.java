@@ -2,12 +2,17 @@ package com.g0301.model;
 
 public abstract class Element {
     protected Position position;
-    protected String foregroundColor;
+    protected Position secondPosition;
     protected String color;
-    protected String text;
 
     public Element(Position position, String color) {
         this.position = position;
+        this.color = color;
+    }
+
+    public Element(Position position, Position secondPosition, String color) {
+        this.position = position;
+        this.secondPosition = secondPosition;
         this.color = color;
     }
 
@@ -39,5 +44,13 @@ public abstract class Element {
      */
     public void setColor(String newColor) {
         this.color = newColor;
+    }
+
+    public Position getSecondPosition() {
+        return secondPosition;
+    }
+
+    public void setSecondPosition(Position newPosition) {
+        this.secondPosition = newPosition;
     }
 }
