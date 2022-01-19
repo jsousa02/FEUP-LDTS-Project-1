@@ -13,7 +13,7 @@ public class PlayingState extends GameState {
 
     public PlayingState(Game game, Gui gui) {
         super(game, Arrays.asList());
-        arenaController = new ArenaController(gui, new Arena(game.getWidth(), game.getHeight()));
+        arenaController = new ArenaController(gui, new Arena(game.getWidth(), game.getHeight() - 2));
     }
 
     @Override

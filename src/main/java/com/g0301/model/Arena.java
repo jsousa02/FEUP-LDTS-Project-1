@@ -62,10 +62,12 @@ public class Arena {
      */
     private void createWalls() {
         for (int i = 0; i < width; i++) {
-            walls.add(new Wall(new Position(i, 0), "#FFFFFF"));
-            walls.add(new Wall(new Position(i, height - 1), "#FFFFFF"));
-            walls.add(new Wall(new Position(0, i), "#FFFFFF"));
-            walls.add(new Wall(new Position(width - 1, i), "#FFFFFF"));
+            walls.add(new Wall(new Position(i, 2), "#FFFFFF"));
+            walls.add(new Wall(new Position(i, height - 1 - 2), "#FFFFFF"));
+        }
+        for (int j = 2; j < height - 2; j++) {
+            walls.add(new Wall(new Position(0, j), "#FFFFFF"));
+            walls.add(new Wall(new Position(width - 1, j), "#FFFFFF"));
         }
     }
 
@@ -85,9 +87,9 @@ public class Arena {
     }
 
     public void createPortals() {
-        portals.add(new Portal(new Position(50, 30), new Position(10, 30), "#FF00FF"));
-        portals.add(new Portal(new Position(35, 55), new Position(40, 10), "#FF0000"));
-        portals.add(new Portal(new Position(10, 55), new Position(50, 50), "#00FFFF"));
+        portals.add(new Portal(new Position(65, 30), new Position(10, 30), "#FF00FF"));
+        portals.add(new Portal(new Position(35, 40), new Position(40, 10), "#FF0000"));
+        portals.add(new Portal(new Position(10, 45), new Position(70, 50), "#00FFFF"));
     }
 
     public List<Portal> getPortals() {
