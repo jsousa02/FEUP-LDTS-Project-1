@@ -120,12 +120,21 @@ public class Arena {
         }
         return false;
     }
-
     public boolean botCollisionWithCarTrail() {
+        for (Trail trail : car.getTrailList()) {
+            if (bot.getPosition().equals(trail.getPosition())) {
+                return true;
+            }
+        }
         return false;
     }
 
     public boolean carCollisionWithBotTrail() {
+        for (Trail trail : bot.getTrailList()) {
+            if (car.getPosition().equals(trail.getPosition())) {
+                return true;
+            }
+        }
         return false;
     }
 }
