@@ -8,10 +8,12 @@ import java.util.Set;
 public class Car extends Element {
     private final Set<Trail> trailList = new HashSet<>();
     private Gui.ACTION previousMovement;
+    private int speed;
 
     public Car(Position position, String color) {
         super(position, color);
         previousMovement = Gui.ACTION.RIGHT;
+        this.speed = 1;
     }
 
     /**
@@ -39,5 +41,13 @@ public class Car extends Element {
 
     public Gui.ACTION getPreviousMovement() {
         return previousMovement;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void changeSpeed(int speed) {
+        this.speed = speed;
     }
 }

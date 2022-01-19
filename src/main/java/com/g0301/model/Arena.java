@@ -123,4 +123,11 @@ public class Arena {
     public BoostBar getBoostBar() {
         return boostBar;
     }
+
+    public boolean outOfBounds() {
+        return (car.getPosition().getX() < 0 ||
+                car.getPosition().getX() >= width ||
+                car.getPosition().getY() < 0 ||
+                car.getPosition().getY() >= height);
+    }
 }

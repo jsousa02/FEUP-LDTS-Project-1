@@ -57,4 +57,16 @@ public class BoostBar extends Element {
     public void setReleaseTime(int time) {
         releaseTime = time;
     }
+
+    public void activate() {
+        isActive = true;
+    }
+
+    public void deactivate() {
+        isActive = false;
+    }
+
+    public boolean isEmpty() {
+        return boostBar.size() == 0;
+    }
 }

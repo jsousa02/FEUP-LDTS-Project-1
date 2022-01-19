@@ -2,7 +2,6 @@ package com.g0301.viewer;
 
 import com.g0301.gui.Gui;
 import com.g0301.model.Arena;
-import com.g0301.model.BoostBar;
 import com.g0301.model.Element;
 import com.g0301.model.Position;
 
