@@ -120,4 +120,10 @@ public class Arena {
         }
         return false;
     }
+    public boolean botCollisionWithCarTrail() {
+        return true;
+    }
+    public boolean carCollisionWithBotTrail() {
+        return true;
+    }
 }

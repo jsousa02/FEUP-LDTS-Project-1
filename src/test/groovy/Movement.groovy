@@ -3,6 +3,7 @@ import com.g0301.controller.ArenaController
 import com.g0301.controller.CarController
 import com.g0301.model.Arena
 import com.g0301.model.Car
+import com.g0301.model.Player
 import com.g0301.model.Position
 import spock.lang.Specification
 
@@ -23,7 +24,7 @@ class Movement extends Specification {
 
     def "car moves up"() {
         given: "a car and its initial position"
-            Car car = new Car(new Position(2, 2), '#FFFFFF')
+            Player car = new Player(new Position(2, 2), '#FFFFFF')
             CarController carController = new CarController(car);
             Position initialPosition = car.getPosition()
 
@@ -37,7 +38,7 @@ class Movement extends Specification {
 
     def "car moves down"() {
         given: "a car and its initial position"
-            Car car = new Car(new Position(2, 2), '#FFFFFF')
+        Player car = new Player(new Position(2, 2), '#FFFFFF')
             CarController carController = new CarController(car);
             Position initialPosition = car.getPosition()
 
@@ -51,7 +52,7 @@ class Movement extends Specification {
 
     def "car moves left"() {
         given: "a car and its initial position"
-            Car car = new Car(new Position(2, 2), '#FFFFFF')
+            Player car = new Player(new Position(2, 2), '#FFFFFF')
             CarController carController = new CarController(car)
             Position initialPosition = car.getPosition()
 
@@ -65,7 +66,7 @@ class Movement extends Specification {
 
     def "car moves right"() {
         given: "a car and its initial position"
-            Car car = new Car(new Position(2, 2), '#FFFFFF')
+            Player car = new Player(new Position(2, 2), '#FFFFFF')
             CarController carController = new CarController(car);
             Position initialPosition = car.getPosition()
 
