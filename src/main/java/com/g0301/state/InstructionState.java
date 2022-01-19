@@ -1,7 +1,7 @@
 package com.g0301.state;
 
 import com.g0301.Game;
-import com.g0301.controller.InstructionController;
+import com.g0301.controller.state.InstructionController;
 import com.g0301.gui.Gui;
 import com.g0301.model.Button;
 import com.g0301.model.Position;

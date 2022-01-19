@@ -226,7 +226,7 @@ public class LanternaGUI implements Gui {
     public void drawButton(Position buttonPosition, String bColor, String fColor, String text, int width, int height) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString(bColor));
-        graphics.fillRectangle(new TerminalPosition(buttonPosition.getX() - width / 2, buttonPosition.getY() - height / 2), new TerminalSize(width, height), ' ');
+        graphics.fillRectangle(new TerminalPosition(buttonPosition.getX() - width / 2 - 5, buttonPosition.getY() - height / 2), new TerminalSize(width + 10, height), ' ');
         drawText(graphics, new Position(buttonPosition.getX() - text.length() / 2, buttonPosition.getY()), fColor, text);
     }
 

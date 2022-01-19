@@ -1,23 +1,16 @@
-package com.g0301.controller;
+package com.g0301.controller.state;
 
 import com.g0301.gui.Gui;
-import com.g0301.state.GameState;
-import com.g0301.state.InstructionState;
-import com.g0301.state.KeyboardListener;
-import com.g0301.state.PlayingState;
+import com.g0301.state.*;
 import com.g0301.viewer.state.MenuViewer;
 
 import java.io.IOException;
 
-public class MenuController implements KeyboardListener {
+public class MenuController extends StateController implements KeyboardListener {
     private final MenuViewer menuViewer;
-    private final GameState gameState;
-    private GameState nextState;
-    private final Gui gui;
 
     public MenuController(GameState gameState, Gui gui) {
-        this.gameState = gameState;
-        this.gui = gui;
+        super(gameState, gui);
         this.menuViewer = new MenuViewer(gui, gameState.getButtons());
     }
 
@@ -34,15 +27,17 @@ public class MenuController implements KeyboardListener {
             gameState.nextButton();
     }
 
+    @Override
     public void step() throws IOException {
         gameState.getActiveButton().highlight("#FF0000");
         gameState.lowlightButtons();
         menuViewer.draw();
     }
 
+    @Override
     public void getNextState() {
         if(gameState.getSelectedIndex() == 0)
-            nextState = new PlayingState(gameState.getGame(), gui);
+            nextState = new GameModeState(gameState.getGame(), gui);
         else if (gameState.getSelectedIndex() == 1)
             nextState = new InstructionState(gameState.getGame(), gui);
         else if (gameState.getSelectedIndex() == 2)
