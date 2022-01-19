@@ -1,3 +1,5 @@
+package com.g0301.model
+
 import com.g0301.gui.Gui
 import com.g0301.controller.CarController
 import com.g0301.model.Arena

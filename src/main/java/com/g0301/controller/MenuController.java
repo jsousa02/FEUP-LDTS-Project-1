@@ -5,7 +5,7 @@ import com.g0301.state.GameState;
 import com.g0301.state.InstructionState;
 import com.g0301.state.KeyboardListener;
 import com.g0301.state.PlayingState;
-import com.g0301.viewer.menu.MenuViewer;
+import com.g0301.viewer.state.MenuViewer;
 
 import java.io.IOException;
 

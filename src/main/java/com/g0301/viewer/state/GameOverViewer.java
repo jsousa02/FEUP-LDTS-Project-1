@@ -1,4 +1,4 @@
-package com.g0301.viewer.menu;
+package com.g0301.viewer.state;
 
 public class GameOverViewer {
 }

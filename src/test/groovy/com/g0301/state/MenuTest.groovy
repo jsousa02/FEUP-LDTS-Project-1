@@ -1,8 +1,7 @@
+package com.g0301.state
+
 import com.g0301.Game
 import com.g0301.gui.LanternaGUI
-import com.g0301.model.Button
-import com.g0301.model.Position
-import com.g0301.state.MenuState
 import spock.lang.Specification
 
 class MenuTest extends Specification {

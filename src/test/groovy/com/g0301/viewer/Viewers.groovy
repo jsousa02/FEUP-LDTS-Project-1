@@ -1,17 +1,12 @@
+package com.g0301.viewer
+
 import com.g0301.gui.LanternaGUI
-import com.g0301.model.Arena
 import com.g0301.model.Button
 import com.g0301.model.Car
 import com.g0301.model.Portal
 import com.g0301.model.Position
 import com.g0301.model.Trail
 import com.g0301.model.Wall
-import com.g0301.viewer.ArenaViewer
-import com.g0301.viewer.ButtonViewer
-import com.g0301.viewer.CarViewer
-import com.g0301.viewer.PortalViewer
-import com.g0301.viewer.TrailViewer
-import com.g0301.viewer.WallViewer
 import spock.lang.Specification
 
 class Viewers extends Specification {

@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'groovy'
+    id 'info.solidsoft.pitest' version '1.6.0'
 }
 
 group 'com.g0301'
@@ -24,4 +25,8 @@ test {
 
 application {
     mainClass.set("com.g0301.GameStart")
+}
+
+pitest {
+    junit5PluginVersion = '0.12'
 }

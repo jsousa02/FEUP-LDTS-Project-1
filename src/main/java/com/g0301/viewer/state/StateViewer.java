@@ -1,4 +1,4 @@
-package com.g0301.viewer.menu;
+package com.g0301.viewer.state;
 
 import com.g0301.gui.Gui;
 import com.g0301.model.Button;

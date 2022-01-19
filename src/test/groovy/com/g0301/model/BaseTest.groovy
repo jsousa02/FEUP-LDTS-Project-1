@@ -1,7 +1,5 @@
-import com.g0301.model.Arena
-import com.g0301.model.Car
-import com.g0301.model.Position
-import com.g0301.model.Wall
+package com.g0301.model
+
 import spock.lang.Specification
 
 class BaseTest extends Specification {

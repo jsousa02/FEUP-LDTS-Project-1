@@ -1,9 +1,9 @@
+package com.g0301.model
+
 import com.g0301.gui.Gui
 import com.g0301.controller.ArenaController
 import com.g0301.controller.CarController
-import com.g0301.model.Arena
-import com.g0301.model.Car
-import com.g0301.model.Position
+
 import spock.lang.Specification
 
 class Movement extends Specification {

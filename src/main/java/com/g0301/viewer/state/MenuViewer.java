@@ -1,4 +1,4 @@
-package com.g0301.viewer.menu;
+package com.g0301.viewer.state;
 
 import com.g0301.gui.Gui;
 import com.g0301.model.Button;
@@ -7,16 +7,17 @@ import com.g0301.viewer.ButtonViewer;
 import java.io.IOException;
 import java.util.List;
 
-public class InstructionViewer extends StateViewer {
+public class MenuViewer extends StateViewer {
 
-    public InstructionViewer(Gui gui, List<Button> buttons) {
+    public MenuViewer(Gui gui, List<Button> buttons) {
         super(gui, buttons);
     }
 
     @Override
     public void draw() throws IOException {
         gui.clear();
-        gui.drawInstructions();
+        drawBackground("#000000");
+        drawTitle("#000000", "#FF0000");
         drawButtons(buttons, new ButtonViewer());
         gui.refresh();
     }
