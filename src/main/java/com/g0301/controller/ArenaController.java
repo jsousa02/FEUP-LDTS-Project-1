@@ -22,12 +22,12 @@ public class ArenaController extends GameController implements KeyboardListener 
         Position botCurrentPosition = botController.getCar().getPosition();
         Position botNextPosition = botController.botMovement();
 
-        if (!botController.getCar().collisionWithOwnTrail() && !getModel().wallCollision()) {
+        if (!botController.getCar().collisionWithOwnTrail() && !getModel().wallCollision() && !getModel().botCollisionWithCarTrail()) {
             botController.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FFFF00"));
             if(!getModel().enterPortalThroughExit(action) && !getModel().enterPortalThroughStart(action))
                 botController.moveCar(botNextPosition);
         }
-        if (!carController.getCar().collisionWithOwnTrail() && !getModel().wallCollision()) {
+        if (!carController.getCar().collisionWithOwnTrail() && !getModel().wallCollision() && !getModel().carCollisionWithBotTrail()) {
             carController.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
             if(!getModel().enterPortalThroughExit(action) && !getModel().enterPortalThroughStart(action))
                 carController.moveCar(nextPosition);
