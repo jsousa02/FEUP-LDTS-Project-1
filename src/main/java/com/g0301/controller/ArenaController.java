@@ -40,7 +40,19 @@ public class ArenaController extends GameController implements KeyboardListener 
 
     @Override
     public void keyPressed(Gui.ACTION action) {
-        movement = action;
+        if(action == Gui.ACTION.P1BOOST) {
+            getModel().getBoostBar().setHoldTime(getModel().getBoostBar().getHoldTime() + 1);
+
+            if(getModel().getBoostBar().getHoldTime() > 10)
+                getModel().getBoostBar().decrease();
+        }
+        else {
+            getModel().getBoostBar().setReleaseTime(getModel().getBoostBar().getReleaseTime() + 1);
+            if(getModel().getBoostBar().getReleaseTime() > 4) {
+                getModel().getBoostBar().increase();
+            }
+            movement = action;
+        }
     }
 
     public CarController getCarController() {

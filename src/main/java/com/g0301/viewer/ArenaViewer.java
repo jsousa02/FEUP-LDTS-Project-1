@@ -2,7 +2,9 @@ package com.g0301.viewer;
 
 import com.g0301.gui.Gui;
 import com.g0301.model.Arena;
+import com.g0301.model.BoostBar;
 import com.g0301.model.Element;
+import com.g0301.model.Position;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -27,6 +29,8 @@ public class ArenaViewer {
         drawElement(arena.getCar(), new CarViewer());
         drawElements(arena.getCar().getTrailList(), new TrailViewer());
         drawElements(arena.getPortals(), new PortalViewer());
+        drawElements(arena.getBoostBar().getBoostBarTrails(), new BoostBarViewer());
+        gui.drawText(gui.createTextGraphics(), new Position(arena.getBoostBar().getPosition().getX(), arena.getBoostBar().getPosition().getY() - 1), "#FF0000", "Player 1");
 
         gui.refresh();
     }

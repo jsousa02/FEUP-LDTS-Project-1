@@ -14,6 +14,7 @@ public class Arena {
     private final List<Wall> walls = new ArrayList<>();
     private final List<Portal> portals = new ArrayList<>();
     private CarController carController = new CarController(car);
+    private final BoostBar boostBar = new BoostBar(new Position(3, 57), "#00B600");
 
     /**
      * @brief Initializes the arena and the walls that delimit it
@@ -25,6 +26,7 @@ public class Arena {
         this.height = height;
         createWalls();
         createPortals();
+        boostBar.createBoostBar();
     }
 
     /**
@@ -116,5 +118,9 @@ public class Arena {
             }
         }
         return false;
+    }
+
+    public BoostBar getBoostBar() {
+        return boostBar;
     }
 }

@@ -14,7 +14,8 @@ public interface Gui {
         RIGHT,
         QUIT,
         ENTER,
-        PAUSE
+        PAUSE,
+        P1BOOST,
     }
 
     TextGraphics createTextGraphics();
@@ -50,4 +51,6 @@ public interface Gui {
     void drawPortal(Position startPosition, Position endPosition, String color);
 
     void drawInstructions();
+
+    void drawBoostBar(Position position, String color);
 }
