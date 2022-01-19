@@ -91,22 +91,19 @@ class Collisions extends  Specification{
     def "Testing Player's car collision with bot trail"(){
         given: "an arena,a car and a bot"
             Arena arena= new Arena(60,60)
-            Bot bot = new Bot(new Position(30,30),"#FFFFFF")
-            Player car =  new Player(new Position(10,10), "#FFFFFF")
         when: "the player crashes against bot trail"
-            bot.trailList.add(new Trail(new Position(20,20),"#FFFFFF"))
-            car.setPosition(new Position(20,20))
+            Trail trail = new Trail(new Position(20,20),"#FFFFFF")
+            arena.bot.trailList.add(trail)
+            arena.car.setPosition(new Position(20,20))
         then: "the car will collide with the bot trail"
             arena.carCollisionWithBotTrail()
     }
     def "Testing bot collision with player trail"(){
         given: "an arena,a car and a bot"
             Arena arena= new Arena(60,60)
-            Bot bot = new Bot(new Position(30,30),"#FFFFFF")
-            Player car =  new Player(new Position(10,10), "#FFFFFF")
         when: "the player crashes against bot trail"
-            car.trailList.add(new Trail(new Position(20,20),"#FFFFFF"))
-            bot.setPosition(new Position(20,20))
+            arena.car.trailList.add(new Trail(new Position(20,20),"#FFFFFF"))
+            arena.bot.setPosition(new Position(20,20))
         then: "the car will collide with the bot trail"
             arena.botCollisionWithCarTrail()
     }

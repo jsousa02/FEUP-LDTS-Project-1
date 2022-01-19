@@ -17,9 +17,9 @@ public class Arena {
     private CarController botController = new CarController(bot);
 
     /**
-     * @brief Initializes the arena and the walls that delimit it
-     * @param width The arena's width
+     * @param width  The arena's width
      * @param height The arena's height
+     * @brief Initializes the arena and the walls that delimit it
      */
     public Arena(int width, int height) {
         this.width = width;
@@ -75,9 +75,9 @@ public class Arena {
     /**
      * @return Inspects if the player crash (true) into a wall and if he does so dies
      */
-    public boolean wallCollision(){
-        for(Wall wall : walls){
-            if(wall.getPosition().equals(car.getPosition())){
+    public boolean wallCollision() {
+        for (Wall wall : walls) {
+            if (wall.getPosition().equals(car.getPosition())) {
                 //System.out.println("You lost");
                 return true;
             }
@@ -120,10 +120,12 @@ public class Arena {
         }
         return false;
     }
+
     public boolean botCollisionWithCarTrail() {
-        return true;
+        return false;
     }
+
     public boolean carCollisionWithBotTrail() {
-        return true;
+        return false;
     }
 }
