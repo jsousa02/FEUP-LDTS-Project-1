@@ -55,10 +55,27 @@ public class CarController {
      * @briefs Handles the movements chosen by the player
      */
     public Position makeMovement(Gui.ACTION action) {
-        if (action == Gui.ACTION.UP) return moveUp();
-        if (action == Gui.ACTION.LEFT) return moveLeft();
-        if (action == Gui.ACTION.DOWN) return moveDown();
-        if (action == Gui.ACTION.RIGHT) return moveRight();
+        if (action == Gui.ACTION.UP){
+            if (car.getPreviousMovement()!=Gui.ACTION.DOWN){
+                return moveUp();
+            }
+            else return makeMovement(car.getPreviousMovement());
+        }
+        if (action == Gui.ACTION.LEFT) {
+            if (car.getPreviousMovement() != Gui.ACTION.RIGHT) {
+                return moveLeft();
+            } else return makeMovement(car.getPreviousMovement());
+        }
+        if (action == Gui.ACTION.DOWN) {
+            if (car.getPreviousMovement() != Gui.ACTION.UP) {
+                return moveDown();
+            } else return makeMovement(car.getPreviousMovement());
+        }
+        if (action == Gui.ACTION.RIGHT) {
+            if (car.getPreviousMovement() != Gui.ACTION.LEFT) {
+                return moveRight();
+            } else return makeMovement(car.getPreviousMovement());
+        }
         return null;
     }
 
