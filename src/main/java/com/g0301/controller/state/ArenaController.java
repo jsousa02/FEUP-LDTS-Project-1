@@ -57,7 +57,7 @@ public class ArenaController extends StateController implements KeyboardListener
 
         if (!botController.getCar().collisionWithOwnTrail() && !arena.wallCollision() && !arena.botCollisionWithCarTrail()) {
             botController.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FFFF00"));
-            if(!arena.botEnterPortalThroughStart(action) && !arena.botEnterPortalThroughExit(action)){
+            if(!arena.botEnterPortalThroughStart(arena.getBot().getPreviousMovement()) && !arena.botEnterPortalThroughExit(arena.getBot().getPreviousMovement())){
                     botController.moveCar(botNextPosition);
                 }
         }
