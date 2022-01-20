@@ -119,6 +119,27 @@ public class Arena {
         }
         return false;
     }
+    public boolean botEnterPortalThroughStart(Gui.ACTION action) {
+        for (Portal portal : portals) {
+            if (bot.getPosition().equals(portal.getPosition())) {
+                bot.setPosition(portal.getSecondPosition());
+                bot.setPosition(botController.makeMovement(action));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean botEnterPortalThroughExit(Gui.ACTION action) {
+        for (Portal portal : portals) {
+            if (bot.getPosition().equals(portal.getSecondPosition())) {
+                bot.setPosition(portal.getPosition());
+                bot.setPosition(botController.makeMovement(action));
+                return true;
+            }
+        }
+        return false;
+    }
     public boolean botCollisionWithCarTrail() {
         for (Trail trail : car.getTrailList()) {
             if (bot.getPosition().equals(trail.getPosition())) {
