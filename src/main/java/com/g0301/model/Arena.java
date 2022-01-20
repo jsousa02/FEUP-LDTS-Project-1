@@ -122,6 +122,7 @@ public class Arena {
     public boolean botCollisionWithCarTrail() {
         for (Trail trail : car.getTrailList()) {
             if (bot.getPosition().equals(trail.getPosition())) {
+                bot.setDead();
                 return true;
             }
         }
