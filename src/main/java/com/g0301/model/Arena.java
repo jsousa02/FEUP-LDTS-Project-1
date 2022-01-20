@@ -159,4 +159,39 @@ public class Arena {
         }
         return false;
     }
+    public boolean upClearPosition(Position position){
+        if (bot.getTrailList().isEmpty()){
+            return true;
+        }
+        for (Trail trail:bot.getTrailList()){
+            if (position.moveUp().equals(trail.getPosition())){
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean downClearPosition(Position position){
+        for (Trail trail:bot.getTrailList()){
+            if (position.moveDown().equals(trail.getPosition())){
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean leftClearPosition(Position position){
+        for (Trail trail:bot.getTrailList()){
+            if (position.moveLeft().equals(trail.getPosition())){
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean rightClearPosition(Position position){
+        for (Trail trail:bot.getTrailList()){
+            if (position.moveRight().equals(trail.getPosition())){
+                return false;
+            }
+        }
+        return true;
+    }
 }
