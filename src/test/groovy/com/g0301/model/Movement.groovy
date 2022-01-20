@@ -7,6 +7,7 @@ import com.g0301.controller.CarController
 import spock.lang.Specification
 
 class Movement extends Specification {
+    
     def "car is moving when no key is being pressed in the beginning of the game"() {
         given: "an arena and the initial position of the car"
             Arena arena = new Arena(60, 60)

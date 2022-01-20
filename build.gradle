@@ -2,7 +2,7 @@ plugins {
     id 'java'
     id 'application'
     id 'groovy'
-    id 'info.solidsoft.pitest' version '1.6.0'
+    id 'info.solidsoft.pitest' version '1.7.0'
 }
 
 group 'com.g0301'
