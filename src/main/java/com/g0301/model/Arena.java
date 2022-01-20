@@ -65,10 +65,10 @@ public class Arena {
      */
     private void createWalls() {
         for (int i = 0; i < width; i++) {
-            walls.add(new Wall(new Position(i, 0), "#FFFFFF"));
-            walls.add(new Wall(new Position(i, height - 1), "#FFFFFF"));
-            walls.add(new Wall(new Position(0, i), "#FFFFFF"));
-            walls.add(new Wall(new Position(width - 1, i), "#FFFFFF"));
+            walls.add(new Wall(new Position(i, 0), "#F34256"));
+            walls.add(new Wall(new Position(i, height - 1), "#F34256"));
+            walls.add(new Wall(new Position(0, i), "#F34256"));
+            walls.add(new Wall(new Position(width - 1, i), "#F34256"));
         }
     }
 
