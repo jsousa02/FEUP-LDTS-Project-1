@@ -9,16 +9,17 @@ public class Arena {
 
     private int width;
     private int height;
-    private Car car = new Car(new Position(20, 30), "#FF0000");
-    private Car bot = new Car(new Position(100, 30), "#3AFF33");
+    private Player car = new Player(new Position(20, 30), "#FF0000");
+    private Bot bot = new Bot(new Position(40, 30), "#FFFFFF");
     private final List<Wall> walls = new ArrayList<>();
     private final List<Portal> portals = new ArrayList<>();
     private CarController carController = new CarController(car);
+    private CarController botController = new CarController(bot);
 
     /**
-     * @brief Initializes the arena and the walls that delimit it
-     * @param width The arena's width
+     * @param width  The arena's width
      * @param height The arena's height
+     * @brief Initializes the arena and the walls that delimit it
      */
     public Arena(int width, int height) {
         this.width = width;
@@ -30,18 +31,20 @@ public class Arena {
     /**
      * @return The car of the arena
      */
-    public Car getCar() {
+    public Player getCar() {
         return car;
     }
 
-    public Car getBot() {
+    public Bot getBot() {
         return bot;
     }
 
     /**
      * @return The walls from the arena
      */
-    public List<Wall> getWalls() { return walls; }
+    public List<Wall> getWalls() {
+        return walls;
+    }
 
     /**
      * @return The arena's width
@@ -72,9 +75,9 @@ public class Arena {
     /**
      * @return Inspects if the player crash (true) into a wall and if he does so dies
      */
-    public boolean wallCollision(){
-        for(Wall wall : walls){
-            if(wall.getPosition().equals(car.getPosition())) {
+    public boolean wallCollision() {
+        for (Wall wall : walls) {
+            if (wall.getPosition().equals(car.getPosition())) {
                 return true;
             }
             if (wall.getPosition().equals(bot.getPosition())) {
@@ -110,6 +113,23 @@ public class Arena {
             if (car.getPosition().equals(portal.getSecondPosition())) {
                 car.setPosition(portal.getPosition());
                 car.setPosition(carController.makeMovement(action));
+                return true;
+            }
+        }
+        return false;
+    }
+    public boolean botCollisionWithCarTrail() {
+        for (Trail trail : car.getTrailList()) {
+            if (bot.getPosition().equals(trail.getPosition())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean carCollisionWithBotTrail() {
+        for (Trail trail : bot.getTrailList()) {
+            if (car.getPosition().equals(trail.getPosition())) {
                 return true;
             }
         }

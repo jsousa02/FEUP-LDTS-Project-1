@@ -3,6 +3,9 @@ package com.g0301.model
 import com.g0301.gui.Gui
 import com.g0301.controller.CarController
 import com.g0301.model.Arena
+import com.g0301.model.Bot
+import com.g0301.model.Car
+import com.g0301.model.Player
 import com.g0301.model.Portal
 import com.g0301.model.Position
 import com.g0301.model.Trail
@@ -86,5 +89,24 @@ class Collisions extends  Specification{
             arena.enterPortalThroughExit(Gui.ACTION.RIGHT)
         then: "the player's position should be equals to the start position of the portal"
             carController.getCar().getPosition().equals(new Position(portal.getPosition().getX() + 1, portal.getPosition().getY()))
+    }
+    def "Testing Player's car collision with bot trail"(){
+        given: "an arena,a car and a bot"
+            Arena arena= new Arena(60,60)
+        when: "the player crashes against bot trail"
+            Trail trail = new Trail(new Position(20,20),"#FFFFFF")
+            arena.bot.trailList.add(trail)
+            arena.car.setPosition(new Position(20,20))
+        then: "the car will collide with the bot trail"
+            arena.carCollisionWithBotTrail()
+    }
+    def "Testing bot collision with player trail"(){
+        given: "an arena,a car and a bot"
+            Arena arena= new Arena(60,60)
+        when: "the player crashes against bot trail"
+            arena.car.trailList.add(new Trail(new Position(20,20),"#FFFFFF"))
+            arena.bot.setPosition(new Position(20,20))
+        then: "the car will collide with the bot trail"
+            arena.botCollisionWithCarTrail()
     }
 }
