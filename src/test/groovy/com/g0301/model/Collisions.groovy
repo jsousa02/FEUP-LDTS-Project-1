@@ -2,13 +2,6 @@ package com.g0301.model
 
 import com.g0301.gui.Gui
 import com.g0301.controller.CarController
-import com.g0301.model.Arena
-import com.g0301.model.Bot
-import com.g0301.model.Car
-import com.g0301.model.Player
-import com.g0301.model.Portal
-import com.g0301.model.Position
-import com.g0301.model.Trail
 import spock.lang.Specification
 
 class Collisions extends  Specification{
