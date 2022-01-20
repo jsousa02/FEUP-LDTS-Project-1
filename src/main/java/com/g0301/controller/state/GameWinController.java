@@ -1,0 +1,47 @@
+package com.g0301.controller.state;
+
+import com.g0301.gui.Gui;
+import com.g0301.state.GameState;
+import com.g0301.state.KeyboardListener;
+import com.g0301.state.MenuState;
+import com.g0301.state.PlayingState;
+import com.g0301.viewer.state.GameWinViewer;
+
+import java.io.IOException;
+
+public class GameWinController extends StateController implements KeyboardListener {
+
+    private GameWinViewer gameWinViewer;
+
+    public GameWinController(GameState gameState, Gui gui) {
+        super(gameState, gui);
+        gameWinViewer = new GameWinViewer(gui, gameState.getButtons());
+    }
+
+    @Override
+    public void step() throws IOException {
+        gameState.getActiveButton().highlight("#FF0000");
+        gameState.lowlightButtons();
+        gameWinViewer.draw();
+    }
+
+    @Override
+    public void getNextState() {
+        if(gameState.getSelectedIndex() == 0)
+            nextState = new PlayingState(gameState.getGame(), gui);
+        else if (gameState.getSelectedIndex() == 1)
+            nextState = new MenuState(gameState.getGame(), gui);
+    }
+
+
+    @Override
+    public void keyPressed(Gui.ACTION action) {
+        getNextState();
+        if(action == Gui.ACTION.UP)
+            gameState.previousButton();
+        if(action == Gui.ACTION.DOWN)
+            gameState.nextButton();
+        if(action == Gui.ACTION.ENTER)
+            gameState.changeState(nextState);
+    }
+}

@@ -4,11 +4,14 @@ import com.g0301.gui.LanternaGUI
 import com.g0301.model.Arena
 import com.g0301.model.Button
 import com.g0301.model.Car
+import com.g0301.model.Player
 import com.g0301.model.Portal
 import com.g0301.model.Position
 import com.g0301.model.Trail
 import com.g0301.model.Wall
 import com.g0301.state.MenuState
+import com.g0301.viewer.state.GameOverViewer
+import com.g0301.viewer.state.GameWinViewer
 import com.g0301.viewer.state.InstructionViewer
 import com.g0301.viewer.state.MenuViewer
 import com.g0301.viewer.state.StateViewer
@@ -16,11 +19,11 @@ import spock.lang.Specification
 
 class Viewers extends Specification {
 
-    LanternaGUI gui = Mock()
+    def gui = Mock(LanternaGUI)
 
     def "test car viewer"() {
         given:
-            Car car = new Car(new Position(20, 20), "#FFFFFF")
+            Car car = new Player(new Position(20, 20), "#FFFFFF")
             CarViewer carViewer = new CarViewer()
         when:
             carViewer.drawElement(car, gui)
@@ -79,10 +82,28 @@ class Viewers extends Specification {
 
     def "test arena viewer"() {
         given:
-            ArenaViewer arenaViewer = new ArenaViewer(gui, new Arena(30, 30))
+            ArenaViewer arenaViewer = new ArenaViewer(gui, Arrays.asList(), new Arena(30, 30))
         when:
             arenaViewer.draw()
         then:
             1 * gui.drawBackground(gui.createTextGraphics(), "#000000")
+    }
+
+    def "test game over viewer"() {
+        given:
+            GameOverViewer gameOverViewer = new GameOverViewer(gui, Arrays.asList(new Button(new Position(10, 10), "#FFFFFF", "#FF0000", "Button", 15, 8)))
+        when:
+            gameOverViewer.draw()
+        then:
+            1 * gui.drawText(_, _, _, _)
+    }
+
+    def "test game win viewer"() {
+        given:
+            GameWinViewer gameWinViewer = new GameWinViewer(gui, Arrays.asList(new Button(new Position(10, 10), "#FFFFFF", "#FF0000", "Button", 15, 8)))
+        when:
+            gameWinViewer.draw()
+        then:
+            1 * gui.drawText(_, _, _, _)
     }
 }

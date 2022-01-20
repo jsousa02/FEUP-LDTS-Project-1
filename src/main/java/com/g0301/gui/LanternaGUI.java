@@ -66,13 +66,13 @@ public class LanternaGUI implements Gui {
      * @return The applied font configuration
      */
     public AWTTerminalFontConfiguration loadTronFont() throws IOException, FontFormatException {
-        File tronFontFile = new File("src/main/resources/fonts/square.ttf");
+        File tronFontFile = new File("src/main/resources/fonts/TRON.ttf");
         Font font = Font.createFont(Font.TRUETYPE_FONT, tronFontFile);
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
 
-        Font loadedFont = font.deriveFont(Font.PLAIN, 10);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 8);
         return AWTTerminalFontConfiguration.newInstance(loadedFont);
     }
 
@@ -152,8 +152,8 @@ public class LanternaGUI implements Gui {
     @Override
     public void drawCar(Position position, String color) {
         TextGraphics graphics = screen.newTextGraphics();
-        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
-        drawElement(graphics, position, color, "C");
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+        drawElement(graphics, position, color, "_");
     }
 
     /**
@@ -252,16 +252,16 @@ public class LanternaGUI implements Gui {
     @Override
     public void drawPortal(Position startPosition, Position endPosition, String color) {
         TextGraphics graphics = screen.newTextGraphics();
-        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
-        drawElement(graphics, startPosition, color, "S");
-        drawElement(graphics, endPosition, color, "E");
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+        drawElement(graphics, startPosition, color, "@");
+        drawElement(graphics, endPosition, color, "@");
     }
 
     @Override
     public void drawInstructions() {
         TextGraphics graphics = screen.newTextGraphics();
         drawLogo("#000000", "#FF0000");
-        drawText(graphics, new Position(10, 12), "#FFFFFF", "You can play 3 different game modes:");
+        drawText(graphics, new Position(10, 12), "#FFFFFF", "You can play 3 different game modes");
         drawText(graphics, new Position(12, 15), "#FFFFFF", "Single player classic");
         drawText(graphics, new Position(12, 17), "#FFFFFF", "1v1 with 2 players");
         drawText(graphics, new Position(12, 19), "#FFFFFF", "Survival mode");

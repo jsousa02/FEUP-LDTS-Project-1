@@ -2,17 +2,20 @@ package com.g0301.viewer;
 
 import com.g0301.gui.Gui;
 import com.g0301.model.Arena;
+import com.g0301.model.Button;
 import com.g0301.model.Element;
+import com.g0301.viewer.state.StateViewer;
 
 import java.io.IOException;
 import java.util.Collection;
+import java.util.List;
 
-public class ArenaViewer {
-    private final Gui gui;
-    private final Arena arena;
+public class ArenaViewer extends StateViewer {
 
-    public ArenaViewer(Gui gui, Arena arena) {
-        this.gui = gui;
+    private Arena arena;
+
+    public ArenaViewer(Gui gui, List<Button> buttons, Arena arena) {
+        super(gui, buttons);
         this.arena = arena;
     }
 

@@ -1,13 +1,4 @@
-<<<<<<< HEAD:src/test/groovy/com/g0301/model/BaseTest.groovy
 package com.g0301.model
-
-=======
-import com.g0301.model.Arena
-import com.g0301.model.Car
-import com.g0301.model.Player
-import com.g0301.model.Position
-import com.g0301.model.Wall
->>>>>>> multiplecars:src/test/groovy/BaseTest.groovy
 import spock.lang.Specification
 
 class BaseTest extends Specification {

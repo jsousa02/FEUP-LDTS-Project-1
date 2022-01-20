@@ -1,26 +1,19 @@
 package com.g0301.model
 
 import com.g0301.gui.Gui
-import com.g0301.controller.ArenaController
+import com.g0301.controller.state.ArenaController
 import com.g0301.controller.CarController
-<<<<<<< HEAD:src/test/groovy/com/g0301/model/Movement.groovy
 
-=======
-import com.g0301.model.Arena
-import com.g0301.model.Car
-import com.g0301.model.Player
-import com.g0301.model.Position
->>>>>>> multiplecars:src/test/groovy/Movement.groovy
 import spock.lang.Specification
 
 class Movement extends Specification {
+    
     def "car is moving when no key is being pressed in the beginning of the game"() {
         given: "an arena and the initial position of the car"
-        Arena arena = new Arena(60, 60)
-        ArenaController arenaController = new ArenaController(arena)
-        Position initialPosition = arena.getCar().getPosition()
-        Gui.ACTION previousMovement = arena.getCar().getPreviousMovement()
-
+            Arena arena = new Arena(60, 60)
+            ArenaController arenaController = new ArenaController(arena)
+            Position initialPosition = arena.getCar().getPosition()
+            Gui.ACTION previousMovement = arena.getCar().getPreviousMovement()
         when: "no key is being pressed"
             arenaController.step(previousMovement)
 
@@ -44,7 +37,7 @@ class Movement extends Specification {
 
     def "car moves down"() {
         given: "a car and its initial position"
-        Player car = new Player(new Position(2, 2), '#FFFFFF')
+            Player car = new Player(new Position(2, 2), '#FFFFFF')
             CarController carController = new CarController(car);
             Position initialPosition = car.getPosition()
 

@@ -78,6 +78,7 @@ public class Arena {
     public boolean wallCollision() {
         for (Wall wall : walls) {
             if (wall.getPosition().equals(car.getPosition())) {
+                car.setDead();
                 return true;
             }
             if (wall.getPosition().equals(bot.getPosition())) {
@@ -130,6 +131,7 @@ public class Arena {
     public boolean carCollisionWithBotTrail() {
         for (Trail trail : bot.getTrailList()) {
             if (car.getPosition().equals(trail.getPosition())) {
+                car.setDead();
                 return true;
             }
         }

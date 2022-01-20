@@ -8,6 +8,7 @@ import java.util.Set;
 public abstract class Car extends Element {
     private final Set<Trail> trailList = new HashSet<>();
     private Gui.ACTION previousMovement;
+    private boolean isAlive = true;
 
     public Car(Position position, String color) {
         super(position, color);
@@ -27,8 +28,10 @@ public abstract class Car extends Element {
      */
     public boolean collisionWithOwnTrail() {
         for (Trail trail: trailList) {
-            if (getPosition().equals(trail.getPosition()))
+            if (getPosition().equals(trail.getPosition())) {
+                isAlive = false;
                 return true;
+            }
         }
         return false;
     }
@@ -39,5 +42,13 @@ public abstract class Car extends Element {
 
     public Gui.ACTION getPreviousMovement() {
         return previousMovement;
+    }
+
+    public boolean isAlive() {
+        return isAlive;
+    }
+
+    public void setDead() {
+        isAlive = false;
     }
 }
