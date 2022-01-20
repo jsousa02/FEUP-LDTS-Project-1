@@ -45,7 +45,7 @@ public class Position {
      * @brief Updates the position
      * @param position The new position
      */
-    void setPosition(Position position) {
+    public void setPosition(Position position) {
         this.setX(position.getX());
         this.setY(position.getY());
     }

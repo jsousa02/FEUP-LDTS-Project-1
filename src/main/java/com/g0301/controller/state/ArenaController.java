@@ -10,7 +10,10 @@ import com.g0301.state.KeyboardListener;
 import com.g0301.viewer.ArenaViewer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 public class ArenaController extends StateController implements KeyboardListener {
 
@@ -53,8 +56,29 @@ public class ArenaController extends StateController implements KeyboardListener
         Position currentPosition = carController.getCar().getPosition();
         Position nextPosition = carController.makeMovement(movement);
         Position botCurrentPosition = botController.getCar().getPosition();
-        Position botNextPosition = botController.botMovement();
-
+        List<Integer> possibleMoves= new ArrayList<Integer>();
+        Position botNextPosition;
+        if(arena.upClearPosition(botCurrentPosition)&& arena.getBot().getPreviousMovement()!=Gui.ACTION.DOWN){
+            possibleMoves.add(1);
+        }
+        if (arena.downClearPosition(botCurrentPosition)&& arena.getBot().getPreviousMovement()!=Gui.ACTION.UP){
+            possibleMoves.add(2);
+        }
+        if (arena.leftClearPosition(botCurrentPosition)&& arena.getBot().getPreviousMovement()!=Gui.ACTION.RIGHT){
+            possibleMoves.add(3);
+        }
+        if (arena.rightClearPosition(botCurrentPosition)&& arena.getBot().getPreviousMovement()!=Gui.ACTION.LEFT){
+            possibleMoves.add(4);
+        }
+        if (possibleMoves.isEmpty()){
+            botNextPosition= botController.botMovement();
+        }
+        else {
+            int rand = new Random().nextInt(possibleMoves.size());
+            int move = possibleMoves.get(rand);
+            possibleMoves.clear();
+            botNextPosition = botMove(move, botCurrentPosition);
+        }
         if (!botController.getCar().collisionWithOwnTrail() && !arena.wallCollision() && !arena.botCollisionWithCarTrail()) {
             botController.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FFFF00"));
             if(!arena.botEnterPortalThroughStart(arena.getBot().getPreviousMovement()) && !arena.botEnterPortalThroughExit(arena.getBot().getPreviousMovement())){
@@ -66,6 +90,27 @@ public class ArenaController extends StateController implements KeyboardListener
             if(!arena.enterPortalThroughExit(action) && !arena.enterPortalThroughStart(action))
                 carController.moveCar(nextPosition);
         }
+    }
+    public Position botMove(int move, Position initialPosition) {
+        Position finalPosition;
+        if ( move ==1){
+            finalPosition= initialPosition.moveUp();
+            arena.getBot().setPreviousMovement(Gui.ACTION.UP);
+        }
+        else if (move==2){
+            finalPosition= initialPosition.moveDown();
+            arena.getBot().setPreviousMovement(Gui.ACTION.DOWN);
+        }
+        else if (move==3){
+            finalPosition= initialPosition.moveLeft();
+            arena.getBot().setPreviousMovement(Gui.ACTION.LEFT);
+        }
+        else if (move==4){
+            finalPosition=initialPosition.moveRight();
+            arena.getBot().setPreviousMovement(Gui.ACTION.RIGHT);
+        }
+        else finalPosition=initialPosition.moveUp();
+        return finalPosition;
     }
 
     @Override
