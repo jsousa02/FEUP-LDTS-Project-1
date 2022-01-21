@@ -14,7 +14,7 @@ public class GameOverState extends GameState {
 
     public GameOverState(Game game, Gui gui) {
         super(game, Arrays.asList(new Button(new Position(gui.getWidth() / 2, 30), "#000000", "#FFFFFF", "Try again", 15, 3),
-                new Button(new Position(gui.getWidth() / 2, 40), "#000000", "#FFFFFF", "Back", 15, 3)));
+                new Button(new Position(gui.getWidth() / 2, 40), "#000000", "#FFFFFF", "Back", 15, 3)), true);
         gameOverController = new GameOverController(this, gui);
     }
 
