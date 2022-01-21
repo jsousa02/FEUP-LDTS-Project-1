@@ -18,7 +18,7 @@ public class MenuViewer extends StateViewer {
         gui.clear();
         drawBackground("#000000");
         drawTitle("#000000", "#FF0000");
-        drawButtons(buttons, new ButtonViewer());
+        drawElements(buttons, new ButtonViewer());
         gui.refresh();
     }
 }

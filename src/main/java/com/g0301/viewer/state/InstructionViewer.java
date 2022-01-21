@@ -17,7 +17,7 @@ public class InstructionViewer extends StateViewer {
     public void draw() throws IOException {
         gui.clear();
         gui.drawInstructions();
-        drawButtons(buttons, new ButtonViewer());
+        drawElements(buttons, new ButtonViewer());
         gui.refresh();
     }
 }

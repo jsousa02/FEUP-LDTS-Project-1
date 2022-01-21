@@ -66,13 +66,13 @@ public class LanternaGUI implements Gui {
      * @return The applied font configuration
      */
     public AWTTerminalFontConfiguration loadTronFont() throws IOException, FontFormatException {
-        File tronFontFile = new File("src/main/resources/fonts/TRON2.ttf");
+        File tronFontFile = new File("src/main/resources/fonts/square.ttf");
         Font font = Font.createFont(Font.TRUETYPE_FONT, tronFontFile);
 
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
         ge.registerFont(font);
 
-        Font loadedFont = font.deriveFont(Font.PLAIN, 11);
+        Font loadedFont = font.deriveFont(Font.PLAIN, 10);
         return AWTTerminalFontConfiguration.newInstance(loadedFont);
     }
 

@@ -1,10 +1,7 @@
 package com.g0301.controller.state;
 
 import com.g0301.gui.Gui;
-import com.g0301.state.GameState;
-import com.g0301.state.KeyboardListener;
-import com.g0301.state.MenuState;
-import com.g0301.state.PlayingState;
+import com.g0301.state.*;
 import com.g0301.viewer.state.GameWinViewer;
 
 import java.io.IOException;
@@ -28,7 +25,7 @@ public class GameWinController extends StateController implements KeyboardListen
     @Override
     public void getNextState() {
         if(gameState.getSelectedIndex() == 0)
-            nextState = new PlayingState(gameState.getGame(), gui);
+            nextState = new TwoPlayerState(gameState.getGame(), gui);
         else if (gameState.getSelectedIndex() == 1)
             nextState = new MenuState(gameState.getGame(), gui);
     }

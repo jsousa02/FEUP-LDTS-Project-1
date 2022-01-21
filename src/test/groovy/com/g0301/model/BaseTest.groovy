@@ -24,7 +24,7 @@ class BaseTest extends Specification {
             Wall wall_4 = new Wall(new Position(0, 0), "#FFFFFF")
 
         when: "the arena is created"
-        Arena arena = new Arena(3, 3)
+        TwoPlayerArena arena = new TwoPlayerArena(3, 3)
 
         then: "the walls should be created in the arena"
             arena.getWalls().contains(wall_1)

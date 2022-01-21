@@ -14,7 +14,11 @@ public interface Gui {
         RIGHT,
         QUIT,
         ENTER,
-        PAUSE
+        PAUSE,
+        P2UP,
+        P2DOWN,
+        P2LEFT,
+        P2RIGHT
     }
 
     TextGraphics createTextGraphics();

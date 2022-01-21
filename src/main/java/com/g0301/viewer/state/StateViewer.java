@@ -2,10 +2,12 @@ package com.g0301.viewer.state;
 
 import com.g0301.gui.Gui;
 import com.g0301.model.Button;
+import com.g0301.model.Element;
 import com.g0301.viewer.ElementViewer;
 import com.googlecode.lanterna.graphics.TextGraphics;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 
 public abstract class StateViewer {
@@ -33,5 +35,25 @@ public abstract class StateViewer {
 
     protected void drawTitle(String color, String textColor) {
         gui.drawLogo(color, textColor);
+    }
+
+    /**
+     * @brief Handles multiple element drawing
+     * @param elements The element to be drawn
+     * @param viewer The viewer responsible for drawing the elements
+     */
+    protected <T extends Element> void drawElements(Collection<T> elements, ElementViewer<T> viewer) {
+        for (T element : elements) {
+            drawElement(element, viewer);
+        }
+    }
+
+    /**
+     * @breif Handles single element drawing
+     * @param element The element to be drawn
+     * @param viewer The viewer responsible for drawing the element
+     */
+    protected <T extends Element> void drawElement(T element, ElementViewer<T> viewer) {
+        viewer.drawElement(element, gui);
     }
 }

@@ -4,102 +4,47 @@ import com.g0301.gui.Gui;
 import com.g0301.model.Car;
 import com.g0301.model.Position;
 
-import java.util.Random;
-
-public class CarController {
-    private Car car;
+public abstract class CarController {
+    private Car bot;
 
     public CarController(Car car) {
-        this.car = car;
+        this.bot = car;
     }
 
     public Car getCar() {
-        return car;
+        return bot;
     }
 
     /**
      * @return The position above the current one
      */
-    public Position moveUp() {
-        car.setPreviousMovement(Gui.ACTION.UP);
-        return car.getPosition().moveUp();
-    }
+    public abstract Position moveUp();
 
     /**
      * @return The position below the current  one
      */
-    public Position moveDown() {
-        car.setPreviousMovement(Gui.ACTION.DOWN);
-        return car.getPosition().moveDown();
-    }
+    public abstract Position moveDown();
 
     /**
      * @return The position to the left of the current one
      */
-    public Position moveLeft() {
-        car.setPreviousMovement(Gui.ACTION.LEFT);
-        return car.getPosition().moveLeft();
-    }
+    public abstract Position moveLeft();
 
     /**
      * @return The position to the right of the current one
      */
-    public Position moveRight() {
-        car.setPreviousMovement(Gui.ACTION.RIGHT);
-        return car.getPosition().moveRight();
-    }
+    public abstract Position moveRight();
 
     /**
      * @param action The movement made by the player
      * @return The position corresponding to the movement
      * @briefs Handles the movements chosen by the player
      */
-    public Position makeMovement(Gui.ACTION action) {
-        if (action == Gui.ACTION.UP){
-            if (car.getPreviousMovement()!=Gui.ACTION.DOWN){
-                return moveUp();
-            }
-            else return makeMovement(car.getPreviousMovement());
-        }
-        if (action == Gui.ACTION.LEFT) {
-            if (car.getPreviousMovement() != Gui.ACTION.RIGHT) {
-                return moveLeft();
-            } else return makeMovement(car.getPreviousMovement());
-        }
-        if (action == Gui.ACTION.DOWN) {
-            if (car.getPreviousMovement() != Gui.ACTION.UP) {
-                return moveDown();
-            } else return makeMovement(car.getPreviousMovement());
-        }
-        if (action == Gui.ACTION.RIGHT) {
-            if (car.getPreviousMovement() != Gui.ACTION.LEFT) {
-                return moveRight();
-            } else return makeMovement(car.getPreviousMovement());
-        }
-        return null;
-    }
+    public abstract Position makeMovement(Gui.ACTION action);
 
     /**
      * @param position The position to which the car is moved
      * @brief Moves the car to a new position
      */
-    public void moveCar(Position position) {
-        car.setPosition(position);
-    }
-
-    public Position botMovement() {
-        int rand = new Random().nextInt(4);
-        if (rand == 0) {
-            Gui.ACTION action = Gui.ACTION.LEFT;
-           return makeMovement(action);
-        } else if (rand == 1) {
-            Gui.ACTION action = Gui.ACTION.RIGHT;
-            return makeMovement(action);
-        } else if (rand == 2) {
-            Gui.ACTION action = Gui.ACTION.UP;
-            return makeMovement(action);
-        }
-            Gui.ACTION action = Gui.ACTION.DOWN;
-            return makeMovement(action);
-        }
-    }
+    public abstract void moveCar(Position position);
+}
