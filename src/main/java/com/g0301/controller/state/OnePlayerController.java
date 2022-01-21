@@ -44,10 +44,13 @@ public class OnePlayerController extends StateController implements KeyboardList
     @Override
     public void getNextState() {
         if(!player1.getCar().isAlive()) {
+            boolean classicGame = true;
             nextState = new GameOverState(gameState.getGame(), gui);
             gameState.changeState(nextState);
-        } else if (!bot.getCar().isAlive()) {
-            nextState = new GameWinState(gameState.getGame(), gui);
+        }
+        else if (!bot.getCar().isAlive()) {
+            boolean classicGame= true;
+            nextState = new GameWinState(gameState.getGame(), gui, classicGame);
             gameState.changeState(nextState);
         }
     }

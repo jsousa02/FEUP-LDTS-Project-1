@@ -8,12 +8,14 @@ import java.util.List;
 
 public abstract class GameState {
     protected final Game game;
+    private boolean classicGame;
     protected List<Button> buttons;
     private int selectedIndex = 0;
 
-    public GameState(Game game, List<Button> buttons) {
+    public GameState(Game game, List<Button> buttons, boolean classicGame) {
         this.game = game;
         this.buttons = buttons;
+        this.classicGame=classicGame;
     }
 
     public abstract void start();
@@ -22,6 +24,9 @@ public abstract class GameState {
 
     public void changeState(GameState gameState) {
         game.setGameState(gameState);
+    }
+    public boolean get_classicGame(){
+        return classicGame;
     }
 
     public Game getGame() {
