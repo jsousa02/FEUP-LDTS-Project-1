@@ -12,7 +12,6 @@ public class SurvivalArena extends Arena {
         createPortals();
     }
 
-    @Override
     public boolean wallCollision() {
         for(Wall wall: walls) {
             if(wall.getPosition().equals(player1.getPosition())) {
