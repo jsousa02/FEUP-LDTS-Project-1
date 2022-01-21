@@ -1,11 +1,11 @@
 package com.g0301.viewer;
 
-import com.g0301.gui.Gui;
-import com.g0301.model.Element;
+import com.g0301.gui.Gui;;
+import com.g0301.model.Portal;
 
-public class PortalViewer implements ElementViewer {
+public class PortalViewer implements ElementViewer<Portal> {
     @Override
-    public void drawElement(Element element, Gui gui) {
+    public void drawElement(Portal element, Gui gui) {
         gui.drawPortal(element.getPosition(), element.getSecondPosition(), element.getColor());
     }
 }

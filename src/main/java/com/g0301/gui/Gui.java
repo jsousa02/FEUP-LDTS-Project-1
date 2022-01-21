@@ -18,7 +18,8 @@ public interface Gui {
         P2UP,
         P2DOWN,
         P2LEFT,
-        P2RIGHT
+        P2RIGHT,
+        P1BOOST
     }
 
     TextGraphics createTextGraphics();
@@ -54,4 +55,6 @@ public interface Gui {
     void drawPortal(Position startPosition, Position endPosition, String color);
 
     void drawInstructions();
+
+    void drawBoostBar(Position position, String color);
 }

@@ -1,13 +1,16 @@
 package com.g0301.controller;
 
 import com.g0301.gui.Gui;
-import com.g0301.model.Car;
+import com.g0301.model.Player;
 import com.g0301.model.Position;
 
 public class Player1Controller extends CarController {
 
-    public Player1Controller(Car car) {
+    private int speed;
+
+    public Player1Controller(Player car) {
         super(car);
+        speed = 1;
     }
 
     /**
@@ -15,7 +18,7 @@ public class Player1Controller extends CarController {
      */
     public Position moveUp() {
         getCar().setPreviousMovement(Gui.ACTION.UP);
-        return getCar().getPosition().moveUp();
+        return getCar().getPosition().moveUp(getCar().getSpeed());
     }
 
     /**
@@ -23,7 +26,7 @@ public class Player1Controller extends CarController {
      */
     public Position moveDown() {
         getCar().setPreviousMovement(Gui.ACTION.DOWN);
-        return getCar().getPosition().moveDown();
+        return getCar().getPosition().moveDown(getCar().getSpeed());
     }
 
     /**
@@ -31,7 +34,7 @@ public class Player1Controller extends CarController {
      */
     public Position moveLeft() {
         getCar().setPreviousMovement(Gui.ACTION.LEFT);
-        return getCar().getPosition().moveLeft();
+        return getCar().getPosition().moveLeft(getCar().getSpeed());
     }
 
     /**
@@ -39,7 +42,7 @@ public class Player1Controller extends CarController {
      */
     public Position moveRight() {
         getCar().setPreviousMovement(Gui.ACTION.RIGHT);
-        return getCar().getPosition().moveRight();
+        return getCar().getPosition().moveRight(getCar().getSpeed());
     }
 
     /**

@@ -9,10 +9,12 @@ public abstract class Car extends Element {
     private final Set<Trail> trailList = new HashSet<>();
     private Gui.ACTION previousMovement;
     private boolean isAlive = true;
+    private int speed;
 
     public Car(Position position, String color) {
         super(position, color);
         previousMovement = Gui.ACTION.RIGHT;
+        speed = 1;
     }
 
     /**
@@ -54,7 +56,16 @@ public abstract class Car extends Element {
     public void setDead() {
         isAlive = false;
     }
-    public void setAlive(){
-        isAlive= true;
+
+    public void setAlive() {
+        isAlive = true;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    public void changeSpeed(int speed) {
+        this.speed = speed;
     }
 }

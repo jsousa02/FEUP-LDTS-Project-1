@@ -289,5 +289,16 @@ public class LanternaGUI implements Gui {
         drawText(graphics, new Position(10, 25), "#FFFFFF", "You can't crash against the walls or against the other player's trails");
         drawText(graphics, new Position(10, 28), "#FFFFFF", "You can use the portals to teleport");
         drawText(graphics, new Position(10, 31), "#FFFFFF", "You can't enter the same portal twice");
+        //drawText(graphics, new Position(10, 34), "#FFFFFF", "");
+
+    }
+
+    @Override
+    public void drawBoostBar(Position position, String color) {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+        drawText(graphics, new Position(3, 58), "#FFFFFF", "Boost");
+        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        drawElement(graphics, position, color, "*");
     }
 }

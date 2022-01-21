@@ -12,22 +12,22 @@ public class Player2Controller extends CarController {
 
     public Position moveUp() {
         getCar().setPreviousMovement(Gui.ACTION.P2UP);
-        return getCar().getPosition().moveUp();
+        return getCar().getPosition().moveUp(1);
     }
 
     public Position moveDown() {
         getCar().setPreviousMovement(Gui.ACTION.P2DOWN);
-        return getCar().getPosition().moveDown();
+        return getCar().getPosition().moveDown(1);
     }
 
     public Position moveLeft() {
         getCar().setPreviousMovement(Gui.ACTION.P2LEFT);
-        return getCar().getPosition().moveLeft();
+        return getCar().getPosition().moveLeft(1);
     }
 
     public Position moveRight() {
         getCar().setPreviousMovement(Gui.ACTION.P2RIGHT);
-        return getCar().getPosition().moveRight();
+        return getCar().getPosition().moveRight(1);
     }
 
     public Position makeMovement(Gui.ACTION action) {

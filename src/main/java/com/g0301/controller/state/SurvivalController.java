@@ -106,22 +106,22 @@ public class SurvivalController extends StateController implements KeyboardListe
     public Position botMove(int move, Position initialPosition) {
         Position finalPosition;
         if ( move ==1){
-            finalPosition= initialPosition.moveUp();
+            finalPosition= initialPosition.moveUp(1);
             SurvivalArena.getBot().setPreviousMovement(Gui.ACTION.UP);
         }
         else if (move==2){
-            finalPosition= initialPosition.moveDown();
+            finalPosition= initialPosition.moveDown(1);
             SurvivalArena.getBot().setPreviousMovement(Gui.ACTION.DOWN);
         }
         else if (move==3){
-            finalPosition= initialPosition.moveLeft();
+            finalPosition= initialPosition.moveLeft(1);
             SurvivalArena.getBot().setPreviousMovement(Gui.ACTION.LEFT);
         }
         else if (move==4){
-            finalPosition=initialPosition.moveRight();
+            finalPosition=initialPosition.moveRight(1);
             SurvivalArena.getBot().setPreviousMovement(Gui.ACTION.RIGHT);
         }
-        else finalPosition=initialPosition.moveUp();
+        else finalPosition=initialPosition.moveUp(1);
         return finalPosition;
     }
 

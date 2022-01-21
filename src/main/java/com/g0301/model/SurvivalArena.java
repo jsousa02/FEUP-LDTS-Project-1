@@ -59,7 +59,7 @@ public class SurvivalArena extends Arena {
             return true;
         }
         for (Trail trail: bot.getTrailList()){
-            if (position.moveUp().equals(trail.getPosition())){
+            if (position.moveUp(1).equals(trail.getPosition())){
                 return false;
             }
         }
@@ -67,7 +67,7 @@ public class SurvivalArena extends Arena {
     }
     public boolean downClearPosition(Position position){
         for (Trail trail: bot.getTrailList()){
-            if (position.moveDown().equals(trail.getPosition())){
+            if (position.moveDown(1).equals(trail.getPosition())){
                 return false;
             }
         }
@@ -75,7 +75,7 @@ public class SurvivalArena extends Arena {
     }
     public boolean leftClearPosition(Position position){
         for (Trail trail: bot.getTrailList()){
-            if (position.moveLeft().equals(trail.getPosition())){
+            if (position.moveLeft(1).equals(trail.getPosition())){
                 return false;
             }
         }
@@ -83,7 +83,7 @@ public class SurvivalArena extends Arena {
     }
     public boolean rightClearPosition(Position position){
         for (Trail trail: bot.getTrailList()){
-            if (position.moveRight().equals(trail.getPosition())){
+            if (position.moveRight(1).equals(trail.getPosition())){
                 return false;
             }
         }

@@ -3,10 +3,7 @@ package com.g0301.viewer.state;
 import com.g0301.gui.Gui;
 import com.g0301.model.Button;
 import com.g0301.model.OnePlayerArena;
-import com.g0301.viewer.CarViewer;
-import com.g0301.viewer.PortalViewer;
-import com.g0301.viewer.TrailViewer;
-import com.g0301.viewer.WallViewer;
+import com.g0301.viewer.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,6 +28,7 @@ public class OnePlayerViewer extends StateViewer {
         drawElements(onePlayerArena.getPlayer1().getTrailList(), new TrailViewer());
         drawElements(onePlayerArena.getBot().getTrailList(), new TrailViewer());
         drawElements(onePlayerArena.getPortals(), new PortalViewer());
+        drawElements(onePlayerArena.getBoostBar().getBoostBarTrails(), new BoostBarViewer());
 
         gui.refresh();
     }

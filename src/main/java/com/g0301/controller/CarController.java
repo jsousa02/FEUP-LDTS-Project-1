@@ -5,23 +5,23 @@ import com.g0301.model.Car;
 import com.g0301.model.Position;
 
 public abstract class CarController {
-    private Car bot;
+    private Car car;
 
     public CarController(Car car) {
-        this.bot = car;
+        this.car = car;
     }
 
     public Car getCar() {
-        return bot;
+        return car;
     }
+
     public void setCar(Car car){
-        this.bot=car;
+        this.car = car;
     }
     /**
      * @return The position above the current one
      */
     public abstract Position moveUp();
-
     /**
      * @return The position below the current  one
      */
@@ -36,7 +36,6 @@ public abstract class CarController {
      * @return The position to the right of the current one
      */
     public abstract Position moveRight();
-
     /**
      * @param action The movement made by the player
      * @return The position corresponding to the movement

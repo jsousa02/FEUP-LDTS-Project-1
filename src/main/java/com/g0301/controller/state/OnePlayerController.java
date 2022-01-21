@@ -59,10 +59,19 @@ public class OnePlayerController extends StateController implements KeyboardList
         Position currentPosition = player1.getCar().getPosition();
         Position nextPosition = player1.makeMovement(action);
 
-        if(!player1.getCar().collisionWithOwnTrail() && !onePlayerArena.wallCollision() && !onePlayerArena.playerCollisionWithBotTrail()) {
+        if(!player1.getCar().collisionWithOwnTrail() && !onePlayerArena.wallCollision() && !onePlayerArena.playerCollisionWithBotTrail() && !onePlayerArena.outOfBounds()) {
             player1.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
             if(!onePlayerArena.enterPortalThroughStart(action, player1) && !onePlayerArena.enterPortalThroughExit(action, player1)) {
                 player1.moveCar(nextPosition);
+
+                if(onePlayerArena.getBoostBar().isActive()) {
+                    player1.getCar().changeSpeed(2);
+                    player1.moveCar(nextPosition);
+                }
+                else {
+                    player1.getCar().changeSpeed(1);
+                    player1.moveCar(nextPosition);
+                }
             }
         }
     }
@@ -104,28 +113,46 @@ public class OnePlayerController extends StateController implements KeyboardList
     public Position botMove(int move, Position initialPosition) {
         Position finalPosition;
         if ( move ==1){
-            finalPosition= initialPosition.moveUp();
+            finalPosition= initialPosition.moveUp(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.UP);
         }
         else if (move==2){
-            finalPosition= initialPosition.moveDown();
+            finalPosition= initialPosition.moveDown(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.DOWN);
         }
         else if (move==3){
-            finalPosition= initialPosition.moveLeft();
+            finalPosition= initialPosition.moveLeft(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.LEFT);
         }
         else if (move==4){
-            finalPosition=initialPosition.moveRight();
+            finalPosition=initialPosition.moveRight(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.RIGHT);
         }
-        else finalPosition=initialPosition.moveUp();
+        else finalPosition=initialPosition.moveUp(1);
         return finalPosition;
     }
 
     @Override
     public void keyPressed(Gui.ACTION action) {
-        if(action == Gui.ACTION.UP || action == Gui.ACTION.RIGHT || action == Gui.ACTION.LEFT || action == Gui.ACTION.DOWN)
+        if(action == Gui.ACTION.P1BOOST) {
+            onePlayerArena.getBoostBar().setHoldTime(onePlayerArena.getBoostBar().getHoldTime() + 1);
+            if(onePlayerArena.getBoostBar().isEmpty())
+                onePlayerArena.getBoostBar().deactivate();
+            else
+                onePlayerArena.getBoostBar().activate();
+
+            if(onePlayerArena.getBoostBar().getHoldTime() > 10) {
+                onePlayerArena.getBoostBar().decrease();
+            }
+        }
+        else {
+            onePlayerArena.getBoostBar().setReleaseTime(onePlayerArena.getBoostBar().getReleaseTime() + 1);
+            onePlayerArena.getBoostBar().deactivate();
+
+            if(onePlayerArena.getBoostBar().getReleaseTime() > 4) {
+                onePlayerArena.getBoostBar().increase();
+            }
             player1Movement = action;
+        }
     }
 }
