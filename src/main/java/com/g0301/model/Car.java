@@ -51,4 +51,7 @@ public abstract class Car extends Element {
     public void setDead() {
         isAlive = false;
     }
+    public void setAlive(){
+        isAlive= true;
+    }
 }
