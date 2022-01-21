@@ -3,8 +3,7 @@ package com.g0301.model;
 import com.g0301.controller.CarController;
 import com.g0301.gui.Gui;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.+;
 
 public abstract class Arena {
 
@@ -54,6 +53,41 @@ public abstract class Arena {
     public int getHeight() {
         return height;
     }
+
+    /**
+     * @brief Create the walls
+     */
+    private void createWalls() {
+        for (int i = 0; i < width; i++) {
+            walls.add(new Wall(new Position(i, 0), "#F34256"));
+            walls.add(new Wall(new Position(i, height - 1), "#F34256"));
+            walls.add(new Wall(new Position(0, i), "#F34256"));
+            walls.add(new Wall(new Position(width - 1, i), "#F34256"));
+        }
+    }
+
+    /**
+     * @return Inspects if the player crash (true) into a wall and if he does so dies
+     */
+    public boolean wallCollision() {
+        for (Wall wall : walls) {
+            if (wall.getPosition().equals(car.getPosition())) {
+                car.setDead();
+                return true;
+            }
+            if (wall.getPosition().equals(bot.getPosition())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void createPortals() {
+        portals.add(new Portal(new Position(50, 30), new Position(10, 30), "#FF00FF"));
+        portals.add(new Portal(new Position(35, 55), new Position(40, 10), "#FF0000"));
+        portals.add(new Portal(new Position(10, 55), new Position(50, 50), "#00FFFF"));
+    }
+
 
     public List<Portal> getPortals() {
         return portals;
