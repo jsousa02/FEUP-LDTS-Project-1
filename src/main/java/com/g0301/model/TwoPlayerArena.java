@@ -30,7 +30,6 @@ public class TwoPlayerArena extends Arena {
     /**
      * @return Inspects if the player crash (true) into a wall and if he does so dies
      */
-    @Override
     public boolean wallCollision() {
         for (Wall wall : walls) {
             if (wall.getPosition().equals(player1.getPosition())) {
