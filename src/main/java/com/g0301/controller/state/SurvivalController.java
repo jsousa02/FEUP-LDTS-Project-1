@@ -41,17 +41,19 @@ public class SurvivalController extends StateController implements KeyboardListe
         SurvivalViewer.draw();
         action();
         movePlayer1(player1Movement);
-        if (!bot.getCar().isAlive()){
-            SurvivalArena.botDied();
-        }
+
     }
 
     @Override
     public void getNextState() {
         if(!player1.getCar().isAlive()) {
-            boolean classicGame = true;
-            nextState = new GameOverState(gameState.getGame(), gui);
+            boolean classicGame = false;
+            boolean survivalGame= true;
+            nextState = new GameOverState(gameState.getGame(), gui, classicGame,survivalGame);
             gameState.changeState(nextState);
+        }
+        else if(!bot.getCar().isAlive()){
+            bot.setCar(SurvivalArena.botDied());
         }
     }
 

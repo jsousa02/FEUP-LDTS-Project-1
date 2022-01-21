@@ -13,7 +13,7 @@ public class SurvivalState extends GameState {
     private SurvivalController survivalController;
 
     public SurvivalState(Game game, Gui gui) {
-        super(game, Arrays.asList(),false);
+        super(game, Arrays.asList(),false,false);
         survivalController = new SurvivalController(this, gui);
     }
 

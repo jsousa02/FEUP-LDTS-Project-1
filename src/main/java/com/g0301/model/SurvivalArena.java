@@ -86,11 +86,10 @@ public class SurvivalArena extends Arena {
         }
         return true;
     }
-    public void botDied(){
+    public Car botDied(){
         int rand = new Random().nextInt(89);
         int rand1 = new Random().nextInt(59);
-        bot= new Bot(new Position(rand,rand1),"#00FF00");
-        bot.setAlive();
+        return bot= new Bot(new Position(rand,rand1),"#00FF00");
     }
 }
 

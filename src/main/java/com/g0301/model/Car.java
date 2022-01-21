@@ -27,6 +27,9 @@ public abstract class Car extends Element {
      * @return True if there is a collision, false otherwise
      */
     public boolean collisionWithOwnTrail() {
+        if (trailList.isEmpty()){
+            return false;
+        }
         for (Trail trail: trailList) {
             if (getPosition().equals(trail.getPosition())) {
                 isAlive = false;

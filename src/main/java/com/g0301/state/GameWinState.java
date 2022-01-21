@@ -12,9 +12,9 @@ import java.util.Arrays;
 public class GameWinState extends GameState {
 
     private GameWinController gameWinController;
-    public GameWinState(Game game, Gui gui,boolean classicGame) {
+    public GameWinState(Game game, Gui gui,boolean classicGame, boolean survivalGame) {
         super(game, Arrays.asList(new Button(new Position(gui.getWidth() / 2, 30), "#000000", "#FFFFFF", "Try again", 15, 3),
-                new Button(new Position(gui.getWidth() / 2, 40), "#000000", "#FFFFFF", "Back", 15, 3)), classicGame);
+                new Button(new Position(gui.getWidth() / 2, 40), "#000000", "#FFFFFF", "Back", 15, 3)), classicGame,survivalGame);
         gameWinController = new GameWinController(this, gui);
     }
     @Override
