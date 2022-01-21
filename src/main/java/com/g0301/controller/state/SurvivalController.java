@@ -49,7 +49,7 @@ public class SurvivalController extends StateController implements KeyboardListe
         if(!player1.getCar().isAlive()) {
             boolean classicGame = false;
             boolean survivalGame= true;
-            nextState = new GameOverState(gameState.getGame(), gui, classicGame,survivalGame);
+            nextState = new GameOverState(gameState.getGame(), gui, classicGame,survivalGame    );
             gameState.changeState(nextState);
         }
         else if(!bot.getCar().isAlive()){

@@ -18,6 +18,10 @@ public class SurvivalArena extends Arena {
                 player1.setDead();
                 return true;
             }
+            if(wall.getPosition().equals(bot.getPosition())) {
+                bot.setDead();
+                return true;
+            }
         }
         return false;
     }
