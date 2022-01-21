@@ -3,15 +3,12 @@ package com.g0301.gui;
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
+import com.googlecode.lanterna.terminal.*;
+import com.googlecode.lanterna.terminal.swing.*;
 import com.g0301.model.Position;
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -34,6 +31,9 @@ public class LanternaGUI implements Gui {
         return os;
     }
 
+    public boolean isWindows(){
+        return getOperatingSystem().startsWith("Windows");
+    }
 
     /**
      * @brief Creates the screen
@@ -72,7 +72,7 @@ public class LanternaGUI implements Gui {
      * @return The applied font configuration
      */
     public AWTTerminalFontConfiguration loadTronFont() throws IOException, FontFormatException {
-        if(getOperatingSystem().equals("Windows 10")){
+        if(isWindows()){
             File tronFontFile = new File("src/main/resources/fonts/Square-Regular-Windows.ttf");
             Font font = Font.createFont(Font.TRUETYPE_FONT, tronFontFile);
 
