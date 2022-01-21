@@ -12,9 +12,9 @@ import java.util.Arrays;
 public class GameOverState extends GameState {
     private GameOverController gameOverController;
 
-    public GameOverState(Game game, Gui gui) {
+    public GameOverState(Game game, Gui gui, boolean classicGame, boolean survivalGame) {
         super(game, Arrays.asList(new Button(new Position(gui.getWidth() / 2, 30), "#000000", "#FFFFFF", "Try again", 15, 3),
-                new Button(new Position(gui.getWidth() / 2, 40), "#000000", "#FFFFFF", "Back", 15, 3)), true);
+                new Button(new Position(gui.getWidth() / 2, 40), "#000000", "#FFFFFF", "Back", 15, 3)), classicGame,survivalGame);
         gameOverController = new GameOverController(this, gui);
     }
 

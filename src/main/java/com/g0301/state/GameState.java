@@ -9,13 +9,15 @@ import java.util.List;
 public abstract class GameState {
     protected final Game game;
     private boolean classicGame;
+    private boolean survivalGame;
     protected List<Button> buttons;
     private int selectedIndex = 0;
 
-    public GameState(Game game, List<Button> buttons, boolean classicGame) {
+    public GameState(Game game, List<Button> buttons, boolean classicGame, boolean survivalGame) {
         this.game = game;
         this.buttons = buttons;
         this.classicGame=classicGame;
+        this.survivalGame=survivalGame;
     }
 
     public abstract void start();
@@ -27,6 +29,9 @@ public abstract class GameState {
     }
     public boolean get_classicGame(){
         return classicGame;
+    }
+    public boolean get_survivalGame(){
+        return survivalGame;
     }
 
     public Game getGame() {

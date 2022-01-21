@@ -14,7 +14,9 @@ public abstract class CarController {
     public Car getCar() {
         return bot;
     }
-
+    public void setCar(Car car){
+        this.bot=car;
+    }
     /**
      * @return The position above the current one
      */

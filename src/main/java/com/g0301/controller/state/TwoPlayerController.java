@@ -42,14 +42,14 @@ public class TwoPlayerController extends StateController implements KeyboardList
 
     @Override
     public void getNextState() {
+        boolean classicGame=false;
+        boolean survivalGame=false;
         if(!player1.getCar().isAlive()) {
-            boolean classicGame=false;
-            nextState = new GameWinState(gameState.getGame(), gui,classicGame);
+            nextState = new GameWinState(gameState.getGame(), gui,classicGame,survivalGame);
             gameState.changeState(nextState);
         }
         else if (!player2.getCar().isAlive()) {
-            boolean classicGame=false;
-            nextState = new GameWinState(gameState.getGame(), gui,classicGame);
+            nextState = new GameWinState(gameState.getGame(), gui,classicGame,survivalGame);
             gameState.changeState(nextState);
         }
     }

@@ -134,7 +134,7 @@ public class LanternaGUI implements Gui {
      */
     @Override
     public void clear() {
-        screen.clear();
+            screen.clear();
     }
 
     /**
