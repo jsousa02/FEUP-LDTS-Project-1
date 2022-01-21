@@ -56,7 +56,7 @@ public class OnePlayerController extends StateController implements KeyboardList
         Position currentPosition = player1.getCar().getPosition();
         Position nextPosition = player1.makeMovement(action);
 
-        if(!player1.getCar().collisionWithOwnTrail() && !onePlayerArena.wallCollision()) {
+        if(!player1.getCar().collisionWithOwnTrail() && !onePlayerArena.wallCollision() && !onePlayerArena.playerCollisionWithBotTrail()) {
             player1.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
             if(!onePlayerArena.enterPortalThroughStart(action, player1) && !onePlayerArena.enterPortalThroughExit(action, player1)) {
                 player1.moveCar(nextPosition);

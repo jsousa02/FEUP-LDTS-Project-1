@@ -32,6 +32,16 @@ public class OnePlayerArena extends Arena {
         return false;
     }
 
+    public boolean playerCollisionWithBotTrail() {
+        for (Trail trail : bot.getTrailList()) {
+            if (player1.getPosition().equals(trail.getPosition())) {
+                player1.setDead();
+                return true;
+            }
+        }
+        return false;
+    }
+
     public Player getPlayer1() {
         return player1;
     }

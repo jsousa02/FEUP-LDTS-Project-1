@@ -77,15 +77,6 @@ class Viewers extends Specification {
             1 * gui.drawInstructions()
     }
 
-    def "test arena viewer"() {
-        given:
-            ArenaViewer arenaViewer = new ArenaViewer(gui, Arrays.asList(), new TwoPlayerArena(30, 30))
-        when:
-            arenaViewer.draw()
-        then:
-            1 * gui.drawBackground(gui.createTextGraphics(), "#000000")
-    }
-
     def "test game over viewer"() {
         given:
             GameOverViewer gameOverViewer = new GameOverViewer(gui, Arrays.asList(new Button(new Position(10, 10), "#FFFFFF", "#FF0000", "Button", 15, 8)))

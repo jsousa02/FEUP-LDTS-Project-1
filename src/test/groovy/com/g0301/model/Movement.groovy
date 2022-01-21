@@ -1,5 +1,7 @@
 package com.g0301.model
 
+import com.g0301.controller.Player1Controller
+import com.g0301.controller.state.OnePlayerController
 import com.g0301.gui.Gui
 
 import com.g0301.controller.CarController
@@ -10,21 +12,22 @@ class Movement extends Specification {
     
     def "car is moving when no key is being pressed in the beginning of the game"() {
         given: "an arena and the initial position of the car"
-            TwoPlayerArena arena = new TwoPlayerArena(60, 60)
-            ArenaController arenaController = new ArenaController(arena)
-            Position initialPosition = arena.getCar().getPosition()
-            Gui.ACTION previousMovement = arena.getCar().getPreviousMovement()
+            OnePlayerArena arena = new OnePlayerArena(60, 60)
+            OnePlayerController arenaController = new OnePlayerController(arena)
+            Position initialPosition = arena.getPlayer1().getPosition()
+            Gui.ACTION previousMovement = arena.getPlayer1().getPreviousMovement()
+
         when: "no key is being pressed"
             arenaController.step(previousMovement)
 
         then: "the car should be always moving to the right"
-            arena.getCar().getPosition().getY() == initialPosition.getY()
+            arena.getPlayer1().getPosition().getY() == initialPosition.getY()
     }
 
     def "car moves up"() {
         given: "a car and its initial position"
             Player car = new Player(new Position(2, 2), '#FFFFFF')
-            CarController carController = new CarController(car);
+            CarController carController = new Player1Controller(car);
             Position initialPosition = car.getPosition()
 
         when: "the car moves up"
@@ -38,7 +41,7 @@ class Movement extends Specification {
     def "car moves down"() {
         given: "a car and its initial position"
             Player car = new Player(new Position(2, 2), '#FFFFFF')
-            CarController carController = new CarController(car);
+            CarController carController = new Player1Controller(car);
             Position initialPosition = car.getPosition()
 
         when: "the car moves down"
@@ -52,7 +55,7 @@ class Movement extends Specification {
     def "car moves left"() {
         given: "a car and its initial position"
             Player car = new Player(new Position(2, 2), '#FFFFFF')
-            CarController carController = new CarController(car)
+            CarController carController = new Player1Controller(car)
             Position initialPosition = car.getPosition()
 
         when: "the car moves left"
@@ -66,7 +69,7 @@ class Movement extends Specification {
     def "car moves right"() {
         given: "a car and its initial position"
             Player car = new Player(new Position(2, 2), '#FFFFFF')
-            CarController carController = new CarController(car);
+            CarController carController = new Player1Controller(car);
             Position initialPosition = car.getPosition()
 
         when: "the car moves right"
