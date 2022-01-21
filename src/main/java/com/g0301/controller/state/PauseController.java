@@ -1,35 +1,38 @@
 package com.g0301.controller.state;
 
 import com.g0301.gui.Gui;
-import com.g0301.state.*;
-import com.g0301.viewer.state.GameWinViewer;
+import com.g0301.state.GameState;
+import com.g0301.state.KeyboardListener;
+import com.g0301.state.MenuState;
+import com.g0301.state.OnePlayerState;
+import com.g0301.viewer.state.PauseViewer;
 
 import java.io.IOException;
 
-public class GameWinController extends StateController implements KeyboardListener {
+public class PauseController extends StateController implements KeyboardListener {
 
-    private GameWinViewer gameWinViewer;
+    private PauseViewer pauseViewer;
 
-    public GameWinController(GameState gameState, Gui gui) {
+    public PauseController(GameState gameState, Gui gui) {
         super(gameState, gui);
-        gameWinViewer = new GameWinViewer(gui, gameState.getButtons());
+        pauseViewer = new PauseViewer(gui, gameState.getButtons());
     }
 
     @Override
     public void step() throws IOException {
         gameState.getActiveButton().highlight("#FF0000");
         gameState.lowlightButtons();
-        gameWinViewer.draw();
+        pauseViewer.draw();
     }
 
     @Override
     public void getNextState() {
-        if(gameState.getSelectedIndex() == 0)
+        if(gameState.getSelectedIndex() == 0) {
             nextState = new OnePlayerState(gameState.getGame(), gui);
-        else if (gameState.getSelectedIndex() == 1)
+        }
+        else
             nextState = new MenuState(gameState.getGame(), gui);
     }
-
 
     @Override
     public void keyPressed(Gui.ACTION action) {
