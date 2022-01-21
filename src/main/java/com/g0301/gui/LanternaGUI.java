@@ -72,9 +72,11 @@ public class LanternaGUI implements Gui {
      * @return The applied font configuration
      */
     public AWTTerminalFontConfiguration loadTronFont() throws IOException, FontFormatException {
+
         if(isWindows()){
             File tronFontFile = new File("src/main/resources/fonts/Square-Regular-Windows.ttf");
             Font font = Font.createFont(Font.TRUETYPE_FONT, tronFontFile);
+
 
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             ge.registerFont(font);
@@ -91,8 +93,8 @@ public class LanternaGUI implements Gui {
             Font loadedFont = font.deriveFont(Font.PLAIN, 11);
             return AWTTerminalFontConfiguration.newInstance(loadedFont);
         }
-
     }
+  
 
     /**
      * @brief Creates the text graphics

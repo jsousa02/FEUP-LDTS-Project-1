@@ -17,7 +17,7 @@ public class GameModeViewer extends StateViewer {
     public void draw() throws IOException {
         gui.clear();
         drawTitle("#000000", "#FF0000");
-        drawButtons(buttons, new ButtonViewer());
+        drawElements(buttons, new ButtonViewer());
         gui.refresh();
     }
 }

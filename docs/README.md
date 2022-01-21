@@ -15,10 +15,10 @@ We implemented the base game for this delivery, so these are the functionalities
 
 We have these features to implement in mind:
 
-- Portals, where a player can teletransport to another location of the arena.
+- Portals, where a player can teletransport to another location of the twoPlayerArena.
 - Experience system, meaning that you earn experience points by playing that can be used to unlock new and better vehicles and different cenarios.
-- Powerups that can be picked up in the arena, providing extra habilities to the player that picks them.
-- Different game modes, for instance, single-player classic, 1v1 with 2 players, survival, where different bots will be spawning and quickgame, where the walls of the arena will be constantly closing in.
+- Powerups that can be picked up in the twoPlayerArena, providing extra habilities to the player that picks them.
+- Different game modes, for instance, single-player classic, 1v1 with 2 players, survival, where different bots will be spawning and quickgame, where the walls of the twoPlayerArena will be constantly closing in.
 - Boost bar.
 - Save game option.
 - The trail can be destroyed by bullets fired by the players.

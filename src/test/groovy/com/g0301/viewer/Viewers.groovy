@@ -1,20 +1,17 @@
 package com.g0301.viewer
 
 import com.g0301.gui.LanternaGUI
-import com.g0301.model.Arena
 import com.g0301.model.Button
 import com.g0301.model.Car
 import com.g0301.model.Player
 import com.g0301.model.Portal
 import com.g0301.model.Position
 import com.g0301.model.Trail
+import com.g0301.model.TwoPlayerArena
 import com.g0301.model.Wall
-import com.g0301.state.MenuState
 import com.g0301.viewer.state.GameOverViewer
 import com.g0301.viewer.state.GameWinViewer
 import com.g0301.viewer.state.InstructionViewer
-import com.g0301.viewer.state.MenuViewer
-import com.g0301.viewer.state.StateViewer
 import spock.lang.Specification
 
 class Viewers extends Specification {
@@ -78,15 +75,6 @@ class Viewers extends Specification {
             instructionViewer.draw()
         then:
             1 * gui.drawInstructions()
-    }
-
-    def "test arena viewer"() {
-        given:
-            ArenaViewer arenaViewer = new ArenaViewer(gui, Arrays.asList(), new Arena(30, 30))
-        when:
-            arenaViewer.draw()
-        then:
-            1 * gui.drawBackground(gui.createTextGraphics(), "#000000")
     }
 
     def "test game over viewer"() {

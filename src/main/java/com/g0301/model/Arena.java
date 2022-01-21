@@ -1,42 +1,36 @@
 package com.g0301.model;
 
-import com.g0301.gui.Gui;
 import com.g0301.controller.CarController;
+import com.g0301.gui.Gui;
 
-import java.util.*;
+import java.util.+;
 
-public class Arena {
+public abstract class Arena {
 
-    private int width;
-    private int height;
-    private Player car = new Player(new Position(20, 30), "#FF0000");
-    private Bot bot = new Bot(new Position(40, 30), "#FFFFFF");
-    private final List<Wall> walls = new ArrayList<>();
-    private final List<Portal> portals = new ArrayList<>();
-    private CarController carController = new CarController(car);
-    private CarController botController = new CarController(bot);
+    protected int height;
+    protected int width;
+    protected List<Wall> walls = new ArrayList<>();
+    protected List<Portal> portals = new ArrayList<>();
 
-    /**
-     * @param width  The arena's width
-     * @param height The arena's height
-     * @brief Initializes the arena and the walls that delimit it
-     */
     public Arena(int width, int height) {
-        this.width = width;
         this.height = height;
-        createWalls();
+        this.width = width;
         createPortals();
     }
 
-    /**
-     * @return The car of the arena
-     */
-    public Player getCar() {
-        return car;
+    protected void createPortals() {
+        portals.add(new Portal(new Position(50, 30), new Position(10, 30), "#FF00FF"));
+        portals.add(new Portal(new Position(35, 55), new Position(40, 10), "#FF0000"));
+        portals.add(new Portal(new Position(10, 55), new Position(50, 50), "#00FFFF"));
     }
 
-    public Bot getBot() {
-        return bot;
+    protected void createWalls() {
+        for (int i = 0; i < width; i++) {
+            walls.add(new Wall(new Position(i, 0), "#FFFFFF"));
+            walls.add(new Wall(new Position(i, height - 1), "#FFFFFF"));
+            walls.add(new Wall(new Position(0, i), "#FFFFFF"));
+            walls.add(new Wall(new Position(width - 1, i), "#FFFFFF"));
+        }
     }
 
     /**
@@ -94,69 +88,32 @@ public class Arena {
         portals.add(new Portal(new Position(10, 55), new Position(50, 50), "#00FFFF"));
     }
 
+
     public List<Portal> getPortals() {
         return portals;
     }
 
-    public boolean enterPortalThroughStart(Gui.ACTION action) {
+    public boolean enterPortalThroughStart(Gui.ACTION action, CarController controller) {
         for (Portal portal : portals) {
-            if (car.getPosition().equals(portal.getPosition())) {
-                car.setPosition(portal.getSecondPosition());
-                car.setPosition(carController.makeMovement(action));
+            if (controller.getCar().getPosition().equals(portal.getPosition())) {
+                controller.getCar().setPosition(portal.getSecondPosition());
+                controller.getCar().setPosition(controller.makeMovement(action));
                 return true;
             }
         }
         return false;
     }
 
-    public boolean enterPortalThroughExit(Gui.ACTION action) {
+    public boolean enterPortalThroughExit(Gui.ACTION action, CarController controller) {
         for (Portal portal : portals) {
-            if (car.getPosition().equals(portal.getSecondPosition())) {
-                car.setPosition(portal.getPosition());
-                car.setPosition(carController.makeMovement(action));
-                return true;
-            }
-        }
-        return false;
-    }
-    public boolean botEnterPortalThroughStart(Gui.ACTION action) {
-        for (Portal portal : portals) {
-            if (bot.getPosition().equals(portal.getPosition())) {
-                bot.setPosition(portal.getSecondPosition());
-                bot.setPosition(botController.makeMovement(action));
+            if (controller.getCar().getPosition().equals(portal.getSecondPosition())) {
+                controller.getCar().setPosition(portal.getPosition());
+                controller.getCar().setPosition(controller.makeMovement(action));
                 return true;
             }
         }
         return false;
     }
 
-    public boolean botEnterPortalThroughExit(Gui.ACTION action) {
-        for (Portal portal : portals) {
-            if (bot.getPosition().equals(portal.getSecondPosition())) {
-                bot.setPosition(portal.getPosition());
-                bot.setPosition(botController.makeMovement(action));
-                return true;
-            }
-        }
-        return false;
-    }
-    public boolean botCollisionWithCarTrail() {
-        for (Trail trail : car.getTrailList()) {
-            if (bot.getPosition().equals(trail.getPosition())) {
-                bot.setDead();
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean carCollisionWithBotTrail() {
-        for (Trail trail : bot.getTrailList()) {
-            if (car.getPosition().equals(trail.getPosition())) {
-                car.setDead();
-                return true;
-            }
-        }
-        return false;
-    }
+    public abstract boolean wallCollision();
 }

@@ -19,7 +19,7 @@ public class GameWinViewer extends StateViewer {
         gui.clear();
         drawTitle("#000000", "#FF0000");
         gui.drawText(gui.createTextGraphics(), new Position(gui.getWidth() / 2 - 3, 20), "#FF0000", "You win!");
-        drawButtons(buttons, new ButtonViewer());
+        drawElements(buttons, new ButtonViewer());
         gui.refresh();
     }
 }
