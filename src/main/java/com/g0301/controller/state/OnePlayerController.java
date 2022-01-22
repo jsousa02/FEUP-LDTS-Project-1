@@ -123,7 +123,7 @@ public class OnePlayerController extends StateController implements KeyboardList
             botNextPosition = botMove(move, botCurrentPosition);
         }
         if (!bot.getCar().collisionWithOwnTrail() && !onePlayerArena.wallCollision() && !onePlayerArena.botCollisionWithCarTrail()) {
-            bot.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FFFF00"));
+            bot.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FF0000"));
             if(!onePlayerArena.enterPortalThroughStart(onePlayerArena.getBot().getPreviousMovement(), bot) && !onePlayerArena.enterPortalThroughExit(onePlayerArena.getBot().getPreviousMovement(), bot)){
                 bot.moveCar(botNextPosition);
             }
