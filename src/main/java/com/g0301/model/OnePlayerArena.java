@@ -66,11 +66,32 @@ public class OnePlayerArena extends Arena {
                 return false;
             }
         }
+        for (Trail trail1: player1.getTrailList()){
+            if(position.moveUp(1).equals(trail1.getPosition())){
+                return false;
+            }
+        }
+        for (Wall wall: walls){
+            if(position.moveUp(1).equals(wall.getPosition())){
+                return false;
+            }
+        }
         return true;
     }
     public boolean downClearPosition(Position position){
-        for (Trail trail: bot.getTrailList()){
-            if (position.moveDown(1).equals(trail.getPosition())){
+        for (Trail trail: bot.getTrailList()) {
+            if (position.moveDown(1).equals(trail.getPosition())) {
+                return false;
+            }
+        }
+
+        for (Trail trail1: player1.getTrailList()){
+            if(position.moveDown(1).equals(trail1.getPosition())){
+                return false;
+            }
+        }
+        for (Wall wall: walls){
+            if(position.moveDown(1).equals(wall.getPosition())){
                 return false;
             }
         }
@@ -82,11 +103,31 @@ public class OnePlayerArena extends Arena {
                 return false;
             }
         }
+        for (Trail trail1: player1.getTrailList()){
+            if(position.moveLeft(1).equals(trail1.getPosition())){
+                return false;
+            }
+        }
+        for (Wall wall: walls){
+            if(position.moveLeft(1).equals(wall.getPosition())){
+                return false;
+            }
+        }
         return true;
     }
     public boolean rightClearPosition(Position position){
         for (Trail trail: bot.getTrailList()){
             if (position.moveRight(1).equals(trail.getPosition())){
+                return false;
+            }
+        }
+        for (Trail trail1: player1.getTrailList()){
+            if(position.moveRight(1).equals(trail1.getPosition())){
+                return false;
+            }
+        }
+        for (Wall wall: walls){
+            if(position.moveRight(1).equals(wall.getPosition())){
                 return false;
             }
         }
