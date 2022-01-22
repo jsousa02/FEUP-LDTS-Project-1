@@ -82,15 +82,35 @@ public class OnePlayerController extends StateController implements KeyboardList
         Position botNextPosition;
 
         if(onePlayerArena.upClearPosition(botCurrentPosition)&& onePlayerArena.getBot().getPreviousMovement()!=Gui.ACTION.DOWN){
+            if(onePlayerArena.getBot().getPreviousMovement()==Gui.ACTION.UP){
+                for(int i = 0; i<20;i++) {
+                    possibleMoves.add(1);
+                }
+            }
             possibleMoves.add(1);
         }
         if (onePlayerArena.downClearPosition(botCurrentPosition)&& onePlayerArena.getBot().getPreviousMovement()!=Gui.ACTION.UP){
+            if(onePlayerArena.getBot().getPreviousMovement()==Gui.ACTION.DOWN){
+                for(int i = 0; i<20;i++) {
+                    possibleMoves.add(2);
+                }
+            }
             possibleMoves.add(2);
         }
         if (onePlayerArena.leftClearPosition(botCurrentPosition)&& onePlayerArena.getBot().getPreviousMovement()!=Gui.ACTION.RIGHT){
+            if(onePlayerArena.getBot().getPreviousMovement()==Gui.ACTION.LEFT){
+                for(int i = 0; i<20;i++) {
+                    possibleMoves.add(3);
+                }
+            }
             possibleMoves.add(3);
         }
         if (onePlayerArena.rightClearPosition(botCurrentPosition)&& onePlayerArena.getBot().getPreviousMovement()!=Gui.ACTION.LEFT){
+            if(onePlayerArena.getBot().getPreviousMovement()==Gui.ACTION.RIGHT) {
+                for (int i = 0; i < 20; i++) {
+                    possibleMoves.add(4);
+                }
+            }
             possibleMoves.add(4);
         }
         if (possibleMoves.isEmpty()){
@@ -103,7 +123,7 @@ public class OnePlayerController extends StateController implements KeyboardList
             botNextPosition = botMove(move, botCurrentPosition);
         }
         if (!bot.getCar().collisionWithOwnTrail() && !onePlayerArena.wallCollision() && !onePlayerArena.botCollisionWithCarTrail()) {
-            bot.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FFFF00"));
+            bot.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FF0000"));
             if(!onePlayerArena.enterPortalThroughStart(onePlayerArena.getBot().getPreviousMovement(), bot) && !onePlayerArena.enterPortalThroughExit(onePlayerArena.getBot().getPreviousMovement(), bot)){
                 bot.moveCar(botNextPosition);
             }

@@ -75,15 +75,35 @@ public class SurvivalController extends StateController implements KeyboardListe
         Position botNextPosition;
 
         if(SurvivalArena.upClearPosition(botCurrentPosition)&& SurvivalArena.getBot().getPreviousMovement()!=Gui.ACTION.DOWN){
+            if(SurvivalArena.getBot().getPreviousMovement()==Gui.ACTION.UP){
+                for(int i = 0; i<20;i++) {
+                    possibleMoves.add(1);
+                }
+            }
             possibleMoves.add(1);
         }
         if (SurvivalArena.downClearPosition(botCurrentPosition)&& SurvivalArena.getBot().getPreviousMovement()!=Gui.ACTION.UP){
+            if(SurvivalArena.getBot().getPreviousMovement()==Gui.ACTION.DOWN){
+                for(int i = 0; i<20;i++) {
+                    possibleMoves.add(2);
+                }
+            }
             possibleMoves.add(2);
         }
         if (SurvivalArena.leftClearPosition(botCurrentPosition)&& SurvivalArena.getBot().getPreviousMovement()!=Gui.ACTION.RIGHT){
+            if(SurvivalArena.getBot().getPreviousMovement()==Gui.ACTION.LEFT){
+                for(int i = 0; i<20;i++) {
+                    possibleMoves.add(3);
+                }
+            }
             possibleMoves.add(3);
         }
         if (SurvivalArena.rightClearPosition(botCurrentPosition)&& SurvivalArena.getBot().getPreviousMovement()!=Gui.ACTION.LEFT){
+            if(SurvivalArena.getBot().getPreviousMovement()==Gui.ACTION.RIGHT) {
+                for (int i = 0; i < 20; i++) {
+                    possibleMoves.add(4);
+                }
+            }
             possibleMoves.add(4);
         }
         if (possibleMoves.isEmpty()){
@@ -96,7 +116,7 @@ public class SurvivalController extends StateController implements KeyboardListe
             botNextPosition = botMove(move, botCurrentPosition);
         }
         if (!bot.getCar().collisionWithOwnTrail() && !SurvivalArena.wallCollision() && !SurvivalArena.botCollisionWithCarTrail()) {
-            bot.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FFFF00"));
+            bot.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FF0000"));
             if(!SurvivalArena.enterPortalThroughStart(SurvivalArena.getBot().getPreviousMovement(), bot) && !SurvivalArena.enterPortalThroughExit(SurvivalArena.getBot().getPreviousMovement(), bot)){
                 bot.moveCar(botNextPosition);
             }
