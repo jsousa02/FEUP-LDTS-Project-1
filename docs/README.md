@@ -48,7 +48,7 @@ In order to display the action triggered by the input, the controller calls the 
   <img src="images/uml/mvc.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 1. Model, Controller and Viewer design pattern</i></b>
+  <b><i>Fig 1. Model, Controller and Viewer pattern</i></b>
 </p>
 
 **Consequences**
