@@ -298,6 +298,7 @@ public class LanternaGUI implements Gui {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
         drawText(graphics, new Position(3, 58), "#FFFFFF", "Boost");
+        drawText(graphics, new Position(82, 58), "#FFFFFF", "Boost");
         graphics.setBackgroundColor(TextColor.Factory.fromString(color));
         drawElement(graphics, position, color, "*");
     }

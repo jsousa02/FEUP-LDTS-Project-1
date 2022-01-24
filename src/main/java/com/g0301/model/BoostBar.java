@@ -69,4 +69,12 @@ public class BoostBar extends Element {
     public boolean isEmpty() {
         return boostBar.size() == 0;
     }
+
+    public void reverseDecrease() {
+        if(boostBar.size() > 0) {
+            boostBar.remove(0);
+            holdTime = 0;
+            releaseTime = 0;
+        }
+    }
 }

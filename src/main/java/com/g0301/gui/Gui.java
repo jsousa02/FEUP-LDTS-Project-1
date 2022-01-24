@@ -19,7 +19,8 @@ public interface Gui {
         P2DOWN,
         P2LEFT,
         P2RIGHT,
-        P1BOOST
+        P1BOOST,
+        P2BOOST
     }
 
     TextGraphics createTextGraphics();
