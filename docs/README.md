@@ -45,7 +45,7 @@ Given a user input, the controller processes it and tells the model what to do, 
 In order to display the action triggered by the input, the controller calls the viewer.
 
 <p align="center" justify="center">
-  <img src="images/UML/mvc.png"/>
+  <img src="images/uml/mvc.png"/>
 </p>
 <p align="center">
   <b><i>Fig 1. Model, Controller and Viewer design pattern</i></b>
@@ -70,7 +70,7 @@ The solution we found to solve this problem was to use the ***State pattern***, 
 We created classes for each state. These classes define how the game should behave when in the state they represent.
 
 <p align="center" justify="center">
-  <img src="images/UML/state.png"/>
+  <img src="images/uml/state.png"/>
 </p>
 <p align="center">
   <b><i>Fig 2. State pattern</i></b>
@@ -97,7 +97,7 @@ A static variable of type game was created. This variable represents the single 
 To make use of this variable, a new static method was created and its function is to initialize the variable if its value is null, otherwise it just returns it.
 
 <p align="center" justify="center">
-  <img src="images/UML/singleton.png"/>
+  <img src="images/uml/singleton.png"/>
 </p>
 <p align="center">
   <b><i>Fig 3. Singleton pattern</i></b>
@@ -121,7 +121,7 @@ For this purpose, we applied the ***Observer Pattern***, which is considered a b
 We created a KeyboardObserver instance in the Game class. The listener is changed when the game state changes, so that the user input is processed accordingly.
 
 <p align="center" justify="center">
-  <img src="images/UML/observer.png"/>
+  <img src="images/uml/observer.png"/>
 </p>
 <p align="center">
   <b><i>Fig 4. Observer pattern</i></b>
@@ -142,7 +142,7 @@ We wanted a more structured way to deal with the Lanterna library. We wanted to 
 We chose the ***Facade pattern***, a structural pattern, because it hides the complexity of a system and presents the user a simple interface.
 
 <p align="center" justify="center">
-  <img src="images/UML/facade.png"/>
+  <img src="images/uml/facade.png"/>
 </p>
 <p align="center">
   <b><i>Fig 5. Facade pattern</i></b>
