@@ -238,6 +238,7 @@ public class LanternaGUI implements Gui {
      * @brief Adds a keyboard listener to handle user input
      * @param observer The keyboard listener
      */
+    @Override
     public void addKeyboardListener(KeyboardObserver observer) {
         ((AWTTerminalFrame) screen.getTerminal()).getComponent(0).addKeyListener(observer);
     }

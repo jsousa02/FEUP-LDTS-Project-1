@@ -57,4 +57,6 @@ public interface Gui {
     void drawInstructions();
 
     void drawBoostBar(Position position, String color);
+
+    void addKeyboardListener(KeyboardObserver observer);
 }
