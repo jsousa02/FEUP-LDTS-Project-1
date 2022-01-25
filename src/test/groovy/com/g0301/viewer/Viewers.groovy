@@ -7,16 +7,16 @@ import com.g0301.model.Player
 import com.g0301.model.Portal
 import com.g0301.model.Position
 import com.g0301.model.Trail
-import com.g0301.model.TwoPlayerArena
 import com.g0301.model.Wall
-import com.g0301.viewer.state.GameOverViewer
-import com.g0301.viewer.state.GameWinViewer
-import com.g0301.viewer.state.InstructionViewer
 import spock.lang.Specification
 
 class Viewers extends Specification {
 
-    def gui = Mock(LanternaGUI)
+    LanternaGUI gui;
+
+    def setup() {
+        gui = Mock()
+    }
 
     def "test car viewer"() {
         given:
@@ -68,30 +68,13 @@ class Viewers extends Specification {
             1 * gui.drawWall(wall.getPosition(), wall.getColor())
     }
 
-    def "test instruction viewer"() {
+    def "test boost bar viewer"() {
         given:
-            InstructionViewer instructionViewer = new InstructionViewer(gui, Arrays.asList(new Button(new Position(10, 10), "#FFFFFF", "#FF0000", "Button", 15, 8)))
+        Trail trail = new Trail(new Position(1, 1), "#FFFFFF")
+        BoostBarViewer boostBarViewer = new BoostBarViewer()
         when:
-            instructionViewer.draw()
+        boostBarViewer.drawElement(trail, gui)
         then:
-            1 * gui.drawInstructions()
-    }
-
-    def "test game over viewer"() {
-        given:
-            GameOverViewer gameOverViewer = new GameOverViewer(gui, Arrays.asList(new Button(new Position(10, 10), "#FFFFFF", "#FF0000", "Button", 15, 8)))
-        when:
-            gameOverViewer.draw()
-        then:
-            1 * gui.drawText(_, _, _, _)
-    }
-
-    def "test game win viewer"() {
-        given:
-            GameWinViewer gameWinViewer = new GameWinViewer(gui, Arrays.asList(new Button(new Position(10, 10), "#FFFFFF", "#FF0000", "Button", 15, 8)))
-        when:
-            gameWinViewer.draw()
-        then:
-            1 * gui.drawText(_, _, _, _)
+        1 * gui.drawBoostBar(trail.getPosition(), "#FFFFFF")
     }
 }
