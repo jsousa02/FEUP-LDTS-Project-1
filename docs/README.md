@@ -76,6 +76,18 @@ We created classes for each state. These classes define how the game should beha
   <b><i>Fig 2. State pattern</i></b>
 </p>
 
+These classes can be found in the following files:\
+[Game](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/Game.java)\
+[GameState](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/state/GameState.java)\
+[GameModeState](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/state/GameModeState.java)\
+[GameOverState](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/state/GameOverState.java)\
+[GameWinState](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/state/GameWinState.java)\
+[InstructionState](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/state/InstructionState.java)\
+[MenuState](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/state/MenuState.java)\
+[OnePlayerState](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/state/OnePlayerState.java)\
+[TwoPlayerState](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/state/TwoPlayerState.java)\
+[SurvivalState](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/state/SurvivalState.java)
+
 **Consequences**
 - Partitions behaviour for different states
 - Makes state transitions explicit
@@ -103,6 +115,10 @@ To make use of this variable, a new static method was created and its function i
   <b><i>Fig 3. Singleton pattern</i></b>
 </p>
 
+These classes can be found in the following files:\
+[Game](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/Game.java)\
+[GameStart](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/GameStart.java)
+
 **Consequences**
 - Harder to test code
 
@@ -127,6 +143,13 @@ We created a KeyboardObserver instance in the Game class. The listener is change
   <b><i>Fig 4. Observer pattern</i></b>
 </p>
 
+These classes can be found in the following files:\
+[Game](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/Game.java)\
+[KeyboardObserver](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/gui/KeyboardObserver.java)\
+[KeyboardListener](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/state/KeyboardListener.java)\
+[Controllers](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/tree/main/src/main/java/com/g0301/controller/state)\
+[States](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/tree/main/src/main/java/com/g0301/state)
+
 **Consequences**
 - Game class only knows that the KeyboardObserver implements the KeyboardListener interface
 - No need to change the Game class in order to add more observers
@@ -147,6 +170,11 @@ We chose the ***Facade pattern***, a structural pattern, because it hides the co
 <p align="center">
   <b><i>Fig 5. Facade pattern</i></b>
 </p>
+
+These classes can be found in the following files:\
+[Game](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/Game.java)\
+[GUI](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/gui/Gui.java)\
+[LanternaGUI](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/gui/LanternaGUI.java)
 
 **Consequences**
 - Shields the users from the system components
