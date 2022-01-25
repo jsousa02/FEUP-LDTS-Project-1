@@ -6,7 +6,13 @@ import spock.lang.Specification
 
 class MenuTest extends Specification {
 
-    MenuState menuState = new MenuState(new Game(60, 60, 30), new LanternaGUI(60, 60))
+    MenuState menuState
+    Game game = Mock()
+    LanternaGUI gui = Mock()
+
+    def setup() {
+        menuState = new MenuState(game, gui)
+    }
 
     def "Testing Menu Next Button"() {
         when: "we are in the third button and we press next button"
