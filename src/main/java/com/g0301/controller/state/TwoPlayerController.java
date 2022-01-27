@@ -82,6 +82,15 @@ public class TwoPlayerController extends StateController implements KeyboardList
             player2.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
             if(!twoPlayerArena.enterPortalThroughStart(action, player2) && !twoPlayerArena.enterPortalThroughExit(action, player2)) {
                 player2.moveCar(nextPosition);
+
+                if(twoPlayerArena.getPlayer2BoostBar().isActive()) {
+                    player2.getCar().changeSpeed(2);
+                    player2.moveCar(nextPosition);
+                }
+                else {
+                    player2.getCar().changeSpeed(1);
+                    player2.moveCar(nextPosition);
+                }
             }
         }
     }
@@ -110,9 +119,24 @@ public class TwoPlayerController extends StateController implements KeyboardList
                 twoPlayerArena.getPlayer2BoostBar().reverseDecrease();
             }
         }
-        else if(action == Gui.ACTION.DOWN || action == Gui.ACTION.UP || action == Gui.ACTION.LEFT || action == Gui.ACTION.RIGHT)
+        else if(action == Gui.ACTION.DOWN || action == Gui.ACTION.UP || action == Gui.ACTION.LEFT || action == Gui.ACTION.RIGHT) {
+            twoPlayerArena.getPlayer1BoostBar().setReleaseTime(twoPlayerArena.getPlayer1BoostBar().getReleaseTime() + 1);
+            twoPlayerArena.getPlayer1BoostBar().deactivate();
+
+            if(twoPlayerArena.getPlayer1BoostBar().getReleaseTime() > 2) {
+                twoPlayerArena.getPlayer1BoostBar().increase();
+            }
+
             player1movement = action;
-        else if (action == Gui.ACTION.P2UP || action == Gui.ACTION.P2DOWN || action == Gui.ACTION.P2LEFT || action == Gui.ACTION.P2RIGHT)
+        }
+        else if (action == Gui.ACTION.P2UP || action == Gui.ACTION.P2DOWN || action == Gui.ACTION.P2LEFT || action == Gui.ACTION.P2RIGHT) {
+            twoPlayerArena.getPlayer2BoostBar().setReleaseTime(twoPlayerArena.getPlayer2BoostBar().getReleaseTime() + 1);
+            twoPlayerArena.getPlayer2BoostBar().deactivate();
+
+            if(twoPlayerArena.getPlayer2BoostBar().getReleaseTime() > 2) {
+                twoPlayerArena.getPlayer2BoostBar().increase();
+            }
             player2movement = action;
+        }
     }
 }
