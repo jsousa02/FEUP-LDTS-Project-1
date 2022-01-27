@@ -132,19 +132,19 @@ public class OnePlayerController extends StateController implements KeyboardList
 
     public Position botMove(int move, Position initialPosition) {
         Position finalPosition;
-        if ( move ==1){
+        if ( move == 1){
             finalPosition= initialPosition.moveUp(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.UP);
         }
-        else if (move==2){
+        else if (move == 2){
             finalPosition= initialPosition.moveDown(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.DOWN);
         }
-        else if (move==3){
+        else if (move == 3){
             finalPosition= initialPosition.moveLeft(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.LEFT);
         }
-        else if (move==4){
+        else if (move == 4){
             finalPosition=initialPosition.moveRight(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.RIGHT);
         }
@@ -169,10 +169,11 @@ public class OnePlayerController extends StateController implements KeyboardList
             onePlayerArena.getBoostBar().setReleaseTime(onePlayerArena.getBoostBar().getReleaseTime() + 1);
             onePlayerArena.getBoostBar().deactivate();
 
-            if(onePlayerArena.getBoostBar().getReleaseTime() > 4) {
+            if(onePlayerArena.getBoostBar().getReleaseTime() > 2) {
                 onePlayerArena.getBoostBar().increase();
             }
-            player1Movement = action;
+            if(action == Gui.ACTION.UP || action == Gui.ACTION.DOWN || action == Gui.ACTION.LEFT || action == Gui.ACTION.RIGHT)
+                player1Movement = action;
         }
     }
 }
