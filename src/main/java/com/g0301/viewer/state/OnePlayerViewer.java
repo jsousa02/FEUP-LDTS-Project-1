@@ -28,7 +28,7 @@ public class OnePlayerViewer extends StateViewer {
         drawElements(onePlayerArena.getPlayer1().getTrailList(), new TrailViewer());
         drawElements(onePlayerArena.getBot().getTrailList(), new TrailViewer());
         drawElements(onePlayerArena.getPortals(), new PortalViewer());
-        drawElements(onePlayerArena.getBoostBar().getBoostBarTrails(), new BoostBarViewer());
+        drawElements(onePlayerArena.getBoostBar().getBoostBarTrails(), new Player1BoostBarViewer());
 
         gui.refresh();
     }
