@@ -45,11 +45,11 @@ public class TwoPlayerController extends StateController implements KeyboardList
         boolean classicGame=false;
         boolean survivalGame=false;
         if(!player1.getCar().isAlive()) {
-            nextState = new GameWinState(gameState.getGame(), gui,classicGame,survivalGame);
+            nextState = new GameWinState(gameState.getGame(), gui,classicGame,survivalGame, "Player 2 wins!");
             gameState.changeState(nextState);
         }
         else if (!player2.getCar().isAlive()) {
-            nextState = new GameWinState(gameState.getGame(), gui,classicGame,survivalGame);
+            nextState = new GameWinState(gameState.getGame(), gui,classicGame,survivalGame, "Player 1 wins!");
             gameState.changeState(nextState);
         }
     }

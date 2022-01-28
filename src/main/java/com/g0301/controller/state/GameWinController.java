@@ -10,9 +10,9 @@ public class GameWinController extends StateController implements KeyboardListen
 
     private GameWinViewer gameWinViewer;
 
-    public GameWinController(GameState gameState, Gui gui) {
+    public GameWinController(GameState gameState, Gui gui, String winningPlayer) {
         super(gameState, gui);
-        gameWinViewer = new GameWinViewer(gui, gameState.getButtons());
+        gameWinViewer = new GameWinViewer(gui, gameState.getButtons(), winningPlayer);
     }
 
     @Override

@@ -47,7 +47,7 @@ public class OnePlayerController extends StateController implements KeyboardList
             gameState.changeState(nextState);
         }
         else if (!bot.getCar().isAlive()) {
-            nextState = new GameWinState(gameState.getGame(), gui, classicGame,survivalGame);
+            nextState = new GameWinState(gameState.getGame(), gui, classicGame,survivalGame, "  You win!");
             gameState.changeState(nextState);
         }
     }
