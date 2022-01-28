@@ -295,10 +295,18 @@ public class LanternaGUI implements Gui {
     }
 
     @Override
-    public void drawBoostBar(Position position, String color) {
+    public void drawPlayer1BoostBar(Position position, String color) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
         drawText(graphics, new Position(3, 58), "#FFFFFF", "Boost");
+        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        drawElement(graphics, position, color, "*");
+    }
+
+    @Override
+    public void drawPlayer2BoostBar(Position position, String color) {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
         drawText(graphics, new Position(82, 58), "#FFFFFF", "Boost");
         graphics.setBackgroundColor(TextColor.Factory.fromString(color));
         drawElement(graphics, position, color, "*");
