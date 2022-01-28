@@ -6,10 +6,7 @@ import com.g0301.gui.Gui;
 import com.g0301.model.OnePlayerArena;
 import com.g0301.model.Position;
 import com.g0301.model.Trail;
-import com.g0301.state.GameOverState;
-import com.g0301.state.GameState;
-import com.g0301.state.GameWinState;
-import com.g0301.state.KeyboardListener;
+import com.g0301.state.*;
 import com.g0301.viewer.state.OnePlayerViewer;
 
 import java.io.IOException;
