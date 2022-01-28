@@ -27,20 +27,12 @@ public class PauseController extends StateController implements KeyboardListener
 
     @Override
     public void getNextState() {
-        if(gameState.getSelectedIndex() == 0) {
-            nextState = new OnePlayerState(gameState.getGame(), gui);
-        }
-        else
-            nextState = new MenuState(gameState.getGame(), gui);
+        nextState = new MenuState(gameState.getGame(), gui);
     }
 
     @Override
     public void keyPressed(Gui.ACTION action) {
         getNextState();
-        if(action == Gui.ACTION.UP)
-            gameState.previousButton();
-        if(action == Gui.ACTION.DOWN)
-            gameState.nextButton();
         if(action == Gui.ACTION.ENTER)
             gameState.changeState(nextState);
     }
