@@ -12,7 +12,7 @@ public class OnePlayerState extends GameState {
     private OnePlayerController onePlayerController;
 
     public OnePlayerState(Game game, Gui gui) {
-        super(game, Arrays.asList());
+        super(game, Arrays.asList(),false,false);
         onePlayerController = new OnePlayerController(this, gui);
     }
 

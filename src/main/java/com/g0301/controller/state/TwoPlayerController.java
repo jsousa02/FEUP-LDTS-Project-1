@@ -1,6 +1,5 @@
 package com.g0301.controller.state;
 
-import com.g0301.controller.CarController;
 import com.g0301.controller.Player1Controller;
 import com.g0301.controller.Player2Controller;
 import com.g0301.gui.Gui;
@@ -42,12 +41,14 @@ public class TwoPlayerController extends StateController implements KeyboardList
 
     @Override
     public void getNextState() {
+        boolean classicGame=false;
+        boolean survivalGame=false;
         if(!player1.getCar().isAlive()) {
-            nextState = new GameWinState(gameState.getGame(), gui);
+            nextState = new GameWinState(gameState.getGame(), gui,classicGame,survivalGame);
             gameState.changeState(nextState);
         }
         else if (!player2.getCar().isAlive()) {
-            nextState = new GameWinState(gameState.getGame(), gui);
+            nextState = new GameWinState(gameState.getGame(), gui,classicGame,survivalGame);
             gameState.changeState(nextState);
         }
     }
@@ -60,6 +61,15 @@ public class TwoPlayerController extends StateController implements KeyboardList
             player1.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
             if(!twoPlayerArena.enterPortalThroughStart(action, player1) && !twoPlayerArena.enterPortalThroughExit(action, player1)) {
                 player1.moveCar(nextPosition);
+
+                if(twoPlayerArena.getPlayer1BoostBar().isActive()) {
+                    player1.getCar().changeSpeed(2);
+                    player1.moveCar(nextPosition);
+                }
+                else {
+                    player1.getCar().changeSpeed(1);
+                    player1.moveCar(nextPosition);
+                }
             }
         }
     }
@@ -72,15 +82,61 @@ public class TwoPlayerController extends StateController implements KeyboardList
             player2.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
             if(!twoPlayerArena.enterPortalThroughStart(action, player2) && !twoPlayerArena.enterPortalThroughExit(action, player2)) {
                 player2.moveCar(nextPosition);
+
+                if(twoPlayerArena.getPlayer2BoostBar().isActive()) {
+                    player2.getCar().changeSpeed(2);
+                    player2.moveCar(nextPosition);
+                }
+                else {
+                    player2.getCar().changeSpeed(1);
+                    player2.moveCar(nextPosition);
+                }
             }
         }
     }
 
     @Override
     public void keyPressed(Gui.ACTION action) {
-        if(action == Gui.ACTION.DOWN || action == Gui.ACTION.UP || action == Gui.ACTION.LEFT || action == Gui.ACTION.RIGHT)
+        if(action == Gui.ACTION.P1BOOST) {
+            twoPlayerArena.getPlayer1BoostBar().setHoldTime(twoPlayerArena.getPlayer1BoostBar().getHoldTime() + 1);
+            if(twoPlayerArena.getPlayer1BoostBar().isEmpty())
+                twoPlayerArena.getPlayer1BoostBar().deactivate();
+            else
+                twoPlayerArena.getPlayer1BoostBar().activate();
+
+            if(twoPlayerArena.getPlayer1BoostBar().getHoldTime() > 10) {
+                twoPlayerArena.getPlayer1BoostBar().decrease();
+            }
+        }
+        else if(action == Gui.ACTION.P2BOOST) {
+            twoPlayerArena.getPlayer2BoostBar().setHoldTime(twoPlayerArena.getPlayer2BoostBar().getHoldTime() + 1);
+            if(twoPlayerArena.getPlayer2BoostBar().isEmpty())
+                twoPlayerArena.getPlayer2BoostBar().deactivate();
+            else
+                twoPlayerArena.getPlayer2BoostBar().activate();
+
+            if(twoPlayerArena.getPlayer2BoostBar().getHoldTime() > 10) {
+                twoPlayerArena.getPlayer2BoostBar().reverseDecrease();
+            }
+        }
+        else if(action == Gui.ACTION.DOWN || action == Gui.ACTION.UP || action == Gui.ACTION.LEFT || action == Gui.ACTION.RIGHT) {
+            twoPlayerArena.getPlayer1BoostBar().setReleaseTime(twoPlayerArena.getPlayer1BoostBar().getReleaseTime() + 1);
+            twoPlayerArena.getPlayer1BoostBar().deactivate();
+
+            if(twoPlayerArena.getPlayer1BoostBar().getReleaseTime() > 2) {
+                twoPlayerArena.getPlayer1BoostBar().increase();
+            }
+
             player1movement = action;
-        else if (action == Gui.ACTION.P2UP || action == Gui.ACTION.P2DOWN || action == Gui.ACTION.P2LEFT || action == Gui.ACTION.P2RIGHT)
+        }
+        else if (action == Gui.ACTION.P2UP || action == Gui.ACTION.P2DOWN || action == Gui.ACTION.P2LEFT || action == Gui.ACTION.P2RIGHT) {
+            twoPlayerArena.getPlayer2BoostBar().setReleaseTime(twoPlayerArena.getPlayer2BoostBar().getReleaseTime() + 1);
+            twoPlayerArena.getPlayer2BoostBar().deactivate();
+
+            if(twoPlayerArena.getPlayer2BoostBar().getReleaseTime() > 2) {
+                twoPlayerArena.getPlayer2BoostBar().increase();
+            }
             player2movement = action;
+        }
     }
 }

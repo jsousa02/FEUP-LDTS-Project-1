@@ -24,8 +24,15 @@ public class GameWinController extends StateController implements KeyboardListen
 
     @Override
     public void getNextState() {
-        if(gameState.getSelectedIndex() == 0)
-            nextState = new OnePlayerState(gameState.getGame(), gui);
+        if(gameState.getSelectedIndex() == 0 && gameState.get_classicGame()){
+            nextState= new OnePlayerState(gameState.getGame(),gui);
+        }
+        else if (gameState.getSelectedIndex() == 0 && !gameState.get_survivalGame() && !gameState.get_classicGame()) {
+            nextState = new TwoPlayerState(gameState.getGame(), gui);
+        }
+        else if ( gameState.getSelectedIndex() == 0 && gameState.get_survivalGame()){
+            nextState = new SurvivalState(gameState.getGame(), gui);
+        }
         else if (gameState.getSelectedIndex() == 1)
             nextState = new MenuState(gameState.getGame(), gui);
     }

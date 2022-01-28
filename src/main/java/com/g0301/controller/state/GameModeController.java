@@ -29,8 +29,8 @@ public class GameModeController extends StateController implements KeyboardListe
         //TODO implement other game modes
         else if (gameState.getSelectedIndex() == 1)
             nextState = new TwoPlayerState(gameState.getGame(), gui);
-        else if (gameState.getSelectedIndex() == 3)
-            nextState = new MenuState(gameState.getGame(), gui);
+        else if (gameState.getSelectedIndex() == 2)
+            nextState = new SurvivalState(gameState.getGame(), gui);
         else
             nextState = new MenuState(gameState.getGame(), gui);
     }

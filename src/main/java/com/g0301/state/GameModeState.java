@@ -17,7 +17,7 @@ public class GameModeState extends GameState {
             new Button(new Position(gui.getWidth() / 2, 30), "#000000", "#FFFFFF", "1v1 2 players", 15, 3),
             new Button(new Position(gui.getWidth() / 2, 40), "#000000", "#FFFFFF", "Survival", 15, 3),
             new Button(new Position(gui.getWidth() / 2, 50), "#000000", "#FFFFFF", "Back", 15, 3)
-        ));
+        ),false,false);
         this.gameModeController = new GameModeController(this, gui);
     }
 

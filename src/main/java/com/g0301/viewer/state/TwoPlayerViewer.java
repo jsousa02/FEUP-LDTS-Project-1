@@ -28,6 +28,8 @@ public class TwoPlayerViewer extends StateViewer {
         drawElements(twoPlayerArena.getPlayer1().getTrailList(), new TrailViewer());
         drawElements(twoPlayerArena.getPlayer2().getTrailList(), new TrailViewer());
         drawElements(twoPlayerArena.getPortals(), new PortalViewer());
+        drawElements(twoPlayerArena.getPlayer1BoostBar().getBoostBarTrails(), new BoostBarViewer());
+        drawElements(twoPlayerArena.getPlayer2BoostBar().getBoostBarTrails(), new BoostBarViewer());
 
         gui.refresh();
     }

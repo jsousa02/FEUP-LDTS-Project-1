@@ -49,6 +49,12 @@ public class KeyboardObserver extends KeyAdapter {
             case KeyEvent.VK_RIGHT:
                 listener.keyPressed(Gui.ACTION.P2RIGHT);
                 break;
+            case KeyEvent.VK_SPACE:
+                listener.keyPressed(Gui.ACTION.P1BOOST);
+                break;
+            case KeyEvent.VK_SHIFT:
+                listener.keyPressed(Gui.ACTION.P2BOOST);
+                break;
         }
     }
 

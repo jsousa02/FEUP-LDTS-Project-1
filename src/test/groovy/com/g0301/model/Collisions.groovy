@@ -12,7 +12,7 @@ class Collisions extends Specification {
         given: "an arena and a position where we know there's a wall"
             OnePlayerArena arena_test = new OnePlayerArena(60,60)
             Player1Controller carController = new Player1Controller(arena_test.getPlayer1());
-            Position position_test = new Position(0,0)
+            Position position_test = new Position(0,5)
 
         when: "the car moves to the wall position"
             carController.moveCar(position_test)

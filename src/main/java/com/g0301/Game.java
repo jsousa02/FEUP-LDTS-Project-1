@@ -11,7 +11,7 @@ public class Game {
     private final int width;
     private final int height;
     private final int fps;
-    private final LanternaGUI gui;
+    private final Gui gui;
     private final KeyboardObserver keyboardObserver;
     private GameState gameState;
 

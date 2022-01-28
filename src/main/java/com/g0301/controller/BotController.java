@@ -14,22 +14,22 @@ public class BotController extends CarController {
 
     @Override
     public Position moveUp() {
-        return getCar().getPosition().moveUp();
+        return getCar().getPosition().moveUp(1);
     }
 
     @Override
     public Position moveDown() {
-        return getCar().getPosition().moveDown();
+        return getCar().getPosition().moveDown(1);
     }
 
     @Override
     public Position moveLeft() {
-        return getCar().getPosition().moveLeft();
+        return getCar().getPosition().moveLeft(1);
     }
 
     @Override
     public Position moveRight() {
-        return getCar().getPosition().moveRight();
+        return getCar().getPosition().moveRight(1);
     }
 
     @Override

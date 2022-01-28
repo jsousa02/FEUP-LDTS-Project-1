@@ -4,6 +4,8 @@ public class TwoPlayerArena extends Arena {
 
     private Player player1 = new Player(new Position(20, 30), "#FF0000");
     private Player player2 = new Player(new Position(60, 30), "#FFFFFF");
+    private BoostBar player1BoostBar = new BoostBar(new Position(3, 59), "#00FF00");
+    private BoostBar player2BoostBar = new BoostBar(new Position(77, 59), "#E20062");
 
     /**
      * @param width  The arena's width
@@ -14,6 +16,8 @@ public class TwoPlayerArena extends Arena {
         super(width, height);
         createPortals();
         createWalls();
+        player1BoostBar.createBoostBar();
+        player2BoostBar.createBoostBar();
     }
 
     /**
@@ -30,7 +34,6 @@ public class TwoPlayerArena extends Arena {
     /**
      * @return Inspects if the player crash (true) into a wall and if he does so dies
      */
-    @Override
     public boolean wallCollision() {
         for (Wall wall : walls) {
             if (wall.getPosition().equals(player1.getPosition())) {
@@ -64,5 +67,13 @@ public class TwoPlayerArena extends Arena {
             }
         }
         return false;
+    }
+
+    public BoostBar getPlayer1BoostBar() {
+        return player1BoostBar;
+    }
+
+    public BoostBar getPlayer2BoostBar() {
+        return player2BoostBar;
     }
 }

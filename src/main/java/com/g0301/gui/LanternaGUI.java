@@ -3,15 +3,12 @@ package com.g0301.gui;
 import com.googlecode.lanterna.*;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
-import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
+import com.googlecode.lanterna.terminal.*;
+import com.googlecode.lanterna.terminal.swing.*;
 import com.g0301.model.Position;
 
 import java.awt.*;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.awt.event.*;
 import java.io.File;
 import java.io.IOException;
 
@@ -27,6 +24,15 @@ public class LanternaGUI implements Gui {
         this.height = height;
         this.width = width;
         addCloseScreenListener();
+    }
+
+    public String getOperatingSystem(){
+        String os = System.getProperty("os.name");
+        return os;
+    }
+
+    public boolean isWindows(){
+        return getOperatingSystem().startsWith("Windows");
     }
 
     /**
@@ -66,15 +72,29 @@ public class LanternaGUI implements Gui {
      * @return The applied font configuration
      */
     public AWTTerminalFontConfiguration loadTronFont() throws IOException, FontFormatException {
-        File tronFontFile = new File("src/main/resources/fonts/square.ttf");
-        Font font = Font.createFont(Font.TRUETYPE_FONT, tronFontFile);
 
-        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-        ge.registerFont(font);
+        if(isWindows()){
+            File tronFontFile = new File("src/main/resources/fonts/Square-Regular-Windows.ttf");
+            Font font = Font.createFont(Font.TRUETYPE_FONT, tronFontFile);
 
-        Font loadedFont = font.deriveFont(Font.PLAIN, 10);
-        return AWTTerminalFontConfiguration.newInstance(loadedFont);
+
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(font);
+
+            Font loadedFont = font.deriveFont(Font.PLAIN, 11);
+            return AWTTerminalFontConfiguration.newInstance(loadedFont);
+        }else {
+            File tronFontFile = new File("src/main/resources/fonts/Square-Regular3.ttf");
+            Font font = Font.createFont(Font.TRUETYPE_FONT, tronFontFile);
+
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            ge.registerFont(font);
+
+            Font loadedFont = font.deriveFont(Font.PLAIN, 11);
+            return AWTTerminalFontConfiguration.newInstance(loadedFont);
+        }
     }
+  
 
     /**
      * @brief Creates the text graphics
@@ -114,7 +134,7 @@ public class LanternaGUI implements Gui {
      */
     @Override
     public void clear() {
-        screen.clear();
+            screen.clear();
     }
 
     /**
@@ -153,7 +173,7 @@ public class LanternaGUI implements Gui {
     public void drawCar(Position position, String color) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
-        drawElement(graphics, position, color, "_");
+        drawElement(graphics, position, color, "¦");
     }
 
     /**
@@ -178,8 +198,8 @@ public class LanternaGUI implements Gui {
     @Override
     public void drawWall(Position position, String color) {
         TextGraphics graphics = screen.newTextGraphics();
-        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
-        drawElement(graphics, position, color, "*");
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        drawElement(graphics, position, color, "ª");
     }
 
     /**
@@ -191,7 +211,7 @@ public class LanternaGUI implements Gui {
     public void drawTrail(Position position, String color) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString(color));
-        drawElement(graphics, position, color, "-");
+        drawElement(graphics, position, color, "Ò");
     }
 
     /**
@@ -218,6 +238,7 @@ public class LanternaGUI implements Gui {
      * @brief Adds a keyboard listener to handle user input
      * @param observer The keyboard listener
      */
+    @Override
     public void addKeyboardListener(KeyboardObserver observer) {
         ((AWTTerminalFrame) screen.getTerminal()).getComponent(0).addKeyListener(observer);
     }
@@ -253,8 +274,8 @@ public class LanternaGUI implements Gui {
     public void drawPortal(Position startPosition, Position endPosition, String color) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
-        drawElement(graphics, startPosition, color, "@");
-        drawElement(graphics, endPosition, color, "@");
+        drawElement(graphics, startPosition, color, "«");
+        drawElement(graphics, endPosition, color, "«");
     }
 
     @Override
@@ -269,5 +290,17 @@ public class LanternaGUI implements Gui {
         drawText(graphics, new Position(10, 25), "#FFFFFF", "You can't crash against the walls or against the other player's trails");
         drawText(graphics, new Position(10, 28), "#FFFFFF", "You can use the portals to teleport");
         drawText(graphics, new Position(10, 31), "#FFFFFF", "You can't enter the same portal twice");
+        //drawText(graphics, new Position(10, 34), "#FFFFFF", "");
+
+    }
+
+    @Override
+    public void drawBoostBar(Position position, String color) {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+        drawText(graphics, new Position(3, 58), "#FFFFFF", "Boost");
+        drawText(graphics, new Position(82, 58), "#FFFFFF", "Boost");
+        graphics.setBackgroundColor(TextColor.Factory.fromString(color));
+        drawElement(graphics, position, color, "*");
     }
 }

@@ -40,11 +40,14 @@ public class OnePlayerController extends StateController implements KeyboardList
 
     @Override
     public void getNextState() {
+        boolean classicGame=true;
+        boolean survivalGame= false;
         if(!player1.getCar().isAlive()) {
-            nextState = new GameOverState(gameState.getGame(), gui);
+            nextState = new GameOverState(gameState.getGame(), gui, classicGame, survivalGame);
             gameState.changeState(nextState);
-        } else if (!bot.getCar().isAlive()) {
-            nextState = new GameWinState(gameState.getGame(), gui);
+        }
+        else if (!bot.getCar().isAlive()) {
+            nextState = new GameWinState(gameState.getGame(), gui, classicGame,survivalGame);
             gameState.changeState(nextState);
         }
     }
@@ -53,10 +56,19 @@ public class OnePlayerController extends StateController implements KeyboardList
         Position currentPosition = player1.getCar().getPosition();
         Position nextPosition = player1.makeMovement(action);
 
-        if(!player1.getCar().collisionWithOwnTrail() && !onePlayerArena.wallCollision() && !onePlayerArena.playerCollisionWithBotTrail()) {
+        if(!player1.getCar().collisionWithOwnTrail() && !onePlayerArena.wallCollision() && !onePlayerArena.playerCollisionWithBotTrail() && !onePlayerArena.outOfBounds()) {
             player1.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
             if(!onePlayerArena.enterPortalThroughStart(action, player1) && !onePlayerArena.enterPortalThroughExit(action, player1)) {
                 player1.moveCar(nextPosition);
+
+                if(onePlayerArena.getBoostBar().isActive()) {
+                    player1.getCar().changeSpeed(2);
+                    player1.moveCar(nextPosition);
+                }
+                else {
+                    player1.getCar().changeSpeed(1);
+                    player1.moveCar(nextPosition);
+                }
             }
         }
     }
@@ -67,15 +79,35 @@ public class OnePlayerController extends StateController implements KeyboardList
         Position botNextPosition;
 
         if(onePlayerArena.upClearPosition(botCurrentPosition)&& onePlayerArena.getBot().getPreviousMovement()!=Gui.ACTION.DOWN){
+            if(onePlayerArena.getBot().getPreviousMovement()==Gui.ACTION.UP){
+                for(int i = 0; i<20;i++) {
+                    possibleMoves.add(1);
+                }
+            }
             possibleMoves.add(1);
         }
         if (onePlayerArena.downClearPosition(botCurrentPosition)&& onePlayerArena.getBot().getPreviousMovement()!=Gui.ACTION.UP){
+            if(onePlayerArena.getBot().getPreviousMovement()==Gui.ACTION.DOWN){
+                for(int i = 0; i<20;i++) {
+                    possibleMoves.add(2);
+                }
+            }
             possibleMoves.add(2);
         }
         if (onePlayerArena.leftClearPosition(botCurrentPosition)&& onePlayerArena.getBot().getPreviousMovement()!=Gui.ACTION.RIGHT){
+            if(onePlayerArena.getBot().getPreviousMovement()==Gui.ACTION.LEFT){
+                for(int i = 0; i<20;i++) {
+                    possibleMoves.add(3);
+                }
+            }
             possibleMoves.add(3);
         }
         if (onePlayerArena.rightClearPosition(botCurrentPosition)&& onePlayerArena.getBot().getPreviousMovement()!=Gui.ACTION.LEFT){
+            if(onePlayerArena.getBot().getPreviousMovement()==Gui.ACTION.RIGHT) {
+                for (int i = 0; i < 20; i++) {
+                    possibleMoves.add(4);
+                }
+            }
             possibleMoves.add(4);
         }
         if (possibleMoves.isEmpty()){
@@ -88,7 +120,7 @@ public class OnePlayerController extends StateController implements KeyboardList
             botNextPosition = botMove(move, botCurrentPosition);
         }
         if (!bot.getCar().collisionWithOwnTrail() && !onePlayerArena.wallCollision() && !onePlayerArena.botCollisionWithCarTrail()) {
-            bot.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FFFF00"));
+            bot.getCar().getTrailList().add(new Trail(botCurrentPosition, "#FF0000"));
             if(!onePlayerArena.enterPortalThroughStart(onePlayerArena.getBot().getPreviousMovement(), bot) && !onePlayerArena.enterPortalThroughExit(onePlayerArena.getBot().getPreviousMovement(), bot)){
                 bot.moveCar(botNextPosition);
             }
@@ -98,32 +130,47 @@ public class OnePlayerController extends StateController implements KeyboardList
     public Position botMove(int move, Position initialPosition) {
         Position finalPosition;
         if ( move == 1){
-            finalPosition= initialPosition.moveUp();
+            finalPosition= initialPosition.moveUp(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.UP);
         }
         else if (move == 2){
-            finalPosition= initialPosition.moveDown();
+            finalPosition= initialPosition.moveDown(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.DOWN);
         }
         else if (move == 3){
-            finalPosition= initialPosition.moveLeft();
+            finalPosition= initialPosition.moveLeft(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.LEFT);
         }
         else if (move == 4){
-            finalPosition=initialPosition.moveRight();
+            finalPosition=initialPosition.moveRight(1);
             onePlayerArena.getBot().setPreviousMovement(Gui.ACTION.RIGHT);
         }
-        else finalPosition=initialPosition.moveUp();
+        else finalPosition=initialPosition.moveUp(1);
         return finalPosition;
     }
 
     @Override
     public void keyPressed(Gui.ACTION action) {
-        if(action == Gui.ACTION.UP || action == Gui.ACTION.RIGHT || action == Gui.ACTION.LEFT || action == Gui.ACTION.DOWN)
-            player1Movement = action;
-        else if(action == Gui.ACTION.PAUSE) {
-            gameState.changeState(new PauseState(gameState.getGame(), gui));
-            System.out.println("pause");
+        if(action == Gui.ACTION.P1BOOST) {
+            onePlayerArena.getBoostBar().setHoldTime(onePlayerArena.getBoostBar().getHoldTime() + 1);
+            if(onePlayerArena.getBoostBar().isEmpty())
+                onePlayerArena.getBoostBar().deactivate();
+            else
+                onePlayerArena.getBoostBar().activate();
+
+            if(onePlayerArena.getBoostBar().getHoldTime() > 10) {
+                onePlayerArena.getBoostBar().decrease();
+            }
+        }
+        else {
+            onePlayerArena.getBoostBar().setReleaseTime(onePlayerArena.getBoostBar().getReleaseTime() + 1);
+            onePlayerArena.getBoostBar().deactivate();
+
+            if(onePlayerArena.getBoostBar().getReleaseTime() > 2) {
+                onePlayerArena.getBoostBar().increase();
+            }
+            if(action == Gui.ACTION.UP || action == Gui.ACTION.DOWN || action == Gui.ACTION.LEFT || action == Gui.ACTION.RIGHT)
+                player1Movement = action;
         }
     }
 }

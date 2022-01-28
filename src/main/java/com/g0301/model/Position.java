@@ -81,28 +81,28 @@ public class Position {
     /**
      * @return The position above the current one
      */
-    public Position moveUp() {
-        return new Position(this.x, this.y - 1);
+    public Position moveUp(int speed) {
+        return new Position(this.x, this.y - speed);
     }
 
     /**
      * @return The position below the current one
      */
-    public Position moveDown() {
-        return new Position(this.x, this.y + 1);
+    public Position moveDown(int speed) {
+        return new Position(this.x, this.y + speed);
     }
 
     /**
      * @return The position to the left of the current one
      */
-    public Position moveLeft() {
-        return new Position(this.x - 1, this.y);
+    public Position moveLeft(int speed) {
+        return new Position(this.x - speed, this.y);
     }
 
     /**
      * @return The position to the right of the current one
      */
-    public Position moveRight() {
-        return new Position(this.x + 1, this.y);
+    public Position moveRight(int speed) {
+        return new Position(this.x + speed, this.y);
     }
 }

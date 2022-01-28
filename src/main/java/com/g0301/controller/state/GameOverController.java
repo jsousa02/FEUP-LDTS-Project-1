@@ -1,10 +1,7 @@
 package com.g0301.controller.state;
 
 import com.g0301.gui.Gui;
-import com.g0301.state.GameState;
-import com.g0301.state.KeyboardListener;
-import com.g0301.state.MenuState;
-import com.g0301.state.OnePlayerState;
+import com.g0301.state.*;
 import com.g0301.viewer.state.GameOverViewer;
 
 import java.io.IOException;
@@ -27,8 +24,10 @@ public class GameOverController extends StateController implements KeyboardListe
 
     @Override
     public void getNextState() {
-        if(gameState.getSelectedIndex() == 0)
+        if(gameState.getSelectedIndex() == 0 && gameState.get_classicGame())
             nextState = new OnePlayerState(gameState.getGame(), gui);
+        else if (gameState.getSelectedIndex()==0 && gameState.get_survivalGame())
+            nextState= new SurvivalState(gameState.getGame(),gui);
         else if (gameState.getSelectedIndex() == 1)
             nextState = new MenuState(gameState.getGame(), gui);
     }

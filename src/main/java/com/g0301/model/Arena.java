@@ -3,8 +3,7 @@ package com.g0301.model;
 import com.g0301.controller.CarController;
 import com.g0301.gui.Gui;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public abstract class Arena {
 
@@ -17,21 +16,7 @@ public abstract class Arena {
         this.height = height;
         this.width = width;
         createPortals();
-    }
-
-    protected void createPortals() {
-        portals.add(new Portal(new Position(50, 30), new Position(10, 30), "#FF00FF"));
-        portals.add(new Portal(new Position(35, 55), new Position(40, 10), "#FF0000"));
-        portals.add(new Portal(new Position(10, 55), new Position(50, 50), "#00FFFF"));
-    }
-
-    protected void createWalls() {
-        for (int i = 0; i < width; i++) {
-            walls.add(new Wall(new Position(i, 0), "#FFFFFF"));
-            walls.add(new Wall(new Position(i, height - 1), "#FFFFFF"));
-            walls.add(new Wall(new Position(0, i), "#FFFFFF"));
-            walls.add(new Wall(new Position(width - 1, i), "#FFFFFF"));
-        }
+        createWalls();
     }
 
     /**
@@ -55,8 +40,24 @@ public abstract class Arena {
         return height;
     }
 
-    public List<Portal> getPortals() {
-        return portals;
+    /**
+     * @brief Create the walls
+     */
+    protected void createWalls() {
+        for (int i = 0; i < width; i++) {
+            walls.add(new Wall(new Position(i, 2), "#FFFFFF"));
+            walls.add(new Wall(new Position(i, height - 1 - 2), "#FFFFFF"));
+        }
+        for (int j = 2; j < height - 2; j++) {
+            walls.add(new Wall(new Position(0, j), "#FFFFFF"));
+            walls.add(new Wall(new Position(width - 1, j), "#FFFFFF"));
+        }
+    }
+
+    public void createPortals() {
+        portals.add(new Portal(new Position(65, 30), new Position(10, 30), "#FF00FF"));
+        portals.add(new Portal(new Position(35, 40), new Position(40, 10), "#FF0000"));
+        portals.add(new Portal(new Position(10, 45), new Position(70, 50), "#00FFFF"));
     }
 
     public boolean enterPortalThroughStart(Gui.ACTION action, CarController controller) {
@@ -81,5 +82,7 @@ public abstract class Arena {
         return false;
     }
 
-    public abstract boolean wallCollision();
+    public List<Portal> getPortals() {
+        return portals;
+    }
 }

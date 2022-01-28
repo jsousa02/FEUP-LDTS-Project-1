@@ -14,7 +14,7 @@ public class MenuState extends GameState {
     public MenuState(Game game, Gui gui){
         super(game, Arrays.asList(new Button(new Position(gui.getWidth() / 2, 20), "#000000", "#FFFFFF", "Play", 15, 3),
                 new Button(new Position(gui.getWidth() / 2, 30), "#000000", "#FFFFFF", "Instructions", 15, 3),
-                new Button(new Position(gui.getWidth() / 2, 40), "#000000", "#FFFFFF", "Exit", 15, 3)));
+                new Button(new Position(gui.getWidth() / 2, 40), "#000000", "#FFFFFF", "Exit", 15, 3)),false,false);
         this.menuController = new MenuController(this, gui);
     }
 
