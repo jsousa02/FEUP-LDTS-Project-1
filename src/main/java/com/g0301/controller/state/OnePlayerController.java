@@ -162,6 +162,9 @@ public class OnePlayerController extends StateController implements KeyboardList
                 onePlayerArena.getBoostBar().decrease();
             }
         }
+        else if(action == Gui.ACTION.PAUSE) {
+            gameState.changeState(new PauseState(gameState.getGame(), gui));
+        }
         else {
             onePlayerArena.getBoostBar().setReleaseTime(onePlayerArena.getBoostBar().getReleaseTime() + 1);
             onePlayerArena.getBoostBar().deactivate();

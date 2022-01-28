@@ -7,10 +7,7 @@ import com.g0301.model.OnePlayerArena;
 import com.g0301.model.Position;
 import com.g0301.model.SurvivalArena;
 import com.g0301.model.Trail;
-import com.g0301.state.GameOverState;
-import com.g0301.state.GameState;
-import com.g0301.state.GameWinState;
-import com.g0301.state.KeyboardListener;
+import com.g0301.state.*;
 import com.g0301.viewer.state.OnePlayerViewer;
 import com.g0301.viewer.state.SurvivalViewer;
 
@@ -149,6 +146,8 @@ public class SurvivalController extends StateController implements KeyboardListe
     public void keyPressed(Gui.ACTION action) {
         if(action == Gui.ACTION.UP || action == Gui.ACTION.RIGHT || action == Gui.ACTION.LEFT || action == Gui.ACTION.DOWN)
             player1Movement = action;
+        else if(action == Gui.ACTION.PAUSE)
+            gameState.changeState(new PauseState(gameState.getGame(), gui));
     }
 }
 

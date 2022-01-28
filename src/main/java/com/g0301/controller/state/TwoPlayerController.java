@@ -9,6 +9,7 @@ import com.g0301.model.TwoPlayerArena;
 import com.g0301.state.GameState;
 import com.g0301.state.GameWinState;
 import com.g0301.state.KeyboardListener;
+import com.g0301.state.PauseState;
 import com.g0301.viewer.state.TwoPlayerViewer;
 
 import java.io.IOException;
@@ -137,6 +138,9 @@ public class TwoPlayerController extends StateController implements KeyboardList
                 twoPlayerArena.getPlayer2BoostBar().increase();
             }
             player2movement = action;
+        }
+        else if(action == Gui.ACTION.PAUSE) {
+            gameState.changeState(new PauseState(gameState.getGame(), gui));
         }
     }
 }

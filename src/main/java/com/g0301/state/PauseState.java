@@ -14,7 +14,7 @@ public class PauseState extends GameState {
     private PauseController pauseController;
 
     public PauseState(Game game, Gui gui) {
-        super(game, Arrays.asList(new Button(new Position(gui.getWidth() / 2, 30), "#000000", "#FFFFFF", "Exit", 15, 3)));
+        super(game, Arrays.asList(new Button(new Position(gui.getWidth() / 2, 30), "#000000", "#FFFFFF", "Exit", 15, 3)), true ,true);
         pauseController = new PauseController(this, gui);
     }
 
