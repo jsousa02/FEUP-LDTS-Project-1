@@ -286,11 +286,13 @@ public class LanternaGUI implements Gui {
         drawText(graphics, new Position(12, 15), "#FFFFFF", "Single player classic");
         drawText(graphics, new Position(12, 17), "#FFFFFF", "1v1 with 2 players");
         drawText(graphics, new Position(12, 19), "#FFFFFF", "Survival mode");
-        drawText(graphics, new Position(10, 22), "#FFFFFF", "Move with WASD");
-        drawText(graphics, new Position(10, 25), "#FFFFFF", "You can't crash against the walls or against the other player's trails");
-        drawText(graphics, new Position(10, 28), "#FFFFFF", "You can use the portals to teleport");
-        drawText(graphics, new Position(10, 31), "#FFFFFF", "You can't enter the same portal twice");
-        //drawText(graphics, new Position(10, 34), "#FFFFFF", "");
+        drawText(graphics, new Position(10, 22), "#FFFFFF", "Player 1 controls:");
+        drawText(graphics, new Position(12, 25), "#FFFFFF", "Move the car with WASD and use boost with the space bar");
+        drawText(graphics, new Position(10, 28), "#FFFFFF", "Player 2 controls:");
+        drawText(graphics, new Position(12, 31), "#FFFFFF", "Move the car with the arrow keys and use boost with left shift");
+        drawText(graphics, new Position(10, 34), "#FFFFFF", "You can't crash against the walls or against the other player's trails");
+        drawText(graphics, new Position(10, 37), "#FFFFFF", "You can use the portals to teleport");
+        drawText(graphics, new Position(10, 40), "#FFFFFF", "You can't enter the same portal twice");
 
     }
 
