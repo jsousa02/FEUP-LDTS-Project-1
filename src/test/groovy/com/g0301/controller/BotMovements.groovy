@@ -7,10 +7,16 @@ import spock.lang.Specification
 
 class BotMovements extends Specification {
 
+    Bot bot
+    BotController botController
+
+    def setup() {
+        bot = new Bot(new Position(5, 5), "#FFFFFF")
+        botController = new BotController(bot)
+    }
+
     def "test bot move up"() {
         given:
-            Bot bot = new Bot(new Position(5, 5), "#FFFFFF")
-            BotController botController = new BotController(bot)
             Position initialPosition = bot.getPosition()
         when:
             botController.moveUp()
@@ -20,8 +26,6 @@ class BotMovements extends Specification {
 
     def "test bot move down"() {
         given:
-            Bot bot = new Bot(new Position(5, 5), "#FFFFFF")
-            BotController botController = new BotController(bot)
             Position initialPosition = bot.getPosition()
         when:
             botController.moveDown()
@@ -31,8 +35,6 @@ class BotMovements extends Specification {
 
     def "test bot move left"() {
         given:
-            Bot bot = new Bot(new Position(5, 5), "#FFFFFF")
-            BotController botController = new BotController(bot)
             Position initialPosition = bot.getPosition()
         when:
             botController.moveLeft()
@@ -42,8 +44,6 @@ class BotMovements extends Specification {
 
     def "test bot move right"() {
         given:
-            Bot bot = new Bot(new Position(5, 5), "#FFFFFF")
-            BotController botController = new BotController(bot)
             Position initialPosition = bot.getPosition()
         when:
             botController.moveRight()
@@ -52,9 +52,6 @@ class BotMovements extends Specification {
     }
 
     def "test make movement method when action is UP"() {
-        given:
-            Bot bot = new Bot(new Position(5, 5), "#FFFFFF")
-            BotController botController = new BotController(bot)
         when:
             botController.makeMovement(Gui.ACTION.UP)
         then:
@@ -62,9 +59,6 @@ class BotMovements extends Specification {
     }
 
     def "test make movement method when action is DOWN"() {
-        given:
-            Bot bot = new Bot(new Position(5, 5), "#FFFFFF")
-            BotController botController = new BotController(bot)
         when:
             botController.makeMovement(Gui.ACTION.DOWN)
         then:
@@ -72,9 +66,6 @@ class BotMovements extends Specification {
     }
 
     def "test make movement method when action is LEFT"() {
-        given:
-            Bot bot = new Bot(new Position(5, 5), "#FFFFFF")
-            BotController botController = new BotController(bot)
         when:
             botController.makeMovement(Gui.ACTION.LEFT)
         then:
@@ -82,9 +73,6 @@ class BotMovements extends Specification {
     }
 
     def "test make movement method when action is RIGHT"() {
-        given:
-            Bot bot = new Bot(new Position(5, 5), "#FFFFFF")
-            BotController botController = new BotController(bot)
         when:
             botController.makeMovement(Gui.ACTION.RIGHT)
         then:

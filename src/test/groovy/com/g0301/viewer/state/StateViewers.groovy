@@ -4,6 +4,7 @@ import com.g0301.gui.LanternaGUI
 import com.g0301.model.Button
 import com.g0301.model.OnePlayerArena
 import com.g0301.model.Position
+import com.g0301.model.SurvivalArena
 import com.g0301.model.TwoPlayerArena
 import com.g0301.viewer.ButtonViewer
 import spock.lang.Specification
@@ -83,16 +84,16 @@ class StateViewers extends Specification {
 
     def "test survival viewer"() {
         given:
-            OnePlayerArena onePlayerArena = new OnePlayerArena(60, 60)
-            OnePlayerViewer onePlayerViewer = new OnePlayerViewer(gui, Arrays.asList(new Button(new Position(10, 10), "#FFFFFF", "#FF0000", "Button", 15, 8)), onePlayerArena)
+            SurvivalArena survivalArena = new SurvivalArena(60, 60)
+            SurvivalViewer survivalViewer = new SurvivalViewer(gui, Arrays.asList(new Button(new Position(10, 10), "#FFFFFF", "#FF0000", "Button", 15, 8)), survivalArena)
         when:
-            onePlayerViewer.draw()
+            survivalViewer.draw()
         then:
             1 * gui.drawBackground(gui.createTextGraphics(), "#000000")
-            onePlayerArena.getWalls().size() * gui.drawWall(_ ,_)
+            survivalArena.getWalls().size() * gui.drawWall(_ ,_)
             2 * gui.drawCar(_, _)
             _ * gui.drawTrail(_ ,_)
-            onePlayerArena.getPortals().size() * gui.drawPortal(_, _, _)
+            survivalArena.getPortals().size() * gui.drawPortal(_, _, _)
     }
 
     def "test two player viewer"() {
