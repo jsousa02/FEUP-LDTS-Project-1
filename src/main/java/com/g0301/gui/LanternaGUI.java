@@ -279,7 +279,7 @@ public class LanternaGUI implements Gui {
     }
 
     @Override
-    public void drawInstructions() {
+        public void drawInstructions() {
         TextGraphics graphics = screen.newTextGraphics();
         drawLogo("#000000", "#FF0000");
         drawText(graphics, new Position(10, 12), "#FFFFFF", "You can play 3 different game modes");
@@ -312,5 +312,11 @@ public class LanternaGUI implements Gui {
         drawText(graphics, new Position(82, 58), "#FFFFFF", "Boost");
         graphics.setBackgroundColor(TextColor.Factory.fromString(color));
         drawElement(graphics, position, color, "*");
+    }
+    @Override
+    public void drawScore(String score){
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#000000"));
+        drawText(graphics, new Position(80, 59), "#FFFFFF", "Score:"+score);
     }
 }

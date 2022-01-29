@@ -61,5 +61,7 @@ public interface Gui {
 
     void drawPlayer2BoostBar(Position position, String color);
 
+    void drawScore(String Score);
+
     void addKeyboardListener(KeyboardObserver observer);
 }

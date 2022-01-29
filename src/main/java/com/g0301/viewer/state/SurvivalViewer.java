@@ -4,10 +4,7 @@ import com.g0301.gui.Gui;
 import com.g0301.model.Button;
 import com.g0301.model.OnePlayerArena;
 import com.g0301.model.SurvivalArena;
-import com.g0301.viewer.CarViewer;
-import com.g0301.viewer.PortalViewer;
-import com.g0301.viewer.TrailViewer;
-import com.g0301.viewer.WallViewer;
+import com.g0301.viewer.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -32,7 +29,7 @@ public class SurvivalViewer extends StateViewer {
         drawElements(SurvivalArena.getPlayer1().getTrailList(), new TrailViewer());
         drawElements(SurvivalArena.getBot().getTrailList(), new TrailViewer());
         drawElements(SurvivalArena.getPortals(), new PortalViewer());
-
+        gui.drawScore(SurvivalArena.getScore());
         gui.refresh();
     }
 }
