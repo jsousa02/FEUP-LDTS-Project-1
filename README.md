@@ -9,3 +9,27 @@ The objective is to make your opponent crash against the walls or your/his trail
 Our version of the game has portals as well.
 
 ### Screenshots
+
+Here's some insights of our game.\
+
+#### Menus
+
+<p align="center" justify="center">
+  <img src="docs/gifs/menus.gif"/>
+</p>
+<p align="center">
+  <b><i>Gif 1. Game menus</i></b>
+</p>
+<br>
+<br />
+
+#### Single player
+
+<p align="center" justify="center">
+  <img src="docs/gifs/single_player.gif"/>
+</p>
+<p align="center">
+  <b><i>Gif 2. Single player game mode</i></b>
+</p>
+<br>
+<br />
