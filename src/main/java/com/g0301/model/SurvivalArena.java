@@ -5,6 +5,7 @@ import java.util.Random;
 public class SurvivalArena extends Arena {
     private Player player1 = new Player(new Position(20, 30), "#FF0000");
     private Bot bot = new Bot(new Position(60, 30), "#00FF00");
+    int score;
 
     public SurvivalArena(int width, int height) {
         super(width, height);
@@ -131,9 +132,14 @@ public class SurvivalArena extends Arena {
         return true;
     }
     public Car botDied(){
-        int rand = new Random().nextInt(89);
-        int rand1 = new Random().nextInt(59);
+        int rand = new Random().nextInt(80);
+        int rand1 = new Random().nextInt(50);
+        score++;
         return bot= new Bot(new Position(rand,rand1),"#00FF00");
+    }
+    public String getScore(){
+        String score_string= String.valueOf(score);
+        return score_string;
     }
 }
 
