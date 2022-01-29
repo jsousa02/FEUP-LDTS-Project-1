@@ -182,9 +182,40 @@ These classes can be found in the following files:\
 
 ### Known code smells and refactoring suggestions
 
+#### Large Class
 
+The [LanternaGUI](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/gui/LanternaGUI.java) class has many methods, but we find it justifiable, because the interface requires a large amount of methods and it wouldn't make sense to separate them.\
+The [OnePlayerArena](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/model/OnePlayerArena.java) and [SurvivalArena](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/model/SurvivalArena.java) classes have many methods due to some of them being responsible for the movement of the bot. We could improve the code by moving these methods to the Bot class.
 
+#### Large Method
 
+Some of our methods are too long. Some examples are:
+- The [keyPressed](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/controller/state/TwoPlayerController.java) method in TwoPlayerController class
+- The [action](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/controller/state/OnePlayerController.java) method in OnePlayerController class
+
+To solve this problem, we could separate the if statements into methods.
+
+#### Duplicate code
+
+Since some of our features have common properties, duplicate code started to appear and can be found in the next methods:
+- upClearPosition, downClearPosition, leftClearPosition, rightClearPosition and wallCollision methods are the same in the OnePlayerArena and SurvivalArena classes.
+
+[OnePlayerArena](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/model/OnePlayerArena.java)\
+[SurvivalArena](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/model/SurvivalArena.java)
+
+To solve this problem, we could move these methods to the Arena superclass (Extract method).
+
+#### Refused Bequest
+
+While trying to generalize our code by creating abstract classes and interfaces, this code smell surged and can be found in:
+- [OnePlayerArena](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/model/OnePlayerArena.java) class
+- [TwoPlayerArena](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/model/TwoPlayerArena.java) class
+- [Player](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/model/Player.java) class
+- [Bot](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g0301/blob/main/src/main/java/com/g0301/model/Bot.java) class
+
+#### Feature Envy
+
+Due to the nature of the MVC pattern, the controllers call the models' methods, so this code smell is justified.
 
 ### Testing
 
