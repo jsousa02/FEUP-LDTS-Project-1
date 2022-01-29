@@ -5,7 +5,7 @@ import com.g0301.gui.LanternaGUI
 import spock.lang.Specification
 
 class MenuTest extends Specification {
-    
+
     MenuState menuState
     Game game = Mock()
     LanternaGUI gui = Mock()

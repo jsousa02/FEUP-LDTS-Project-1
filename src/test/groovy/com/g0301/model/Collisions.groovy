@@ -1,6 +1,7 @@
 package com.g0301.model
 
 import com.g0301.controller.BotController
+import com.g0301.controller.BotMovements
 import com.g0301.controller.Player1Controller
 import com.g0301.gui.Gui
 import com.g0301.controller.CarController
