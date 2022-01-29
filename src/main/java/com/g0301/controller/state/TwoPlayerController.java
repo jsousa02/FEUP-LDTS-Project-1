@@ -80,7 +80,7 @@ public class TwoPlayerController extends StateController implements KeyboardList
         Position nextPosition = player2.makeMovement(action);
 
         if(!player2.getCar().collisionWithOwnTrail() && !twoPlayerArena.wallCollision() && !twoPlayerArena.player2CollidesWithPlayer1()) {
-            player2.getCar().getTrailList().add(new Trail(currentPosition, "#FFFF00"));
+            player2.getCar().getTrailList().add(new Trail(currentPosition, "#FF0000"));
             if(!twoPlayerArena.enterPortalThroughStart(action, player2) && !twoPlayerArena.enterPortalThroughExit(action, player2)) {
                 player2.moveCar(nextPosition);
 
