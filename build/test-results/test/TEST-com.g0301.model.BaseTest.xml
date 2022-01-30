@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.g0301.model.BaseTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-01-29T23:52:34" hostname="LAPTOP-MMID7QH8" time="0.017">
+<testsuite name="com.g0301.model.BaseTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-01-30T00:59:09" hostname="LAPTOP-MMID7QH8" time="0.015">
   <properties/>
-  <testcase name="Testing equals" classname="com.g0301.model.BaseTest" time="0.005"/>
-  <testcase name="Testing the 4 corners of the arena" classname="com.g0301.model.BaseTest" time="0.012"/>
+  <testcase name="Testing equals" classname="com.g0301.model.BaseTest" time="0.004"/>
+  <testcase name="Testing the 4 corners of the arena" classname="com.g0301.model.BaseTest" time="0.011"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

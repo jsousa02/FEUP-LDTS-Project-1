@@ -19,30 +19,18 @@ public abstract class Arena {
         createWalls();
     }
 
-    /**
-     * @return The walls from the arena
-     */
     public List<Wall> getWalls() {
         return walls;
     }
 
-    /**
-     * @return The arena's width
-     */
     public int getWidth() {
         return width;
     }
 
-    /**
-     * @return The arena's height
-     */
     public int getHeight() {
         return height;
     }
 
-    /**
-     * @brief Create the walls
-     */
     protected void createWalls() {
         for (int i = 0; i < width; i++) {
             walls.add(new Wall(new Position(i, 2), "#FFFFFF"));

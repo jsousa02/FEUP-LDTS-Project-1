@@ -37,22 +37,12 @@ public abstract class StateViewer {
         gui.drawLogo(color, textColor);
     }
 
-    /**
-     * @brief Handles multiple element drawing
-     * @param elements The element to be drawn
-     * @param viewer The viewer responsible for drawing the elements
-     */
     protected <T extends Element> void drawElements(Collection<T> elements, ElementViewer<T> viewer) {
         for (T element : elements) {
             drawElement(element, viewer);
         }
     }
 
-    /**
-     * @breif Handles single element drawing
-     * @param element The element to be drawn
-     * @param viewer The viewer responsible for drawing the element
-     */
     protected <T extends Element> void drawElement(T element, ElementViewer<T> viewer) {
         viewer.drawElement(element, gui);
     }

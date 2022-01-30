@@ -39,5 +39,4 @@ public class Button extends Element {
     public void lowlight(String color) {
         this.color = color;
     }
-
 }

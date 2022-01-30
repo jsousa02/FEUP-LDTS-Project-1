@@ -4,7 +4,6 @@ import com.g0301.gui.Gui;
 import com.g0301.state.GameState;
 import com.g0301.state.KeyboardListener;
 import com.g0301.state.MenuState;
-import com.g0301.state.OnePlayerState;
 import com.g0301.viewer.state.PauseViewer;
 
 import java.io.IOException;

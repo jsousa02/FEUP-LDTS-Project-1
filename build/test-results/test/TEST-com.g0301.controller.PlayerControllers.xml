@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.g0301.controller.PlayerControllers" tests="17" skipped="0" failures="0" errors="0" timestamp="2022-01-29T23:52:33" hostname="LAPTOP-MMID7QH8" time="0.037">
+<testsuite name="com.g0301.controller.PlayerControllers" tests="17" skipped="0" failures="0" errors="0" timestamp="2022-01-30T00:59:09" hostname="LAPTOP-MMID7QH8" time="0.02">
   <properties/>
-  <testcase name="player1 moves up" classname="com.g0301.controller.PlayerControllers" time="0.019"/>
+  <testcase name="player1 moves up" classname="com.g0301.controller.PlayerControllers" time="0.011"/>
   <testcase name="player 1 moves down" classname="com.g0301.controller.PlayerControllers" time="0.001"/>
   <testcase name="player 1 moves left" classname="com.g0301.controller.PlayerControllers" time="0.001"/>
-  <testcase name="player 1 moves right" classname="com.g0301.controller.PlayerControllers" time="0.002"/>
-  <testcase name="player 2 moves up" classname="com.g0301.controller.PlayerControllers" time="0.002"/>
-  <testcase name="player 2 moves down" classname="com.g0301.controller.PlayerControllers" time="0.002"/>
-  <testcase name="player 2 moves right" classname="com.g0301.controller.PlayerControllers" time="0.001"/>
-  <testcase name="player 2 moves left" classname="com.g0301.controller.PlayerControllers" time="0.002"/>
-  <testcase name="test player 1 makeMovement method when the action is UP" classname="com.g0301.controller.PlayerControllers" time="0.001"/>
-  <testcase name="test player 1 makeMovement method when the action is DOWN" classname="com.g0301.controller.PlayerControllers" time="0.001"/>
+  <testcase name="player 1 moves right" classname="com.g0301.controller.PlayerControllers" time="0.001"/>
+  <testcase name="player 2 moves up" classname="com.g0301.controller.PlayerControllers" time="0.0"/>
+  <testcase name="player 2 moves down" classname="com.g0301.controller.PlayerControllers" time="0.001"/>
+  <testcase name="player 2 moves right" classname="com.g0301.controller.PlayerControllers" time="0.0"/>
+  <testcase name="player 2 moves left" classname="com.g0301.controller.PlayerControllers" time="0.001"/>
+  <testcase name="test player 1 makeMovement method when the action is UP" classname="com.g0301.controller.PlayerControllers" time="0.0"/>
+  <testcase name="test player 1 makeMovement method when the action is DOWN" classname="com.g0301.controller.PlayerControllers" time="0.0"/>
   <testcase name="test player 1 makeMovement method when the action is LEFT" classname="com.g0301.controller.PlayerControllers" time="0.0"/>
   <testcase name="test player 1 makeMovement method when the action is RIGHT" classname="com.g0301.controller.PlayerControllers" time="0.0"/>
-  <testcase name="test player 1 makeMovement method when the action is not valid" classname="com.g0301.controller.PlayerControllers" time="0.001"/>
+  <testcase name="test player 1 makeMovement method when the action is not valid" classname="com.g0301.controller.PlayerControllers" time="0.0"/>
   <testcase name="test player 2 makeMovement method when the action is UP" classname="com.g0301.controller.PlayerControllers" time="0.0"/>
   <testcase name="test player 2 makeMovement method when the action is DOWN" classname="com.g0301.controller.PlayerControllers" time="0.0"/>
   <testcase name="test player 2 makeMovement method when the action is RIGHT" classname="com.g0301.controller.PlayerControllers" time="0.001"/>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.g0301.viewer.state.StateViewers" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-01-29T23:52:34" hostname="LAPTOP-MMID7QH8" time="0.067">
+<testsuite name="com.g0301.viewer.state.StateViewers" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-01-30T00:59:10" hostname="LAPTOP-MMID7QH8" time="0.05">
   <properties/>
-  <testcase name="test menu viewer" classname="com.g0301.viewer.state.StateViewers" time="0.012"/>
+  <testcase name="test menu viewer" classname="com.g0301.viewer.state.StateViewers" time="0.008"/>
   <testcase name="test game mode viewer" classname="com.g0301.viewer.state.StateViewers" time="0.002"/>
   <testcase name="test instruction viewer" classname="com.g0301.viewer.state.StateViewers" time="0.002"/>
-  <testcase name="test game over viewer" classname="com.g0301.viewer.state.StateViewers" time="0.022"/>
-  <testcase name="test game win viewer" classname="com.g0301.viewer.state.StateViewers" time="0.003"/>
-  <testcase name="test one player viewer" classname="com.g0301.viewer.state.StateViewers" time="0.013"/>
-  <testcase name="test survival viewer" classname="com.g0301.viewer.state.StateViewers" time="0.007"/>
-  <testcase name="test two player viewer" classname="com.g0301.viewer.state.StateViewers" time="0.005"/>
+  <testcase name="test game over viewer" classname="com.g0301.viewer.state.StateViewers" time="0.016"/>
+  <testcase name="test game win viewer" classname="com.g0301.viewer.state.StateViewers" time="0.002"/>
+  <testcase name="test one player viewer" classname="com.g0301.viewer.state.StateViewers" time="0.009"/>
+  <testcase name="test survival viewer" classname="com.g0301.viewer.state.StateViewers" time="0.006"/>
+  <testcase name="test two player viewer" classname="com.g0301.viewer.state.StateViewers" time="0.004"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

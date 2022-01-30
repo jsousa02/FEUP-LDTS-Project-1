@@ -3,12 +3,10 @@ package com.g0301.controller.state;
 import com.g0301.controller.BotController;
 import com.g0301.controller.Player1Controller;
 import com.g0301.gui.Gui;
-import com.g0301.model.OnePlayerArena;
 import com.g0301.model.Position;
 import com.g0301.model.SurvivalArena;
 import com.g0301.model.Trail;
 import com.g0301.state.*;
-import com.g0301.viewer.state.OnePlayerViewer;
 import com.g0301.viewer.state.SurvivalViewer;
 
 import java.io.IOException;
@@ -150,4 +148,3 @@ public class SurvivalController extends StateController implements KeyboardListe
             gameState.changeState(new PauseState(gameState.getGame(), gui));
     }
 }
-

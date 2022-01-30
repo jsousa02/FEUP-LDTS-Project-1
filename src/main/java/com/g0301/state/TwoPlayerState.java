@@ -1,6 +1,5 @@
 package com.g0301.state;
 
-
 import com.g0301.Game;
 import com.g0301.controller.state.TwoPlayerController;
 import com.g0301.gui.Gui;

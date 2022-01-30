@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.g0301.controller.BotMovements" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-01-29T23:52:33" hostname="LAPTOP-MMID7QH8" time="0.462">
+<testsuite name="com.g0301.controller.BotMovements" tests="8" skipped="0" failures="0" errors="0" timestamp="2022-01-30T00:59:09" hostname="LAPTOP-MMID7QH8" time="0.21">
   <properties/>
-  <testcase name="test bot move up" classname="com.g0301.controller.BotMovements" time="0.443"/>
-  <testcase name="test bot move down" classname="com.g0301.controller.BotMovements" time="0.003"/>
-  <testcase name="test bot move left" classname="com.g0301.controller.BotMovements" time="0.002"/>
-  <testcase name="test bot move right" classname="com.g0301.controller.BotMovements" time="0.002"/>
-  <testcase name="test make movement method when action is UP" classname="com.g0301.controller.BotMovements" time="0.01"/>
-  <testcase name="test make movement method when action is DOWN" classname="com.g0301.controller.BotMovements" time="0.0"/>
-  <testcase name="test make movement method when action is LEFT" classname="com.g0301.controller.BotMovements" time="0.001"/>
+  <testcase name="test bot move up" classname="com.g0301.controller.BotMovements" time="0.201"/>
+  <testcase name="test bot move down" classname="com.g0301.controller.BotMovements" time="0.002"/>
+  <testcase name="test bot move left" classname="com.g0301.controller.BotMovements" time="0.001"/>
+  <testcase name="test bot move right" classname="com.g0301.controller.BotMovements" time="0.0"/>
+  <testcase name="test make movement method when action is UP" classname="com.g0301.controller.BotMovements" time="0.004"/>
+  <testcase name="test make movement method when action is DOWN" classname="com.g0301.controller.BotMovements" time="0.001"/>
+  <testcase name="test make movement method when action is LEFT" classname="com.g0301.controller.BotMovements" time="0.0"/>
   <testcase name="test make movement method when action is RIGHT" classname="com.g0301.controller.BotMovements" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

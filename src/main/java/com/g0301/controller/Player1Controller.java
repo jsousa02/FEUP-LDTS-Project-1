@@ -13,43 +13,26 @@ public class Player1Controller extends CarController {
         speed = 1;
     }
 
-    /**
-     * @return The position above the current one
-     */
     public Position moveUp() {
         getCar().setPreviousMovement(Gui.ACTION.UP);
         return getCar().getPosition().moveUp(getCar().getSpeed());
     }
 
-    /**
-     * @return The position below the current  one
-     */
     public Position moveDown() {
         getCar().setPreviousMovement(Gui.ACTION.DOWN);
         return getCar().getPosition().moveDown(getCar().getSpeed());
     }
 
-    /**
-     * @return The position to the left of the current one
-     */
     public Position moveLeft() {
         getCar().setPreviousMovement(Gui.ACTION.LEFT);
         return getCar().getPosition().moveLeft(getCar().getSpeed());
     }
 
-    /**
-     * @return The position to the right of the current one
-     */
     public Position moveRight() {
         getCar().setPreviousMovement(Gui.ACTION.RIGHT);
         return getCar().getPosition().moveRight(getCar().getSpeed());
     }
 
-    /**
-     * @param action The movement made by the player
-     * @return The position corresponding to the movement
-     * @briefs Handles the movements chosen by the player
-     */
     public Position makeMovement(Gui.ACTION action) {
         if (action == Gui.ACTION.UP){
             if (getCar().getPreviousMovement()!=Gui.ACTION.DOWN){
@@ -75,10 +58,6 @@ public class Player1Controller extends CarController {
         return null;
     }
 
-    /**
-     * @param position The position to which the car is moved
-     * @brief Moves the car to a new position
-     */
     public void moveCar(Position position) {
         getCar().setPosition(position);
     }

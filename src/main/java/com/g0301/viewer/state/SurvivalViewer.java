@@ -2,7 +2,6 @@ package com.g0301.viewer.state;
 
 import com.g0301.gui.Gui;
 import com.g0301.model.Button;
-import com.g0301.model.OnePlayerArena;
 import com.g0301.model.SurvivalArena;
 import com.g0301.viewer.*;
 

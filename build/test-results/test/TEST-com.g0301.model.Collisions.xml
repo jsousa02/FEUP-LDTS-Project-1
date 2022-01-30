@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.g0301.model.Collisions" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-01-29T23:52:34" hostname="LAPTOP-MMID7QH8" time="0.024">
+<testsuite name="com.g0301.model.Collisions" tests="7" skipped="0" failures="0" errors="0" timestamp="2022-01-30T00:59:09" hostname="LAPTOP-MMID7QH8" time="0.022">
   <properties/>
-  <testcase name="Testing Wall Collision" classname="com.g0301.model.Collisions" time="0.005"/>
-  <testcase name="Testing Car Collision with its own trails" classname="com.g0301.model.Collisions" time="0.008"/>
-  <testcase name="Testing Bot Collision with its own trails" classname="com.g0301.model.Collisions" time="0.002"/>
-  <testcase name="enter a portal" classname="com.g0301.model.Collisions" time="0.005"/>
+  <testcase name="Testing Wall Collision" classname="com.g0301.model.Collisions" time="0.004"/>
+  <testcase name="Testing Car Collision with its own trails" classname="com.g0301.model.Collisions" time="0.005"/>
+  <testcase name="Testing Bot Collision with its own trails" classname="com.g0301.model.Collisions" time="0.001"/>
+  <testcase name="enter a portal" classname="com.g0301.model.Collisions" time="0.008"/>
   <testcase name="enter a portal by its exit" classname="com.g0301.model.Collisions" time="0.001"/>
   <testcase name="Testing Player's car collision with bot trail" classname="com.g0301.model.Collisions" time="0.001"/>
-  <testcase name="Testing bot collision with player trail" classname="com.g0301.model.Collisions" time="0.001"/>
+  <testcase name="Testing bot collision with player trail" classname="com.g0301.model.Collisions" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

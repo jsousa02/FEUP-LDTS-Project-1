@@ -11,48 +11,27 @@ public class Position {
         this.y = y;
     }
 
-    /**
-     * @return x coordinate
-     */
     public int getX() {
         return x;
     }
 
-    /**
-     * @return y coordinate
-     */
     public int getY() {
         return y;
     }
 
-    /**
-     * @brief Updates the x coordinate value
-     * @param x The new x coordinate
-     */
     public void setX(int x) {
         this.x = x;
     }
 
-    /**
-     * @brief Updates the y coordinate value
-     * @param y The new y coordinate
-     */
     public void setY(int y) {
         this.y = y;
     }
 
-    /**
-     * @brief Updates the position
-     * @param position The new position
-     */
     public void setPosition(Position position) {
         this.setX(position.getX());
         this.setY(position.getY());
     }
 
-    /**
-     * @return The current position
-     */
     public Position getPosition() {
         Position position=new Position(x,y);
         return position;
@@ -63,11 +42,6 @@ public class Position {
         return Objects.hash(x, y);
     }
 
-    /**
-     * @brief Compares the position of two objects
-     * @param o The object to be compared
-     * @return True if the positions are the same
-     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,30 +52,18 @@ public class Position {
         return x == p.getX() && y == p.getY();
     }
 
-    /**
-     * @return The position above the current one
-     */
     public Position moveUp(int speed) {
         return new Position(this.x, this.y - speed);
     }
 
-    /**
-     * @return The position below the current one
-     */
     public Position moveDown(int speed) {
         return new Position(this.x, this.y + speed);
     }
 
-    /**
-     * @return The position to the left of the current one
-     */
     public Position moveLeft(int speed) {
         return new Position(this.x - speed, this.y);
     }
 
-    /**
-     * @return The position to the right of the current one
-     */
     public Position moveRight(int speed) {
         return new Position(this.x + speed, this.y);
     }

@@ -17,17 +17,10 @@ public abstract class Car extends Element {
         speed = 1;
     }
 
-    /**
-     * @return The car's trail list
-     */
     public Set<Trail> getTrailList() {
         return trailList;
     }
 
-    /**
-     * @brief Checks if the car collides with its own trail
-     * @return True if there is a collision, false otherwise
-     */
     public boolean collisionWithOwnTrail() {
         if (trailList.isEmpty()){
             return false;

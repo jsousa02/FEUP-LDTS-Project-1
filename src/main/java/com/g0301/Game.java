@@ -26,18 +26,12 @@ public class Game {
         this.gameState = new MenuState(this, gui);
     }
 
-    /**
-     * @return The single game instance
-     */
     public static Game getInstance() throws IOException, FontFormatException {
         if(singleton == null)
             singleton = new Game(90, 60, 20);
         return singleton;
     }
 
-    /**
-     * @brief Runs the game
-     */
     public void run() throws IOException {
         int frameTime = 1000 / fps;
 
@@ -61,9 +55,6 @@ public class Game {
         gui.close();
     }
 
-    /**
-     * @return The game's keyboard observer
-     */
     public KeyboardObserver getKeyboardObserver() {
         return keyboardObserver;
     }

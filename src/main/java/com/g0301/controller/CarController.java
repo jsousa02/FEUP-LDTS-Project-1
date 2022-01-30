@@ -18,34 +18,16 @@ public abstract class CarController {
     public void setCar(Car car){
         this.car = car;
     }
-    /**
-     * @return The position above the current one
-     */
+
     public abstract Position moveUp();
-    /**
-     * @return The position below the current  one
-     */
+
     public abstract Position moveDown();
 
-    /**
-     * @return The position to the left of the current one
-     */
     public abstract Position moveLeft();
 
-    /**
-     * @return The position to the right of the current one
-     */
     public abstract Position moveRight();
-    /**
-     * @param action The movement made by the player
-     * @return The position corresponding to the movement
-     * @briefs Handles the movements chosen by the player
-     */
+
     public abstract Position makeMovement(Gui.ACTION action);
 
-    /**
-     * @param position The position to which the car is moved
-     * @brief Moves the car to a new position
-     */
     public abstract void moveCar(Position position);
 }

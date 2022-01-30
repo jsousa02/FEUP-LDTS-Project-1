@@ -35,11 +35,6 @@ public class LanternaGUI implements Gui {
         return getOperatingSystem().startsWith("Windows");
     }
 
-    /**
-     * @brief Creates the screen
-     * @param terminal Terminal that's the base for the screen
-     * @return The created screen
-     */
     public TerminalScreen createScreen(Terminal terminal) throws IOException {
         final TerminalScreen terminalScreen = new TerminalScreen(terminal);
 
@@ -50,13 +45,6 @@ public class LanternaGUI implements Gui {
         return terminalScreen;
     }
 
-    /**
-     * @brief Creates the terminal
-     * @param width Terminal's width
-     * @param height Terminal's height
-     * @param fontConfiguration Font to be used in the terminal
-     * @return The created terminal
-     */
     public Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfiguration) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
@@ -67,10 +55,6 @@ public class LanternaGUI implements Gui {
         return terminal;
     }
 
-    /**
-     * @brief Loads a custom font to the terminal
-     * @return The applied font configuration
-     */
     public AWTTerminalFontConfiguration loadTronFont() throws IOException, FontFormatException {
 
         if(isWindows()){
@@ -94,81 +78,48 @@ public class LanternaGUI implements Gui {
             return AWTTerminalFontConfiguration.newInstance(loadedFont);
         }
     }
-  
 
-    /**
-     * @brief Creates the text graphics
-     * @return A screen with the text graphics created
-     */
     @Override
     public TextGraphics createTextGraphics() {
         return screen.newTextGraphics();
     }
 
-    /**
-     * @return True if the terminal is displayable, false otherwise
-     */
     @Override
     public boolean isActive() {
         return ((AWTTerminalFrame) screen.getTerminal()).isDisplayable();
     }
 
-    /**
-     * @return The GUI's height
-     */
     @Override
     public int getHeight() {
         return height;
     }
 
-    /**
-     * @return The GUI's width
-     */
     @Override
     public int getWidth() {
         return width;
     }
 
-    /**
-     * @breif Clears the screen
-     */
     @Override
     public void clear() {
             screen.clear();
     }
 
-    /**
-     * @brief Closes the screen
-     */
     @Override
     public void close() throws IOException {
         screen.close();
     }
 
-    /**
-     * @breif Refreshes the screen
-     */
     @Override
     public void refresh() throws IOException {
         screen.refresh();
     }
 
-    /**
-     * @brief Draws the screen's background
-     * @param graphics
-     * @param color
-     */
     @Override
     public void drawBackground(TextGraphics graphics, String color) {
         graphics.setBackgroundColor(TextColor.Factory.fromString(color));
         graphics.fillRectangle(new TerminalPosition(0, 0), new TerminalSize(width, height), ' ');
     }
 
-    /**
-     * @brief Draws a car in the screen
-     * @param position Position in which to draw the car
-     * @param color The car's color
-     */
     @Override
     public void drawCar(Position position, String color) {
         TextGraphics graphics = screen.newTextGraphics();
@@ -176,13 +127,6 @@ public class LanternaGUI implements Gui {
         drawElement(graphics, position, color, "¦");
     }
 
-    /**
-     * @brief Draws an element in the screen
-     * @param graphics Graphics that permit the drawing
-     * @param position The position in which to draw the element
-     * @param color The element's color
-     * @param text The element's representation
-     */
     @Override
     public void drawElement(TextGraphics graphics, Position position, String color, String text) {
         graphics.setForegroundColor(TextColor.Factory.fromString(color));
@@ -190,11 +134,6 @@ public class LanternaGUI implements Gui {
         graphics.putString(position.getX(), position.getY(), text);
     }
 
-    /**
-     * @breif Draws a wall
-     * @param position Position in which to draw the wall
-     * @param color The wall's color
-     */
     @Override
     public void drawWall(Position position, String color) {
         TextGraphics graphics = screen.newTextGraphics();
@@ -202,11 +141,6 @@ public class LanternaGUI implements Gui {
         drawElement(graphics, position, color, "ª");
     }
 
-    /**
-     * @breif Draws a car's tail
-     * @param position Position in which to draw the tail
-     * @param color The tail's color
-     */
     @Override
     public void drawTrail(Position position, String color) {
         TextGraphics graphics = screen.newTextGraphics();
@@ -214,16 +148,10 @@ public class LanternaGUI implements Gui {
         drawElement(graphics, position, color, "Ò");
     }
 
-    /**
-     * @return The screen
-     */
     public TerminalScreen getScreen() {
         return screen;
     }
 
-    /**
-     * @brief Adds a close screen listener, so when the close button of the window is pressed, the window is closed
-     */
     private void addCloseScreenListener() {
         ((AWTTerminalFrame) screen.getTerminal()).addWindowListener(new WindowAdapter() {
             @Override
@@ -234,10 +162,6 @@ public class LanternaGUI implements Gui {
         });
     }
 
-    /**
-     * @brief Adds a keyboard listener to handle user input
-     * @param observer The keyboard listener
-     */
     @Override
     public void addKeyboardListener(KeyboardObserver observer) {
         ((AWTTerminalFrame) screen.getTerminal()).getComponent(0).addKeyListener(observer);
