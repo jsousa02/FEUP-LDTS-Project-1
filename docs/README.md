@@ -222,7 +222,7 @@ Due to the nature of the MVC pattern, the controllers call the models' methods, 
 #### Test Coverage
 
 <p align="center" justify="center">
-  <img src="images/screenshots/test_coverage.png"/>
+  <img src="coverage/test_coverage.png"/>
 </p>
 <p align="center">
   <b><i>Fig 6. Test coverage</i></b>
