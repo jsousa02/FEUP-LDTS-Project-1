@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.g0301.viewer.Viewers" tests="6" skipped="0" failures="0" errors="0" timestamp="2022-01-29T23:52:34" hostname="LAPTOP-MMID7QH8" time="0.018">
+  <properties/>
+  <testcase name="test car viewer" classname="com.g0301.viewer.Viewers" time="0.003"/>
+  <testcase name="test button viewer" classname="com.g0301.viewer.Viewers" time="0.004"/>
+  <testcase name="test portal viewer" classname="com.g0301.viewer.Viewers" time="0.003"/>
+  <testcase name="test trail viewer" classname="com.g0301.viewer.Viewers" time="0.002"/>
+  <testcase name="test wall viewer" classname="com.g0301.viewer.Viewers" time="0.002"/>
+  <testcase name="test boost bar viewer" classname="com.g0301.viewer.Viewers" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
