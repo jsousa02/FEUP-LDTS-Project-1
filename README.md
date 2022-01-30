@@ -10,7 +10,7 @@ Our version of the game has portals as well.
 
 ### Screenshots
 
-Here's some insights of our game.\
+Here's some insights of our game.
 
 #### Menus
 
@@ -30,6 +30,29 @@ Here's some insights of our game.\
 </p>
 <p align="center">
   <b><i>Gif 2. Single player game mode</i></b>
+</p>
+<br>
+<br />
+
+#### 2 players
+
+<p align="center" justify="center">
+  <img src="docs/gifs/2players.gif"/>
+</p>
+<p align="center">
+  <b><i>Gif 3. 1v1 2 players game mode</i></b>
+</p>
+<br>
+<br />
+
+#### Survival
+
+
+<p align="center" justify="center">
+  <img src="docs/gifs/survival.gif"/>
+</p>
+<p align="center">
+  <b><i>Gif 4. 1v1 2 players game mode</i></b>
 </p>
 <br>
 <br />
