@@ -219,6 +219,17 @@ Due to the nature of the MVC pattern, the controllers call the models' methods, 
 
 ### Testing
 
+#### Test Coverage
 
+<p align="center" justify="center">
+  <img src="images/screenshots/test_coverage"/>
+</p>
+<p align="center">
+  <b><i>Fig 6. Test coverage</i></b>
+</p>
+
+#### Mutation testing
+
+[Link to mutation testing](../build/reports/pitest/202201292356/index.html)
 
 ### Self-evaluation
