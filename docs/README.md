@@ -233,3 +233,7 @@ Due to the nature of the MVC pattern, the controllers call the models' methods, 
 [Link to mutation testing](../build/reports/pitest/202201292356/index.html)
 
 ### Self-evaluation
+
+- Ana Sofia - 28%
+- Fábio Morais - 32%
+- Jorge Sousa - 40%
