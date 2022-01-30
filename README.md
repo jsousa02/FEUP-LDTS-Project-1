@@ -52,7 +52,7 @@ Here's some insights of our game.
   <img src="docs/gifs/survival.gif"/>
 </p>
 <p align="center">
-  <b><i>Gif 4. 1v1 2 players game mode</i></b>
+  <b><i>Gif 4. Survival game mode</i></b>
 </p>
 <br>
 <br />
